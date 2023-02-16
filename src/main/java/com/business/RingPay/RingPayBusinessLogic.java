@@ -1455,7 +1455,7 @@ public class RingPayBusinessLogic extends Utilities {
 	}
 
 	public void userDetails() throws Exception {
-		extent.HeaderChildNode("Age Criteria");
+		//extent.HeaderChildNode("Age Criteria");
 
 		explicitWaitVisibility(RingUserDetailPage.objFirstName, 10);
 		click(RingUserDetailPage.objFirstName, "First Name Field");
@@ -1482,7 +1482,7 @@ public class RingPayBusinessLogic extends Utilities {
 	}
 
 	public void ageSelect(String key, String Month, String Date, String Year, int year, int date) throws Exception {
-		extent.HeaderChildNode("Age Criteria");
+		//extent.HeaderChildNode("Age Criteria");
 
 		switch (key) {
 		case "lessthan18":
@@ -1655,9 +1655,8 @@ public class RingPayBusinessLogic extends Utilities {
 		return map;
 	}
 
-	public void userDetailsFromAPI(String firstName, String lastName, String email, String motherName, String gender)
-			throws Exception {
-		extent.HeaderChildNode("Age Criteria");
+	public void userDetailsFromAPI(String firstName, String lastName, String email, String motherName, String gender)throws Exception {
+//		extent.HeaderChildNode("Age Criteria");
 
 		explicitWaitVisibility(RingUserDetailPage.objFirstName, 10);
 		click(RingUserDetailPage.objFirstName, "First Name Field");
@@ -4335,31 +4334,27 @@ public class RingPayBusinessLogic extends Utilities {
 	public void afterClickOnApplyNowForLoanOfferBanner() throws Exception {
 		extent.HeaderChildNode("After click on apply now for loan offer banner");
 		getDriver().resetApp();
-		mockUserAPI();
+		instalonAPIKycVerification();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
 		enterOtp(prop.getproperty("OTP"));
-		user_reference = instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "OPTIONAL", "5000", "2135", "2319");
+		user_reference = instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "OPTIONAL", "5000", "2135", "2319");
 		readAndAccept();
 		waitTime(30000);
-
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
-
 		waitTime(30000);
 		explicitWaitVisibility(AddAddressPage.objAddCurrentAddressHeader, 30);
 		if (verifyElementPresent2(AddAddressPage.objAddCurrentAddressHeader, "address Page")) {
 			addAddress("86", "44, Borivali", "Vasa Street", "Das Gupta Street", "400080");
 			click(AddAddressPage.objSubmitBtn, "Submit");
 		}
-		if (verifyElementPresent2(KycDocument.kycHeader, "KYC Documents")) {
-			instaKycDocument();
-
-			waitTime(20000);
-			panCardDetails();
-			logger.info("Pan Card Validate Successfully");
-			extent.extentLoggerPass("Pan Card Details", "Pan Card Details Validatation Successfull");
-		}
+//		if (verifyElementPresent2(KycDocument.kycHeader, "KYC Documents")) {
+//			instaKycDocument();
+//			waitTime(20000);
+//			panCardDetails();
+//			logger.info("Pan Card Validate Successfully");
+//			extent.extentLoggerPass("Pan Card Details", "Pan Card Details Validatation Successfull");
+//		}
 
 		waitTime(10000);
 		click(RingLoginPage.objIAcceptCheckBox, "Term and Condition Check Box");
@@ -4369,7 +4364,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(13000);
 		if (verifyElementPresent2(HomePage.objAdCloseBtn, "Ad Banner")) {
 			explicitWaitVisibility(HomePage.objAdCloseBtn, 20);
-			Aclick(HomePage.objAdCloseBtn, "Ad Cross Button");
+			click(HomePage.objAdCloseBtn, "Ad Cross Button");
 		}
 		if (verifyElementPresent2(InstaLoanPage.bannerTitle, "Check")) {
 			click(InstaLoanPage.closeBanner, "Close Instalone Banner");
@@ -4397,24 +4392,18 @@ public class RingPayBusinessLogic extends Utilities {
 			explicitWaitVisibility(KycDocument.kycHeader, 20);
 			softAssertion.assertEquals("KYC Documents", getText(KycDocument.kycHeader));
 			logger.info("KYC Documents Page Validate Successfully");
-			extent.extentLoggerPass("KYC Document",
-					"KYC Document Page Validatation Successfull------------TC_Insta_loan_108");
-
+			extent.extentLoggerPass("KYC Document","KYC Document Page Validatation Successfull------------TC_Insta_loan_108");
 			instaKycDocument();
 
 			waitTime(20000);
 			panCardDetails();
 			logger.info("Pan Card Validate Successfully");
-			extent.extentLoggerPass("Pan Card Details",
-					"Pan Card Details Validatation Successfull-------TC_Insta_loan_48");
-			extent.extentLoggerPass("Pan Card Details",
-					"Pan Card Details Validatation Successfull-------TC_Insta_loan_82");
-			extent.extentLoggerPass("Pan Card Details",
-					"Pan Card Details Validatation Successfull-------TC_Insta_loan_110");
+			extent.extentLoggerPass("Pan Card Details","Pan Card Details Validatation Successfull-------TC_Insta_loan_48");
+			extent.extentLoggerPass("Pan Card Details","Pan Card Details Validatation Successfull-------TC_Insta_loan_82");
+			extent.extentLoggerPass("Pan Card Details","Pan Card Details Validatation Successfull-------TC_Insta_loan_110");
 		}
 
 		explicitWaitVisibility(InstaLoanPage.txtBasicDetails, 20);
-
 		softAssertion.assertEquals("Basic Details", getText(InstaLoanPage.txtBasicDetails));
 		logger.info("Basic Details Page Validate");
 		extent.extentLoggerPass("Basic Details", "Basic Details Validatation Successfull------TC_Insta_loan_112");
@@ -4430,22 +4419,21 @@ public class RingPayBusinessLogic extends Utilities {
 		checkBoxisSelected(InstaLoanPage.objReadmoreCheckBox);
 		extent.extentLoggerPass("Consent should be prechecked", "Consent is prechecked------------TC_Insta_loan_48");
 
-		new TouchAction(getDriver()).tap(PointOption.point(585, 1632)).release().perform();
+		tapUsingCoordinates(585, 1632);
 		softAssertion.assertEquals("Credit Bureau Consent", InstaLoanPage.txtCreditBureauConsent);
 		logger.info("Credit Bureau Consent");
-		extent.extentLoggerPass("Credit Bureau Consent ",
-				"Credit Bureau Consent Display-------------TC_Insta_loan_115");
+		extent.extentLoggerPass("Credit Bureau Consent ","Credit Bureau Consent Display-------------TC_Insta_loan_115");
 		extent.extentLoggerPass("Term and Condition", "Term and Condition--------------TC_Insta_loan_126");
 		click(InstaLoanPage.btnOkGotIt, "");
 		explicitWaitVisibility(RingUserDetailPage.objRegisterBtn, 20);
-		new TouchAction(getDriver()).tap(PointOption.point(324, 1688)).release().perform();
+		tapUsingCoordinates(324, 1688);
 		softAssertion.assertEquals("CKYC Consent", InstaLoanPage.txtCKYC_Consent);
 		logger.info("CKYC Consent");
 		extent.extentLoggerPass("CKYC Consent", "CKYC Consent Display-------------TC_Insta_loan_116");
 		extent.extentLoggerPass("Term and Condition", "Term and Condition--------------TC_Insta_loan_126");
 		click(InstaLoanPage.btnOkGotIt, "");
 		explicitWaitVisibility(RingUserDetailPage.objRegisterBtn, 20);
-		new TouchAction(getDriver()).tap(PointOption.point(475, 1948)).release().perform();
+		tapUsingCoordinates(475, 1948);
 		softAssertion.assertEquals("Ok, Got It!", InstaLoanPage.btnOkGotIt);
 		logger.info("Read More");
 		click(InstaLoanPage.btnOkGotIt, "Okay Got It Button");
@@ -4454,10 +4442,8 @@ public class RingPayBusinessLogic extends Utilities {
 		String toast = getText(UserRegistrationNew.objToast);
 		System.out.println(toast);
 		softAssertion.assertEquals("Please select the checkbox for relevant authorizations", toast);
-		extent.extentLoggerPass("Toast Message Display",
-				"Toast Message Display if checkbox unchecked --------------TC_Insta_loan_83");
-		extent.extentLoggerPass("Toast Message Display",
-				"Toast Message Display if checkbox unchecked --------------TC_Insta_loan_117");
+		extent.extentLoggerPass("Toast Message Display","Toast Message Display if checkbox unchecked --------------TC_Insta_loan_83");
+		extent.extentLoggerPass("Toast Message Display","Toast Message Display if checkbox unchecked --------------TC_Insta_loan_117");
 		logger.info(toast + " Validation Successfully");
 		extent.extentLogger("Toast Message Validation", toast);
 		click(InstaLoanPage.ckbCKYCTerm, "Check Box CKYC Term");
@@ -4465,8 +4451,7 @@ public class RingPayBusinessLogic extends Utilities {
 		if (verifyElementPresent2(AddAddressPage.objAddCurrentAddressHeader, "address Page")) {
 			softAssertion.assertEquals("New Current Address", AddAddressPage.objAddCurrentAddressHeader);
 			logger.info("New Current Address Validate Successfully");
-			extent.extentLoggerPass("New Current Address",
-					"New Current Address Validate Successfully--------------TC_Insta_loan_118");
+			extent.extentLoggerPass("New Current Address","New Current Address Validate Successfully--------------TC_Insta_loan_118");
 			addAddress("86", "44, Borivali", "Vasa Street", "Das Gupta Street", "400080");
 			click(AddAddressPage.objSubmitBtn, "Submit");
 		}
@@ -4474,15 +4459,13 @@ public class RingPayBusinessLogic extends Utilities {
 			click(InstaLoanPage.dropSelectAddress, "Select Address Drop Down");
 			explicitWaitVisibility(InstaLoanPage.dropAddressSelection, 20);
 			click(InstaLoanPage.dropAddressSelection, "Select Address First Option");
-			extent.extentLoggerPass("New Current Address",
-					"New Current Address Validate Successfully--------------TC_Insta_loan_118");
+			extent.extentLoggerPass("New Current Address","New Current Address Validate Successfully--------------TC_Insta_loan_118");
 			click(InstaLoanPage.ckbDeclarationAddress, "Declaration CheckBox");
 			click(InstaLoanPage.linkAddCommunicationAddress, "Add Address Link");
 			extent.extentLoggerPass("New Communication Link", "New Communication Link--------------TC_Insta_loan_119");
 			explicitWaitVisibility(AddAddressPage.objAddCurrentAddressHeader, 20);
 			addAddress("85", "45, Borivali", "Vasa Street", "Das Gupta Street", "400080");
-			extent.extentLoggerPass("New Communication Address",
-					"New Communication Successfully--------------TC_Insta_loan_120");
+			extent.extentLoggerPass("New Communication Address","New Communication Successfully--------------TC_Insta_loan_120");
 			click(AddAddressPage.objSubmitBtn, "Submit");
 
 		}
@@ -4497,8 +4480,7 @@ public class RingPayBusinessLogic extends Utilities {
 		if (verifyElementPresent2(InstaLoanPage.txtExistingBankAcc, "Address Page")) {
 			softAssertion.assertEquals("Existing Bank Account", getText(InstaLoanPage.txtExistingBankAcc));
 			logger.info("Existing Bank Account Validation Successfull");
-			extent.extentLoggerPass("Existing Bank Account",
-					"Existing Bank Validation Pass-----------------TC_Insta_loan_121");
+			extent.extentLoggerPass("Existing Bank Account","Existing Bank Validation Pass-----------------TC_Insta_loan_121");
 			click(InstaLoanPage.selectExistingAccount, "Select Existing Bank Account");
 			extent.extentLoggerPass("Select Existing Bank", "Select Existing Bank------------TC_Insta_loan_122");
 
@@ -4524,23 +4506,17 @@ public class RingPayBusinessLogic extends Utilities {
 		explicitWaitVisibility(HomePage.homeTab, 30);
 		logger.info("Home Page");
 		explicitWaitVisibility(InstaLoanPage.titleDisbursed, 30);
-
 		softAssertion.assertEquals("Disbursed", InstaLoanPage.titleDisbursed);
-
 		softAssertion.assertEquals("₹5,000", getText(InstaLoanPage.approvedLoanAmount));
 		logger.info(getText(InstaLoanPage.titleDisbursed) + " Successful");
 		extent.extentLoggerPass("Disbursed Successfull", "Disbursed Successfully Done-------------TC_Insta_loan_123");
-		softAssertion.assertEquals("Your Ring limit is Paused while you have an ongoing Insta Loan.",
-				InstaLoanPage.txtRingLimit);
+		softAssertion.assertEquals("Your Ring limit is Paused while you have an ongoing Insta Loan.",InstaLoanPage.txtRingLimit);
 		logger.info("Ring Limit Paused");
-		extent.extentLoggerPass("Ring Limit Paused",
-				"Ring Limit Paused after accepting Instaloan------TC_Insta_loan_124");
+		extent.extentLoggerPass("Ring Limit Paused","Ring Limit Paused after accepting Instaloan------TC_Insta_loan_124");
 		click(InstaLoanPage.linkViewDetails, "View Details Link");
 		explicitWaitVisibility(InstaLoanPage.titleInstalone, 20);
-		softAssertion.assertEquals("First EMI due in 15 Days", getText(InstaLoanPage.firstemiduein) + " "
-				+ getText(InstaLoanPage.fifteen) + " " + getText(InstaLoanPage.txtdays));
-		System.out.println(getText(InstaLoanPage.firstemiduein) + " " + getText(InstaLoanPage.fifteen) + " "
-				+ getText(InstaLoanPage.txtdays));
+		softAssertion.assertEquals("First EMI due in 15 Days", getText(InstaLoanPage.firstemiduein) + " "+ getText(InstaLoanPage.fifteen) + " " + getText(InstaLoanPage.txtdays));
+		System.out.println(getText(InstaLoanPage.firstemiduein) + " " + getText(InstaLoanPage.fifteen) + " "+ getText(InstaLoanPage.txtdays));
 		softAssertion.assertEquals("100% waiver", getText(InstaLoanPage.secoundWaiver));
 		extent.extentLoggerPass("Secount EMI Waiver", "Secount EMI Waiver Validate--------------TC_Insta_loan_125");
 		Back(1);
@@ -4548,42 +4524,35 @@ public class RingPayBusinessLogic extends Utilities {
 		newAdminPanel_appScore("0.107666832000000");
 		instaloneOnboardingKYCValidation("2251");
 		instaloneOnboardingFatherNameValidation("2251");
-
 	}
 
 	public void instaloneOnboardingWithOfferId(String offerID) throws Exception {
-
 		extent.HeaderChildNode("On_Boarding With Offer ID");
-		mockUserAPI();
-
+		instalonAPIKycVerification();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
 		enterOtp(prop.getproperty("OTP"));
-		user_reference = instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "OPTIONAL", "5000", offerID, "2319");
+		user_reference = instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "OPTIONAL", "5000", offerID, "2319");
 		// waitTime(10000);
 		if (verifyElementPresent2(RingLoginPage.objReadAcceptBtn, "Permission Page")) {
 			readAndAccept();
 		}
 		waitTime(50000);
-
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
-
 		waitTime(50000);
-
 		if (verifyElementPresent2(AddAddressPage.objAddCurrentAddressHeader, "address Page")) {
 			addAddress("86", "44, Borivali", "Vasa Street", "Das Gupta Street", "400080");
 			click(AddAddressPage.objSubmitBtn, "Submit");
 		}
 		newAdminPanel_appScore("0.107666832000000");
-		if (verifyElementPresent2(KycDocument.kycHeader, "KYC Documents")) {
-			instaKycDocument();
-
-			waitTime(20000);
-			panCardDetails();
-			logger.info("Pan Card Validate Successfully");
-			extent.extentLoggerPass("Pan Card Details", "Pan Card Details Validatation Successfull");
-		}
+//		if (verifyElementPresent2(KycDocument.kycHeader, "KYC Documents")) {
+//			instaKycDocument();
+//
+//			waitTime(20000);
+//			panCardDetails();
+//			logger.info("Pan Card Validate Successfully");
+//			extent.extentLoggerPass("Pan Card Details", "Pan Card Details Validatation Successfull");
+//		}
 
 		waitTime(20000);
 		click(RingLoginPage.objIAcceptCheckBox, "Term and Condition Check Box");
@@ -4593,7 +4562,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(13000);
 		if (verifyElementPresent2(HomePage.objAdCloseBtn, "Ad Banner")) {
 			explicitWaitVisibility(HomePage.objAdCloseBtn, 20);
-			Aclick(HomePage.objAdCloseBtn, "Ad Cross Button");
+			click(HomePage.objAdCloseBtn, "Ad Cross Button");
 		}
 		if (verifyElementPresent2(InstaLoanPage.bannerTitle, "Check")) {
 			click(InstaLoanPage.closeBanner, "Close Instalone Banner");
@@ -4608,9 +4577,7 @@ public class RingPayBusinessLogic extends Utilities {
 		if (verifyElementPresent2(KycDocument.kycHeader, "KYC Documents")) {
 			explicitWaitVisibility(KycDocument.kycHeader, 20);
 			logger.info("KYC Documents Page Validate Successfully");
-
 			instaKycDocument();
-
 			waitTime(20000);
 			panCardDetails();
 			logger.info("Pan Card Validate Successfully");
@@ -4619,7 +4586,7 @@ public class RingPayBusinessLogic extends Utilities {
 		if (verifyElementPresent2(InstaLoanPage.txtBasicDetails, "Basic Details")) {
 			explicitWaitVisibility(InstaLoanPage.txtBasicDetails, 20);
 
-			Aclick(InstaLoanPage.fieldFatherName, "");
+			click(InstaLoanPage.fieldFatherName, "");
 			type(InstaLoanPage.fieldFatherName, "Dinesh", "Fathers Name Field");
 			try {
 				click(RingUserDetailPage.objRegisterBtn, "Proceed Button");
@@ -4643,30 +4610,24 @@ public class RingPayBusinessLogic extends Utilities {
 			click(InstaLoanPage.dropSelectAddress, "Select Address Drop Down");
 			explicitWaitVisibility(InstaLoanPage.dropAddressSelection, 20);
 			click(InstaLoanPage.dropAddressSelection, "Select Address First Option");
-
 			click(RingUserDetailPage.objRegisterBtn, "Proceed Button");
-
 		}
 		waitTime(5000);
 		explicitWaitVisibility(InstaLoanPage.txtCongratulations, 30);
 		click(InstaLoanPage.btnAddABankDetails, "Add Bank Account Button");
-
 		waitTime(15000);
 		if (verifyElementPresent2(InstaLoanPage.txtExistingBankAcc, "Existing Bank")) {
 			softAssertion.assertEquals("Existing Bank Account", getText(InstaLoanPage.txtExistingBankAcc));
 			logger.info("Existing Bank Account Validation Successfull");
-			extent.extentLoggerPass("Existing Bank Account",
-					"Existing Bank Validation Pass-----------------TC_Insta_loan_121");
+			extent.extentLoggerPass("Existing Bank Account","Existing Bank Validation Pass-----------------TC_Insta_loan_121");
 			click(InstaLoanPage.selectExistingAccount, "Select Existing Bank Account");
 			extent.extentLoggerPass("Select Existing Bank", "Select Existing Bank------------TC_Insta_loan_122");
-
 		} else {
 			explicitWaitVisibility(InstaLoanPage.txtAddBankAccount, 20);
 			BankAccountRandom = addbankAccount("5", bankAccountHolder);
 			// explicitWaitVisibility(InstaLoanPage.txtVerifyBankDetails, 20);
 			click(InstaLoanPage.btnConfirm, "Confirm Button");
 		}
-
 		explicitWaitVisibility(InstaLoanPage.txtCongratulations, 30);
 		softAssertion.assertEquals("Offer", InstaLoanPage.txtOffer);
 		softAssertion.assertEquals("Congratulations", InstaLoanPage.txtCongratulations);
@@ -4676,13 +4637,11 @@ public class RingPayBusinessLogic extends Utilities {
 		click(InstaLoanPage.btnConfirmOffer, "Confirm Order Button");
 		waitTime(120000);
 		explicitWaitVisibility(InstaLoanPage.btnHome, 20);
-
 		click(InstaLoanPage.btnHome, "Home Button");
 		waitTime(240000);
 		Swipe("Down", 2);
 		explicitWaitVisibility(HomePage.homeTab, 30);
 		logger.info("Home Page");
-
 	}
 
 	public void instaloneOnboardingKYCValidation(String offerID) throws Exception {
@@ -4693,8 +4652,7 @@ public class RingPayBusinessLogic extends Utilities {
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
 		enterOtp(prop.getproperty("OTP"));
-		user_reference = instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "OPTIONAL", "5000", offerID, "2319");
+		user_reference = instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "OPTIONAL", "5000", offerID, "2319");
 		readAndAccept();
 		waitTime(50000);
 
@@ -4718,22 +4676,16 @@ public class RingPayBusinessLogic extends Utilities {
 				// softAssertion.assertEquals("Your application cannot be processed right now.",
 				// InstaLoanPage.txtSorryDetails);
 				logger.info("Sorry Page Display");
-				extent.extentLoggerPass("Sorry Page Display",
-						"Sorry Page Display due to KYC Document not upload properly------------TC_Insta_loan_109");
+				extent.extentLoggerPass("Sorry Page Display","Sorry Page Display due to KYC Document not upload properly------------TC_Insta_loan_109");
 				waitTime(20000);
 				explicitWaitVisibility(InstaLoanPage.sorryPageTopHamBurgger, 15);
 				click(InstaLoanPage.sorryPageTopHamBurgger, "Top left menu button");
-
 				explicitWaitVisibility(RingLoginPage.objProfileSelect, 10);
 				click(RingLoginPage.objProfileSelect, "Profile Select Button");
-
 				explicitWaitVisibility(RingLoginPage.objLogoutBtn, 10);
-
 				click(RingLoginPage.objLogoutBtn, "Logout Button");
-
 				logger.info("Logout popup comes up");
 				extent.extentLoggerPass("Logout popup", "Logout popup comes up");
-
 				explicitWaitVisibility(RingLoginPage.objYesBtn, 10);
 				click(RingLoginPage.objYesBtn, "Yes confirmation button");
 			} else {
@@ -4742,26 +4694,23 @@ public class RingPayBusinessLogic extends Utilities {
 				waitTime(20000);
 				click(RingLoginPage.objIAcceptCheckBox, "Term and Condition Check Box");
 				click(RingLoginPage.objAcceptOfferBtn, "Accept Button");
-
 				instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
 				waitTime(13000);
 
 				if (verifyElementPresent2(HomePage.objAdCloseBtn, "Ad Banner")) {
 					explicitWaitVisibility(HomePage.objAdCloseBtn, 20);
-					Aclick(HomePage.objAdCloseBtn, "Ad Cross Button");
+					click(HomePage.objAdCloseBtn, "Ad Cross Button");
 				}
 				if (verifyElementPresent2(InstaLoanPage.bannerTitle, "Check")) {
 					click(InstaLoanPage.closeBanner, "Close Instalone Banner");
 					waitTime(3000);
 					click(InstaLoanPage.btnOkaygotIt, "Okay Got It");
 				}
-
 			}
 
 			waitTime(6000);
 			click(InstaLoanPage.btnApplyNow, "Apply Now Button");
 			waitTime(10000);
-
 			if (verifyElementPresent2(KycDocument.kycHeader, "KYC Documents")) {
 				explicitWaitVisibility(KycDocument.kycHeader, 20);
 				logger.info("KYC Documents Page Validate Successfully");
@@ -4771,8 +4720,7 @@ public class RingPayBusinessLogic extends Utilities {
 				explicitWaitVisibility(InstaLoanPage.txtSorry, 30);
 				softAssertion.assertEquals("Sorry!", InstaLoanPage.txtSorry);
 				logger.info("Sorry Page Display");
-				extent.extentLoggerPass("Sorry Page Display",
-						"Sorry Page Display due to KYC Document not upload properly------------TC_Insta_loan_109");
+				extent.extentLoggerPass("Sorry Page Display","Sorry Page Display due to KYC Document not upload properly------------TC_Insta_loan_109");
 				waitTime(20000);
 				explicitWaitVisibility(InstaLoanPage.sorryPageTopHamBurgger, 15);
 				click(InstaLoanPage.sorryPageTopHamBurgger, "Top left menu button");
@@ -4789,12 +4737,9 @@ public class RingPayBusinessLogic extends Utilities {
 
 				explicitWaitVisibility(RingLoginPage.objYesBtn, 10);
 				click(RingLoginPage.objYesBtn, "Yes confirmation button");
-
 			}
 		}
-
 	}
-
 	public void instaloneOnboardingFatherNameValidation(String offerID) throws Exception {
 
 		extent.HeaderChildNode("Instaloan Father Details Validation");
@@ -4839,7 +4784,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(13000);
 		if (verifyElementPresent2(HomePage.objAdCloseBtn, "Ad Banner")) {
 			explicitWaitVisibility(HomePage.objAdCloseBtn, 20);
-			Aclick(HomePage.objAdCloseBtn, "Ad Cross Button");
+			click(HomePage.objAdCloseBtn, "Ad Cross Button");
 		}
 		if (verifyElementPresent2(InstaLoanPage.bannerTitle, "Check")) {
 			click(InstaLoanPage.closeBanner, "Close Instalone Banner");
@@ -4864,7 +4809,7 @@ public class RingPayBusinessLogic extends Utilities {
 		if (verifyElementPresent2(InstaLoanPage.txtBasicDetails, "Basic Details")) {
 			explicitWaitVisibility(InstaLoanPage.txtBasicDetails, 20);
 
-			Aclick(InstaLoanPage.fieldFatherName, "");
+			click(InstaLoanPage.fieldFatherName, "");
 			type(InstaLoanPage.fieldFatherName, "Dinesh", "Fathers Name Field");
 			try {
 				click(RingUserDetailPage.objRegisterBtn, "Proceed Button");
@@ -5000,16 +4945,13 @@ public class RingPayBusinessLogic extends Utilities {
 		softAssertion.assertEquals("Insta Loan", getText(InstaLoanPage.titleInstalone));
 		logger.info("Insta Loan Screen Display");
 		extent.extentLoggerPass("Insta Loan details screen ", "Insta Loan details screen -----TC_Insta_loan_170");
-		softAssertion.assertEquals("First EMI due in 15 Days", getText(InstaLoanPage.firstemiduein) + " "
-				+ getText(InstaLoanPage.fifteen) + " " + getText(InstaLoanPage.txtdays));
-		System.out.println(getText(InstaLoanPage.firstemiduein) + " " + getText(InstaLoanPage.fifteen) + " "
-				+ getText(InstaLoanPage.txtdays));
+		softAssertion.assertEquals("First EMI due in 15 Days", getText(InstaLoanPage.firstemiduein) + " "+ getText(InstaLoanPage.fifteen) + " " + getText(InstaLoanPage.txtdays));
+		System.out.println(getText(InstaLoanPage.firstemiduein) + " " + getText(InstaLoanPage.fifteen) + " "+ getText(InstaLoanPage.txtdays));
 		softAssertion.assertEquals("Pay Full Amount", getText(InstaLoanPage.txtPayFullAmount));
 		softAssertion.assertEquals("1st installment", getText(InstaLoanPage.txtfirstInstall));
 		softAssertion.assertEquals("2nd installment", getText(InstaLoanPage.txtsecoundInstall));
 		logger.info("Validate offer of 15 days");
-		extent.extentLoggerPass("verified for insta loan 15 days offer loan details screen",
-				"Verified for insta loan 15 days offer loan details screen with pay full amount, 1st installment and 2nd installment-----TC_Insta_loan_173");
+		extent.extentLoggerPass("verified for insta loan 15 days offer loan details screen","Verified for insta loan 15 days offer loan details screen with pay full amount, 1st installment and 2nd installment-----TC_Insta_loan_173");
 		Back(1);
 		explicitWaitVisibility(InstaLoanPage.objMenuTab, 30);
 		click(InstaLoanPage.objMenuTab, "Top left menu button");
@@ -5076,13 +5018,10 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(10000);
 		click(InstaLoanPage.linkViewDetails, "View Details Link");
 		explicitWaitVisibility(InstaLoanPage.titleInstalone, 20);
-		softAssertion.assertEquals("Second EMI due in 62 Days", getText(InstaLoanPage.Secoundemiduein) + " "
-				+ getText(InstaLoanPage.sixtytwo) + " " + getText(InstaLoanPage.txtdays));
-		System.out.println(getText(InstaLoanPage.Secoundemiduein) + " " + getText(InstaLoanPage.sixtytwo) + " "
-				+ getText(InstaLoanPage.txtdays));
+		softAssertion.assertEquals("Second EMI due in 62 Days", getText(InstaLoanPage.Secoundemiduein) + " "+ getText(InstaLoanPage.sixtytwo) + " " + getText(InstaLoanPage.txtdays));
+		System.out.println(getText(InstaLoanPage.Secoundemiduein) + " " + getText(InstaLoanPage.sixtytwo) + " "+ getText(InstaLoanPage.txtdays));
 		logger.info("Validate offer of 62 days");
-		extent.extentLoggerPass("verified for insta loan 62 days offer loan details screen",
-				"Verified for insta loan 62 days offer loan details screen with pay full amount, 2 Month Installment and 2 Month Installment-----TC_Insta_loan_174");
+		extent.extentLoggerPass("verified for insta loan 62 days offer loan details screen","Verified for insta loan 62 days offer loan details screen with pay full amount, 2 Month Installment and 2 Month Installment-----TC_Insta_loan_174");
 
 		explicitWaitVisibility(InstaLoanPage.titleInstalone, 20);
 		click(InstaLoanPage.secoundInstallRadioBtn, "2nd Installment Radio Button");
@@ -5111,13 +5050,10 @@ public class RingPayBusinessLogic extends Utilities {
 		explicitWaitVisibility(InstaLoanPage.txtPayment, 20);
 		netBankingPayment();
 		click(InstaLoanPage.linkViewDetails, "View Details Link");
-		softAssertion.assertEquals("Third EMI due in 90 Days", getText(InstaLoanPage.thirdemiduein) + " "
-				+ getText(InstaLoanPage.ninty) + " " + getText(InstaLoanPage.txtdays));
-		System.out.println(getText(InstaLoanPage.thirdemiduein) + " " + getText(InstaLoanPage.ninty) + " "
-				+ getText(InstaLoanPage.txtdays));
+		softAssertion.assertEquals("Third EMI due in 90 Days", getText(InstaLoanPage.thirdemiduein) + " "+ getText(InstaLoanPage.ninty) + " " + getText(InstaLoanPage.txtdays));
+		System.out.println(getText(InstaLoanPage.thirdemiduein) + " " + getText(InstaLoanPage.ninty) + " "+ getText(InstaLoanPage.txtdays));
 		logger.info("Validate offer of 90 days");
-		extent.extentLoggerPass("verified for insta loan 3 Months offer loan details screen",
-				"Verified for insta loan 3 Months offer loan details screen with pay full amount, 3 Month Installment and 3rd Month Installment-----TC_Insta_loan_175");
+		extent.extentLoggerPass("verified for insta loan 3 Months offer loan details screen","Verified for insta loan 3 Months offer loan details screen with pay full amount, 3 Month Installment and 3rd Month Installment-----TC_Insta_loan_175");
 
 		explicitWaitVisibility(InstaLoanPage.titleInstalone, 20);
 		click(InstaLoanPage.thirdInstallRadioBtn, "3rd Installment Radio Button");
@@ -5173,13 +5109,10 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(10000);
 
 		click(InstaLoanPage.linkViewDetails, "View Details Link");
-		softAssertion.assertEquals("Sixth EMI due in 181 Days", getText(InstaLoanPage.sixthemiduein) + " "
-				+ getText(InstaLoanPage.oneHunderedeightyOne) + " " + getText(InstaLoanPage.txtdays));
-		System.out.println(getText(InstaLoanPage.sixthemiduein) + " " + getText(InstaLoanPage.oneHunderedeightyOne)
-				+ " " + getText(InstaLoanPage.txtdays));
+		softAssertion.assertEquals("Sixth EMI due in 181 Days", getText(InstaLoanPage.sixthemiduein) + " "+ getText(InstaLoanPage.oneHunderedeightyOne) + " " + getText(InstaLoanPage.txtdays));
+		System.out.println(getText(InstaLoanPage.sixthemiduein) + " " + getText(InstaLoanPage.oneHunderedeightyOne)+ " " + getText(InstaLoanPage.txtdays));
 		logger.info("Validate offer of 181 days");
-		extent.extentLoggerPass("verified for insta loan 6 Months offer loan details screen",
-				"Verified for insta loan 6 Months offer loan details screen with pay full amount, 6 Month Installment and 6rd Month Installment-----TC_Insta_loan_176");
+		extent.extentLoggerPass("verified for insta loan 6 Months offer loan details screen","Verified for insta loan 6 Months offer loan details screen with pay full amount, 6 Month Installment and 6rd Month Installment-----TC_Insta_loan_176");
 
 		// click(InstaLoanPage.linkViewDetails, "View Details Link");
 		Swipe("up", 2);
@@ -5195,36 +5128,9 @@ public class RingPayBusinessLogic extends Utilities {
 
 	}
 
-	/*
-	public void newAdminPanel_appScore(String app_score) throws Exception {
-		extent.HeaderChildNode("Updating app score");
-		Utilities.setPlatform = "Web";
-		new CommandBase("Chrome");
-		waitTime(4000);
-		getWebDriver().get("https://new-admin-panel.test.ideopay.in/configuration?search=app_score&");
-		type(InstaLoanPage.objEmail, "shakir.muchumarri@collabera.com", "Email text field");
-		click(InstaLoanPage.objContinue, "Continue Button");
-		waitTime(3000);
-		click(InstaLoanPage.objEditConfBtn, "Edit Configuration Buton");
-		waitTime(2000);
-		waitTime(2000);
-		clearWebField(InstaLoanPage.objMetaValue);
-		waitTime(2000);
-		type(InstaLoanPage.objMetaValue, app_score, "app score meta value field");
-		waitTime(2000);
-		click(InstaLoanPage.objSubmit, "Submit button");
-		waitTime(2000);
-		BrowsertearDown();
-		waitTime(10000);
-		setPlatform("Android");
-		initDriver();
-		waitTime(5000);
-	} */
-
 	public void PanValidation() throws Exception {
 		extent.HeaderChildNode("Validation of PAN Module");
-		HashMap mockUserDetails = mockUserAPI(prop.getproperty("MockAPIurl"), prop.getproperty("gender"),
-				prop.getproperty("encrypted"));
+		HashMap mockUserDetails = mockUserAPI(prop.getproperty("MockAPIurl"), prop.getproperty("gender"),prop.getproperty("encrypted"));
 
 		String otherspanCard = (String) mockUserDetails.get("panCard");
 		mockUserAPI();
@@ -5256,8 +5162,7 @@ public class RingPayBusinessLogic extends Utilities {
 		click(PAN_DetailsPage.btnProceed, "Procced");
 		softAssertion.assertEquals("Please enter a valid pan number", getText(PAN_DetailsPage.errorMessage));
 		logger.info("To validate the pan with only alphabets----------TC_RCC_19");
-		extent.extentLoggerPass("To validate the pan with only alphabets",
-				"Validate With Pan with Only alphabets formate");
+		extent.extentLoggerPass("To validate the pan with only alphabets","Validate With Pan with Only alphabets formate");
 		click(PAN_DetailsPage.panCardNumberField, "Field");
 		clearField(PAN_DetailsPage.panCardNumberField, "Pan Card Field");
 		waitTime(3000);
@@ -5265,8 +5170,7 @@ public class RingPayBusinessLogic extends Utilities {
 		click(PAN_DetailsPage.btnProceed, "Procced");
 		softAssertion.assertEquals("Please enter a valid pan number", getText(PAN_DetailsPage.errorMessage));
 		logger.info("To validate the pan with only special Characters------TC_RCC_20");
-		extent.extentLoggerPass("To validate the pan with only special Characters",
-				"Validate With Pan with Only special Characters formate");
+		extent.extentLoggerPass("To validate the pan with only special Characters","Validate With Pan with Only special Characters formate");
 		click(PAN_DetailsPage.panCardNumberField, "Field");
 		clearField(PAN_DetailsPage.panCardNumberField, "Pan Card Field");
 		waitTime(3000);
@@ -5274,8 +5178,7 @@ public class RingPayBusinessLogic extends Utilities {
 		click(PAN_DetailsPage.btnProceed, "Procced");
 		softAssertion.assertEquals("Please enter a valid pan number", getText(PAN_DetailsPage.errorMessage));
 		logger.info("To validate the pan with combination of alphabets, numbers and special character----TC_RCC_21");
-		extent.extentLoggerPass("To validate the pan with combination of alphabets, numbers and special character",
-				"Validate With Pan with combination of alphabets,number,special character formate");
+		extent.extentLoggerPass("To validate the pan with combination of alphabets, numbers and special character","Validate With Pan with combination of alphabets,number,special character formate");
 		click(PAN_DetailsPage.panCardNumberField, "Field");
 		clearField(PAN_DetailsPage.panCardNumberField, "Pan Card Field");
 		waitTime(3000);
@@ -5291,8 +5194,7 @@ public class RingPayBusinessLogic extends Utilities {
 		click(PAN_DetailsPage.btnProceed, "Procced");
 		softAssertion.assertEquals("Please enter a valid pan number", getText(PAN_DetailsPage.errorMessage));
 		logger.info("To validate the pan which is already mapped with other Ring User-----TC_RCC_23");
-		extent.extentLoggerPass("To validate the pan which is already mapped with other Ring User",
-				"Validate with already mapped with other ring user");
+		extent.extentLoggerPass("To validate the pan which is already mapped with other Ring User","Validate with already mapped with other ring user");
 
 		click(PAN_DetailsPage.panCardNumberField, "Field");
 		clearField(PAN_DetailsPage.panCardNumberField, "");
@@ -5301,8 +5203,7 @@ public class RingPayBusinessLogic extends Utilities {
 		click(PAN_DetailsPage.btnProceed, "Procced");
 		softAssertion.assertEquals("Please enter a valid pan number", getText(PAN_DetailsPage.errorMessage));
 		logger.info("To validate the pan which is not mapped with other Ring user and also not exist---TC_RCC_24");
-		extent.extentLoggerPass("To validate the pan which is not mapped with other Ring user and also not exist",
-				"Validate with not exist user");
+		extent.extentLoggerPass("To validate the pan which is not mapped with other Ring user and also not exist","Validate with not exist user");
 
 		click(PAN_DetailsPage.panCardNumberField, "Field");
 		clearField(PAN_DetailsPage.panCardNumberField, "Pan Card Field");
@@ -5324,51 +5225,6 @@ public class RingPayBusinessLogic extends Utilities {
 		}
 	}
 
-	/*
-	 * public void addNewCard() throws Exception {
-	 * 
-	 * 
-	 * verifyElementPresentAndClick(HomPageNew.objNetBankingOption,
-	 * getText(HomPageNew.objNetBankingOption)); waitTime(10000);
-	 * explicitWaitVisibility(HomPageNew.objNetbanking, 20); //waitTime(5000);
-	 * click(HomPageNew.objNetbanking, getText(HomPageNew.objNetbanking));
-	 * 
-	 * click(InstaLoanPage.objCardNumber, "Card Number Field");
-	 * type(InstaLoanPage.objCardNumber, prop.getproperty("cardNumber"),
-	 * "Card Number Field"); //4111 1111 1111 1111
-	 * 
-	 * 
-	 * click(InstaLoanPage.objExpiryDate, "Expiry Date Field");
-	 * type(InstaLoanPage.objExpiryDate, prop.getproperty("expiryDate"),
-	 * "Expiry Date Field");
-	 * 
-	 * //10/25
-	 * 
-	 * click(InstaLoanPage.objCardHolderName, "Card Holder's Field");
-	 * type(InstaLoanPage.objCardHolderName, prop.getproperty("userName"),
-	 * "Card Holder's Field"); //
-	 * 
-	 * 
-	 * click(InstaLoanPage.objCVV, "CVV Field"); type(InstaLoanPage.objCVV,
-	 * prop.getproperty("cvv"), "CVV Field");
-	 * 
-	 * //123
-	 * 
-	 * verifyElementPresentAndClick(InstaLoanPage.btnPayNow,
-	 * getText(InstaLoanPage.btnPayNow) + " Button");
-	 * verifyElementPresentAndClick(InstaLoanPage.objPayWithoutSavingCardBtn,getText
-	 * (InstaLoanPage.objPayWithoutSavingCardBtn) + " Button");
-	 * 
-	 * if (verifyElementPresent2(InstaLoanPage.objSuccessBtn, "Success Button")) {
-	 * verifyElementPresentAndClick(InstaLoanPage.objSuccessBtn,
-	 * getText(InstaLoanPage.objSuccessBtn)); } else {
-	 * click(InstaLoanPage.objCardOTPField, "OTP field");
-	 * type(InstaLoanPage.objCardOTPField, prop.getproperty("OTP"), "OTP Field");
-	 * verifyElementPresentAndClick(InstaLoanPage.objSubmitButton,getText(
-	 * InstaLoanPage.objSubmitButton) + " Button"); } waitTime(20000);
-	 * verifyElementPresentAndClick(HomPageNew.objHomePage,
-	 * "Go to homepage button"); }
-	 */
 	public void dataPointApi() throws Exception {
 		extent.HeaderChildNode("DB");
 		ValidatableResponse response = Utilities.customDataPoints_policy("8000", "8000", "IDEP741689288872YTRK");
@@ -5442,7 +5298,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(13000);
 		if (verifyElementPresent2(HomePage.objAdCloseBtn, "Ad Banner")) {
 			explicitWaitVisibility(HomePage.objAdCloseBtn, 20);
-			Aclick(HomePage.objAdCloseBtn, "Ad Cross Button");
+			click(HomePage.objAdCloseBtn, "Ad Cross Button");
 		}
 	}
 
@@ -5502,18 +5358,7 @@ public class RingPayBusinessLogic extends Utilities {
 		Aclick(HomePage.objScanAndPay, "Scan Button");
 		String projectPath = System.getProperty("user.dir");
 
-		// Scan here
-		/*-------------------Web-----------------------------------*/
-		Utilities.setPlatform = "Web";
-		new CommandBase("Chrome");
-		waitTime(4000);
-		getWebDriver().get(projectPath + "\\Mock_Files\\qrcode.png");
-		waitTime(25000);
-		BrowsertearDown();
-
-		/*------------------Android---------------------------------*/
-		setPlatform("Android");
-		initDriver();
+		scannQRSwitch();
 
 		waitTime(30000);
 		ValidatableResponse response1 = Utilities.customDataPoints_policy("8000", "8005", user_reference);
@@ -5525,9 +5370,9 @@ public class RingPayBusinessLogic extends Utilities {
 		Aclick(PaymentPage.objPayNowBtn, "Pay Now Button");
 		waitTime(20000);
 		if (verifyElementPresent(PaymentPage.objConfirmPayment, getTextVal(PaymentPage.objConfirmPayment, "Text"))) {
-			Aclick(PaymentPage.objEditTransactionPin, "Edit Pin Field");
+			click(PaymentPage.objEditTransactionPin, "Edit Pin Field");
 			type(PaymentPage.objEditTransactionPin, "1111", "Edit Pin Field");
-			Aclick(PaymentPage.objContinue, "Continue Button");
+			click(PaymentPage.objContinue, "Continue Button");
 		}
 
 		waitTime(8000);
@@ -5551,14 +5396,12 @@ public class RingPayBusinessLogic extends Utilities {
 		String transactionNumebrbarcode = getText(HomePage.getTransactionNumberqrscan);
 		System.out.println(transactionNumebrbarcode);
 		Back(2);
-		String resultqrscan = executeQuery("SELECT  * FROM `bnpl_transactions` WHERE bnpl_txn_reference_number=\""
-				+ transactionNumebrbarcode + "\";", "rejection_reason");
+		String resultqrscan = executeQuery("SELECT  * FROM `bnpl_transactions` WHERE bnpl_txn_reference_number=\""+ transactionNumebrbarcode + "\";", "rejection_reason");
 
 		System.out.println("result=============" + resultqrscan);
 		logger.info("Reason For Rejection----" + resultqrscan);
 		softAssertion.assertEquals("Cabal count exceeded", resultqrscan);
-		extent.extentLoggerPass("Verify Cable Count Result Through Scan and Pay",
-				"To verify user doing transaction through Scan and Pay when its linked with >2 cabal count ------TC_Ring_Customer_Seg_122");
+		extent.extentLoggerPass("Verify Cable Count Result Through Scan and Pay","To verify user doing transaction through Scan and Pay when its linked with >2 cabal count ------TC_Ring_Customer_Seg_122");
 
 		explicitWaitVisibility(HomePage.moreTab, 20);
 		click(HomePage.moreTab, "More Tab");
@@ -5596,52 +5439,37 @@ public class RingPayBusinessLogic extends Utilities {
 		String transactionNumebr1 = getText(HomePage.getTransactionNumber);
 		System.out.println(transactionNumebr1);
 		Back(2);
-		String result1 = executeQuery(
-				"SELECT  * FROM `bnpl_transactions` WHERE bnpl_txn_reference_number=\"" + transactionNumebr1 + "\";",
-				"rejection_reason");
+		String result1 = executeQuery("SELECT  * FROM `bnpl_transactions` WHERE bnpl_txn_reference_number=\"" + transactionNumebr1 + "\";","rejection_reason");
 
 		System.out.println("result=============" + result1);
 		logger.info("Reason For Rejection----" + result1);
 		softAssertion.assertEquals("null", result1);
-		extent.extentLoggerPass("Verify Cable Count",
-				"To verify user doing Scan n Pay and Bank transfer transaction when user whitelisted for cabal check ------TC_Ring_Customer_Seg_124");
+		extent.extentLoggerPass("Verify Cable Count","To verify user doing Scan n Pay and Bank transfer transaction when user whitelisted for cabal check ------TC_Ring_Customer_Seg_124");
 		waitTime(10000);
 
 		explicitWaitVisibility(HomePage.moreTab, 20);
-		Aclick(HomePage.objScanAndPay, "Scan Button");
+		click(HomePage.objScanAndPay, "Scan Button");
 		String projectPath1 = System.getProperty("user.dir");
 
-		// Scan here
-		/*-------------------Web-----------------------------------*/
-		Utilities.setPlatform = "Web";
-		new CommandBase("Chrome");
-		waitTime(4000);
-		getWebDriver().get(projectPath + "\\Mock_Files\\qrcode.png");
-		waitTime(25000);
-		BrowsertearDown();
-
-		/*------------------Android---------------------------------*/
-		setPlatform("Android");
-		initDriver();
+		scannQRSwitch();
 
 		waitTime(30000);
 		ValidatableResponse response3 = Utilities.customDataPoints_policy("8000", "8000", user_reference);
 		explicitWaitVisibility(PaymentPage.objAmountTextField, 30);
 		if (verifyElementPresent(PaymentPage.objAmountTextField, "Amount Text Field")) {
-			Aclick(PaymentPage.objAmountTextField, "Amount Field");
+			click(PaymentPage.objAmountTextField, "Amount Field");
 			type(PaymentPage.objAmountTextField, "60", "Amount Field");
 		}
 		Aclick(PaymentPage.objPayNowBtn, "Pay Now Button");
 		waitTime(20000);
 		if (verifyElementPresent(PaymentPage.objConfirmPayment, getTextVal(PaymentPage.objConfirmPayment, "Text"))) {
-			Aclick(PaymentPage.objEditTransactionPin, "Edit Pin Field");
+			click(PaymentPage.objEditTransactionPin, "Edit Pin Field");
 			type(PaymentPage.objEditTransactionPin, "1111", "Edit Pin Field");
-			Aclick(PaymentPage.objContinue, "Continue Button");
+			click(PaymentPage.objContinue, "Continue Button");
 		}
 
 		waitTime(8000);
 		if (verifyElementPresent2(HomePage.okaygotit, "Okay Got It")) {
-
 			click(HomePage.okaygotit, "Ok Got It");
 		} else {
 			click(PaymentPage.objGoToHomePage, "Go to Homepage");
@@ -5649,7 +5477,6 @@ public class RingPayBusinessLogic extends Utilities {
 		}
 		waitTime(30000);
 		if (verifyElementPresent2(HomePage.txtAreYouEnjoyingApp, "Are You Enjoying The App")) {
-
 			explicitWaitVisibility(HomePage.txtAreYouEnjoyingApp, 20);
 			click(HomePage.noBtn, "No Button");
 		}
@@ -5659,45 +5486,39 @@ public class RingPayBusinessLogic extends Utilities {
 		String transactionNumebrbarcode1 = getText(HomePage.getTransactionNumberqrscan);
 		System.out.println(transactionNumebrbarcode1);
 		Back(2);
-		String resultqrscan1 = executeQuery("SELECT  * FROM `bnpl_transactions` WHERE bnpl_txn_reference_number=\""
-				+ transactionNumebrbarcode1 + "\";", "rejection_reason");
+		String resultqrscan1 = executeQuery("SELECT  * FROM `bnpl_transactions` WHERE bnpl_txn_reference_number=\""+ transactionNumebrbarcode1 + "\";", "rejection_reason");
 
 		System.out.println("result=============" + resultqrscan1);
 		logger.info("Reason For Rejection----" + resultqrscan1);
 		softAssertion.assertEquals("null", resultqrscan1);
-		extent.extentLoggerPass("Verify Cable Count",
-				"To verify user doing Scan n Pay and Bank transfer transaction when user whitelisted for cabal check ------TC_Ring_Customer_Seg_124");
+		extent.extentLoggerPass("Verify Cable Count","To verify user doing Scan n Pay and Bank transfer transaction when user whitelisted for cabal check ------TC_Ring_Customer_Seg_124");
 		ringPayLogout();
 
 	}
 
-	// ------------------------------------Pulkit Code Start------------------------------------//
+// ------------------------------------Pulkit Code Start------------------------------------//
 
-	// -----------------------------------WhitleList Logic Start------------------------------//
+//==========================================================WhitleList Logic Start==================================================================//
 
-	public void instaLoanWhitelistLogic(String OTP, String RingAdminEmail, String RingAdminPassword,
-			String RingAdminOTP, String InstaLoanMPIN, String ReEnterMPIN, String firstName, String lastName,
-			String mothersName, String gender, String delinquentNo, String terminatedNo) throws Exception {
+	public void instaLoanWhitelistLogic(String OTP, String RingAdminEmail, String RingAdminPassword,String RingAdminOTP, String InstaLoanMPIN, String ReEnterMPIN, String firstName, String lastName,String mothersName, String gender, String delinquentNo, String terminatedNo) throws Exception {
 		extent.HeaderChildNode("WhiteList Logic");
 
 		instaLoanBanner(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
-//		outstandingAMTGreaterThanZero(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
-//		bannerNotDisplayedWhenUserIsNotWhitelisted(OTP, firstName, lastName, mothersName, gender, InstaLoanMPIN,ReEnterMPIN);
-//		offerNotAvailedIfUserBecomesDelinquent(delinquentNo, OTP);
-//		userBecomesBlocked(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
-//		userBecomesTerminated(terminatedNo, OTP);
-//		amountSetNull(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
-//		amountSetAsZero(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
-//		offerIDNULL(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
-//		offerIDZero(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
-//		User_reference_numberNULL(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
-//		userRemovedFromWhiteListTable(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
+		outstandingAMTGreaterThanZero(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
+		bannerNotDisplayedWhenUserIsNotWhitelisted(OTP, firstName, lastName, mothersName, gender, InstaLoanMPIN,ReEnterMPIN);
+		offerNotAvailedIfUserBecomesDelinquent(delinquentNo, OTP);
+		userBecomesBlocked(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
+		userBecomesTerminated(terminatedNo, OTP);
+		amountSetNull(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
+		amountSetAsZero(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
+		offerIDNULL(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
+		offerIDZero(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
+		User_reference_numberNULL(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
+		userRemovedFromWhiteListTable(OTP, RingAdminEmail, RingAdminPassword, RingAdminOTP, InstaLoanMPIN, ReEnterMPIN);
 	}
 
-	public void instaLoanBanner(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,
-			String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+	public void instaLoanBanner(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
 		extent.HeaderChildNode("InstaLoan BannerWhiteList Logic");
-		//mockUserAPI();
 		instalonAPIKycVerification();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
@@ -5707,13 +5528,6 @@ public class RingPayBusinessLogic extends Utilities {
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		waitTime(5000);
 		instaNewCommunicationAddress();
-		
-		//s
-//		try {
-//			instaKycDocument();
-//		} catch (Exception e) {
-//			instaKycDocument();
-//		}
 		waitTime(40000);
 		instaPanCardDetails(RingAdminEmail, RingAdminPassword, RingAdminOTP, "OPTIONAL", "13000", "2311", "2319");
 		panCardDetails();
@@ -5746,35 +5560,20 @@ public class RingPayBusinessLogic extends Utilities {
 	}
 
 //=====================================To verify if whitelisted user clicks on apply now button when Outstanding amount > 0=======================================//
-	public void outstandingAMTGreaterThanZero(String OTP, String RingAdminEmail, String RingAdminPassword,
-			String RingAdminOTP, String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+	public void outstandingAMTGreaterThanZero(String OTP, String RingAdminEmail, String RingAdminPassword,String RingAdminOTP, String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
 		extent.HeaderChildNode("whitelisted user clicks on apply now button when Outstanding amount > 0");
-		mockUserAPI();
+		instalonAPIKycVerification();
 		getDriver().resetApp();
 		if (verifyElementPresent(RingLoginPage.objCamPermPopUp, "Enable permissions button")) {
 			enablePermissions();
 		}
-		// Scan here
-		/*------------------------------WEB----------------------------*/
-		Utilities.setPlatform = "Web";
-		new CommandBase("Chrome");
-		waitTime(4000);
-		String projectPath = System.getProperty("user.dir");
-		getWebDriver().get(projectPath + "\\Mock_Files\\qrcode.png");
-		waitTime(15000);
-		BrowsertearDown();
-
-		/*------------------------------Android----------------------------*/
-		setPlatform("Android");
-		initDriver();
+		scannQRSwitch();
 
 		click(RingLoginPage.objMakePaymentLetsRingItBtn, getText(RingLoginPage.objMakePaymentLetsRingItBtn));
 		click(RingPayMerchantFlowPage.objAmountTextField, "Enter Amount Field");
 		type1(RingPayMerchantFlowPage.objAmountTextField, "1", "Amount Field");
-		verifyElementPresentAndClick(RingLoginPage.objMakePaymentPageProceedBtn,
-				getText(RingLoginPage.objMakePaymentPageProceedBtn));
-		verifyIsElementDisplayed(RingPayMerchantFlowPage.objLoginPageHeader,
-				getTextVal(RingPayMerchantFlowPage.objLoginPageHeader, "Page"));
+		verifyElementPresentAndClick(RingLoginPage.objMakePaymentPageProceedBtn,getText(RingLoginPage.objMakePaymentPageProceedBtn));
+		verifyIsElementDisplayed(RingPayMerchantFlowPage.objLoginPageHeader,getTextVal(RingPayMerchantFlowPage.objLoginPageHeader, "Page"));
 		softAssertion.assertEquals(getText(RingPayMerchantFlowPage.objLoginPageHeader), "Sign up/Login");
 		logger.info("User redirected to Signup/Login Screen");
 		extent.extentLogger("login", "User redirected to Signup/Login Screen");
@@ -5785,12 +5584,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(30000);
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
+		waitTime(5000);
 		instaPanCardDetails(RingAdminEmail, RingAdminPassword, RingAdminOTP, "OPTIONAL", "13000", "2311", "2319");
 		panCardDetails();
 		waitTime(5000);
@@ -5807,8 +5601,7 @@ public class RingPayBusinessLogic extends Utilities {
 	}
 
 //========================================Insta banner Not displayed when user is not whitelisted========================================================================
-	public void bannerNotDisplayedWhenUserIsNotWhitelisted(String OTP, String firstName, String lastName,
-			String mothersName, String gender, String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+	public void bannerNotDisplayedWhenUserIsNotWhitelisted(String OTP, String firstName, String lastName,String mothersName, String gender, String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
 		extent.HeaderChildNode("Insta banner Not displayed when user is not whitelisted");
 		getDriver().resetApp();
 		mockUserAPI();
@@ -5831,8 +5624,7 @@ public class RingPayBusinessLogic extends Utilities {
 
 //============================To verify Insta loan offer is not availed if user becomes delinquent even if customer is present in whitelist==========================================
 	public void offerNotAvailedIfUserBecomesDelinquent(String delinquentNo, String OTP) throws Exception {
-		extent.HeaderChildNode(
-				"Insta loan offer is not availed if user becomes delinquent even if customer is present in whitelist");
+		extent.HeaderChildNode("Insta loan offer is not availed if user becomes delinquent even if customer is present in whitelist");
 		getDriver().resetApp();
 		loginOnboarding("1");
 		mobileNoValidation1(delinquentNo);
@@ -5877,10 +5669,7 @@ public class RingPayBusinessLogic extends Utilities {
 		initDriver();
 		waitTime(5000);
 
-		String instaLoanWhitelistNo = executeQuery3(
-				"SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '" + referenceNo
-						+ "';",
-				2);
+		String instaLoanWhitelistNo = executeQuery3("SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '" + referenceNo+ "';",2);
 
 		if (instaLoanWhitelistNo.equals(referenceNo)) {
 			softAssertion.assertEquals(instaLoanWhitelistNo, referenceNo);
@@ -5893,21 +5682,17 @@ public class RingPayBusinessLogic extends Utilities {
 				logger.info("InstaLoan Banner is present even if user is deliquent");
 				extent.extentLoggerFail("InstaLoan Banner", "InstaLoan Banner is present even if user is deliquent");
 			} else {
-				logger.info(
-						"TC_Insta_loan_10 - To verify Insta loan offer is not availed if user becomes delinquent even if customer is present in whitelist");
-				extent.extentLoggerPass("TC_Insta_loan_10",
-						"TC_Insta_loan_10 - To verify Insta loan offer is not availed if user becomes delinquent even if customer is present in whitelist");
+				logger.info("TC_Insta_loan_10 - To verify Insta loan offer is not availed if user becomes delinquent even if customer is present in whitelist");
+				extent.extentLoggerPass("TC_Insta_loan_10","TC_Insta_loan_10 - To verify Insta loan offer is not availed if user becomes delinquent even if customer is present in whitelist");
 			}
 		}
 	}
 
 //============================To verify Insta loan offer is not avail if user becomes blocked even if customer is present in whitelist===============================================
-	public void userBecomesBlocked(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,
-			String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
-		extent.HeaderChildNode(
-				"Insta loan offer is not avail if user becomes blocked even if customer is present in whitelist");
+	public void userBecomesBlocked(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+		extent.HeaderChildNode("Insta loan offer is not avail if user becomes blocked even if customer is present in whitelist");
 		getDriver().resetApp();
-		mockUserAPI();
+		instalonAPIKycVerification();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
 		enterOtp(OTP);
@@ -5916,11 +5701,6 @@ public class RingPayBusinessLogic extends Utilities {
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		instaNewCommunicationAddress();
 		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
 		instaPanCardDetails(RingAdminEmail, RingAdminPassword, RingAdminOTP, "OPTIONAL", "13000", "2311", "2319");
 		panCardDetails();
 		waitTime(5000);
@@ -5936,8 +5716,7 @@ public class RingPayBusinessLogic extends Utilities {
 
 //=========================================To verify Insta loan offer is not avail if user becomes terminated even if customer is present in whitelist=========================
 	public void userBecomesTerminated(String terminatedNo, String OTP) throws Exception {
-		extent.HeaderChildNode(
-				"Insta loan offer is not avail if user becomes Terminated even if customer is present in whitelist");
+		extent.HeaderChildNode("Insta loan offer is not avail if user becomes Terminated even if customer is present in whitelist");
 		getDriver().resetApp();
 		loginOnboarding("1");
 		mobileNoValidation1(terminatedNo);
@@ -5975,10 +5754,7 @@ public class RingPayBusinessLogic extends Utilities {
 		initDriver();
 		waitTime(5000);
 
-		String instaLoanWhitelistNo1 = executeQuery3(
-				"SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '" + referenceNo1
-						+ "';",
-				2);
+		String instaLoanWhitelistNo1 = executeQuery3("SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '" + referenceNo1+ "';",2);
 		System.out.println("User is present in WhiteListTable : " + instaLoanWhitelistNo1);
 		logger.info("User is present in WhiteListTable : " + instaLoanWhitelistNo1);
 		extent.extentLogger("WhiteList Table", "User is present in WhiteListTable : " + instaLoanWhitelistNo1);
@@ -5991,20 +5767,17 @@ public class RingPayBusinessLogic extends Utilities {
 			extent.extentLogger("InstaLoan Banner", "InstaLoan Banner present : " + instaLoanBanner);
 
 			if (instaLoanBanner == false) {
-				logger.info(
-						"TC_Insta_loan_12 - To verify Insta loan offer is not avail if user becomes terminated even if customer is present in whitelist");
-				extent.extentLoggerFail("InstaLoan Banner",
-						"TC_Insta_loan_12 - To verify Insta loan offer is not avail if user becomes terminated even if customer is present in whitelist");
+				logger.info("TC_Insta_loan_12 - To verify Insta loan offer is not avail if user becomes terminated even if customer is present in whitelist");
+				extent.extentLoggerFail("InstaLoan Banner","TC_Insta_loan_12 - To verify Insta loan offer is not avail if user becomes terminated even if customer is present in whitelist");
 			}
 		}
 	}
 
 //=============================================To verify if approved amount is set as NULL in whitelisting table=============================================================
-	public void amountSetNull(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,
-			String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+	public void amountSetNull(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
 		extent.HeaderChildNode("Approved amount is set as NULL in whitelisting table");
 		getDriver().resetApp();
-		mockUserAPI();
+		instalonAPIKycVerification();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
 		enterOtp(OTP);
@@ -6012,12 +5785,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(30000);
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
+		waitTime(5000);
 		instaApprovedAmountNull(RingAdminEmail, RingAdminPassword, RingAdminOTP, "OPTIONAL", "NULL", "2311", "2319");
 		panCardDetails();
 		waitTime(5000);
@@ -6026,16 +5794,14 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(5000);
 		verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
 		logger.info("TC_Insta_loan_13 - To verify if approved amount is set as NULL in whitelisting table");
-		extent.extentLoggerPass("TC_Insta_loan_13",
-				"TC_Insta_loan_04 - To verify if approved amount is set as NULL in whitelisting table");
+		extent.extentLoggerPass("TC_Insta_loan_13","TC_Insta_loan_04 - To verify if approved amount is set as NULL in whitelisting table");
 	}
 
 //====================================To verify if approved amount is set as 0 in whitelisting table===================================================================
-	public void amountSetAsZero(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,
-			String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+	public void amountSetAsZero(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
 		extent.HeaderChildNode("if approved amount is set as 0 in whitelisting table");
 		getDriver().resetApp();
-		mockUserAPI();
+		instalonAPIKycVerification();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
 		enterOtp(OTP);
@@ -6043,12 +5809,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(30000);
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
+		waitTime(5000);
 		instaPanCardDetails(RingAdminEmail, RingAdminPassword, RingAdminOTP, "OPTIONAL", "0", "2311", "2319");
 		panCardDetails();
 		waitTime(5000);
@@ -6063,26 +5824,22 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(10000);
 		basicDetails();
 
-		boolean msg = verifyElementPresent2(InstaLoanPage.objDisbursementSuccessfulMsg,
-				"Insta Loan Disbursement Successful message");
+		boolean msg = verifyElementPresent2(InstaLoanPage.objDisbursementSuccessfulMsg,"Insta Loan Disbursement Successful message");
 		if (msg == true) {
 			logger.info(getText(InstaLoanPage.objDisbursementSuccessfulMsg) + " is displayed");
-			extent.extentLogger("DisbursementMsg",
-					getText(InstaLoanPage.objDisbursementSuccessfulMsg) + " is displayed");
+			extent.extentLogger("DisbursementMsg",getText(InstaLoanPage.objDisbursementSuccessfulMsg) + " is displayed");
 		} else {
 			logger.info("TC_Insta_loan_14 - To verify if approved amount is set as 0 in whitelisting table");
-			extent.extentLoggerPass("TC_Insta_loan_14",
-					"TC_Insta_loan_14 - To verify if approved amount is set as 0 in whitelisting table");
+			extent.extentLoggerPass("TC_Insta_loan_14","TC_Insta_loan_14 - To verify if approved amount is set as 0 in whitelisting table");
 			verifyElementPresentAndClick(InstaLoanPage.objOKGotItBtn, getText(InstaLoanPage.objOKGotItBtn));
 		}
 	}
 
 //===================================To verify if Offer ID is set as NULL in whitelisting table=================================================================
-	public void offerIDNULL(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,
-			String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+	public void offerIDNULL(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
 		extent.HeaderChildNode("Offer ID is set as NULL in whitelisting table");
 		getDriver().resetApp();
-		mockUserAPI();
+		instalonAPIKycVerification();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
 		enterOtp(OTP);
@@ -6090,12 +5847,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(30000);
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
+		waitTime(5000);
 		instaApprovedAmountNull(RingAdminEmail, RingAdminPassword, RingAdminOTP, "OPTIONAL", "13000", "NULL", "2319");
 		panCardDetails();
 		waitTime(5000);
@@ -6104,16 +5856,14 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(5000);
 		verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
 		logger.info("TC_Insta_loan_15 - To verify if Offer ID is set as NULL in whitelisting table");
-		extent.extentLoggerPass("TC_Insta_loan_15",
-				"TC_Insta_loan_04 - To verify if Offer ID is set as NULL in whitelisting table");
+		extent.extentLoggerPass("TC_Insta_loan_15","TC_Insta_loan_04 - To verify if Offer ID is set as NULL in whitelisting table");
 	}
 
 //=======================================To verify if Offer ID is set as 0 in whitelisting table================================================================================
-	public void offerIDZero(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,
-			String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+	public void offerIDZero(String OTP, String RingAdminEmail, String RingAdminPassword, String RingAdminOTP,String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
 		extent.HeaderChildNode("Offer ID is set as NULL in whitelisting table");
 		getDriver().resetApp();
-		mockUserAPI();
+		instalonAPIKycVerification();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
 		enterOtp(OTP);
@@ -6121,12 +5871,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(30000);
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
+		waitTime(5000);
 		instaPanCardDetails(RingAdminEmail, RingAdminPassword, RingAdminOTP, "OPTIONAL", "13000", "0", "2135");
 		panCardDetails();
 		waitTime(5000);
@@ -6140,21 +5885,18 @@ public class RingPayBusinessLogic extends Utilities {
 		instaLoanOutstandingBalance();
 		waitTime(10000);
 		basicDetails();
-		boolean msg1 = verifyElementPresent2(InstaLoanPage.objSorryPage,
-				"Sorry! your application cannot be processed right now.");
+		boolean msg1 = verifyElementPresent2(InstaLoanPage.objSorryPage,"Sorry! your application cannot be processed right now.");
 		if (msg1 == true) {
 			logger.info("TC_Insta_loan_16 - To verify if Offer ID is set as 0 in whitelisting table");
-			extent.extentLoggerPass("TC_Insta_loan_16",
-					"TC_Insta_loan_04 - To verify if Offer ID is set as 0 in whitelisting table");
+			extent.extentLoggerPass("TC_Insta_loan_16","TC_Insta_loan_04 - To verify if Offer ID is set as 0 in whitelisting table");
 		}
 	}
 
 //=================================To verify if User_reference_number column is set as NULL in whitelisting table===========================================
-	public void User_reference_numberNULL(String OTP, String RingAdminEmail, String RingAdminPassword,
-			String RingAdminOTP, String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+	public void User_reference_numberNULL(String OTP, String RingAdminEmail, String RingAdminPassword,String RingAdminOTP, String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
 		extent.HeaderChildNode("User_reference_number column is set as NULL in whitelisting table");
 		getDriver().resetApp();
-		mockUserAPI();
+		instalonAPIKycVerification();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
 		enterOtp(OTP);
@@ -6162,14 +5904,8 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(30000);
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
-		instaReferenceNoNull(RingAdminEmail, RingAdminPassword, RingAdminOTP, "NULL", "OPTIONAL", "13000", "2311",
-				"2319");
+		waitTime(5000);
+		instaReferenceNoNull(RingAdminEmail, RingAdminPassword, RingAdminOTP, "NULL", "OPTIONAL", "13000", "2311","2319");
 		panCardDetails();
 		waitTime(5000);
 		instaLoancongratsScreen("Congrats");
@@ -6179,18 +5915,15 @@ public class RingPayBusinessLogic extends Utilities {
 
 		boolean instaBanner = verifyElementPresent2(InstaLoanPage.objApplyBtn, "Insta Banner");
 		if (instaBanner == false) {
-			logger.info(
-					"TC_Insta_loan_17 - To verify if User_reference_number column is set as NULL in whitelisting table");
-			extent.extentLoggerPass("TC_Insta_loan_17",
-					"TC_Insta_loan_17 - To verify if User_reference_number column is set as NULL in whitelisting table");
+			logger.info("TC_Insta_loan_17 - To verify if User_reference_number column is set as NULL in whitelisting table");
+			extent.extentLoggerPass("TC_Insta_loan_17","TC_Insta_loan_17 - To verify if User_reference_number column is set as NULL in whitelisting table");
 		}
 	}
 
 //==============================To verify if User is removed from Whitelist Loan after taking InstaLoan=======================================================================
-	public void userRemovedFromWhiteListTable(String OTP, String RingAdminEmail, String RingAdminPassword,
-			String RingAdminOTP, String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
+	public void userRemovedFromWhiteListTable(String OTP, String RingAdminEmail, String RingAdminPassword,String RingAdminOTP, String InstaLoanMPIN, String ReEnterMPIN) throws Exception {
 		extent.HeaderChildNode("User is removed from Whitelist Loan after taking InstaLoan");
-		mockUserAPI();
+		instalonAPIKycVerification();
 		getDriver().resetApp();
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
@@ -6199,12 +5932,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(30000);
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
+		waitTime(5000);
 		instaPanCardDetails(RingAdminEmail, RingAdminPassword, RingAdminOTP, "OPTIONAL", "13000", "2311", "2319");
 		panCardDetails();
 		waitTime(5000);
@@ -6224,68 +5952,52 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(90000);
 		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
 		waitTime(120000);
-		deleteRowFromInstaLoanWhitelistTable(
-				"DELETE FROM db_tradofina.instaloan_whitelisted_users WHERE user_reference_number = '" + userReferenceNo
-						+ "';");
+		deleteRowFromInstaLoanWhitelistTable("DELETE FROM db_tradofina.instaloan_whitelisted_users WHERE user_reference_number = '" + userReferenceNo+ "';");
 		verifyElementPresentAndClick(InstaLoanPage.objViewDetails, getText(InstaLoanPage.objViewDetails) + " Button");
 		click(InstaLoanPage.objPayFullAmountRadioBtn, "Pay Full Amount RadioButton");
 		verifyElementPresentAndClick(InstaLoanPage.objPayNowBtn, getText(InstaLoanPage.objPayNowBtn) + " Button");
 		explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
-		verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,
-				getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
+		verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
 		waitTime(20000);
 		verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
 		addNewCard();
-		String refAfterRepayment = executeQuery2(
-				"SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '"
-						+ userReferenceNo + "';");
+		String refAfterRepayment = executeQuery2("SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '"+ userReferenceNo + "';");
 		System.out.println(refAfterRepayment);
 
-		boolean reApplyForInstaLoanBanner = verifyElementPresent2(InstaLoanPage.objReApplyForInstaLoan,
-				getText(InstaLoanPage.objReApplyForInstaLoan));
+		boolean reApplyForInstaLoanBanner = verifyElementPresent2(InstaLoanPage.objReApplyForInstaLoan,getText(InstaLoanPage.objReApplyForInstaLoan));
 		if (reApplyForInstaLoanBanner == false) {
 			logger.info("TC_Insta_loan_18 - To verify if User is removed from Whitelist Loan after taking InstaLoan");
-			extent.extentLoggerPass("TC_Insta_loan_18",
-					"TC_Insta_loan_18 - To verify if User is removed from Whitelist Loan after taking InstaLoan");
+			extent.extentLoggerPass("TC_Insta_loan_18","TC_Insta_loan_18 - To verify if User is removed from Whitelist Loan after taking InstaLoan");
 		}
 	}
 
 	public void instaLoanHomePageBanner() throws Exception {
 
-		boolean instaBanner = verifyElementPresent2(InstaLoanPage.objinstaLoanBannerImage,
-				"InstaLoan Banner is displayed");
+		boolean instaBanner = verifyElementPresent2(InstaLoanPage.objinstaLoanBannerImage,"InstaLoan Banner is displayed");
 		logger.info("InstaLoan Banner present is : " + instaBanner);
 		extent.extentLogger("InstaLoan Banner", "InstaLoan Banner present is : " + instaBanner);
 
 		if (instaBanner == true) {
 			logger.info("TC_Insta_loan_01 - To verify if insta loan banner is visible when user is whitelisted");
-			extent.extentLoggerPass("TC_Insta_loan_01",
-					"TC_Insta_loan_01 - To verify if insta loan banner is visible when user is whitelisted");
+			extent.extentLoggerPass("TC_Insta_loan_01","TC_Insta_loan_01 - To verify if insta loan banner is visible when user is whitelisted");
 		} else {
-			logger.info(
-					"TC_Insta_loan_02 - To verify if insta loan Banner is not visible when user is not whitelisted");
-			extent.extentLoggerPass("TC_Insta_loan_02",
-					"TC_Insta_loan_02 -To verify if insta loan Banner is not visible when user is not whitelisted");
+			logger.info("TC_Insta_loan_02 - To verify if insta loan Banner is not visible when user is not whitelisted");
+			extent.extentLoggerPass("TC_Insta_loan_02","TC_Insta_loan_02 -To verify if insta loan Banner is not visible when user is not whitelisted");
 		}
 	}
 
 	public void instaLoanCoachPopup() throws Exception {
-		boolean instaCoach = verifyElementPresent2(InstaLoanPage.objInstaLoanCoachEnjoyText,
-				"InstaLoan Coach Popup is displayed");
+		boolean instaCoach = verifyElementPresent2(InstaLoanPage.objInstaLoanCoachEnjoyText,"InstaLoan Coach Popup is displayed");
 		logger.info("InstaLoan Coach Popup present : " + instaCoach);
 		extent.extentLogger("InstaLoan Coach Popup", "InstaLoan Coach Popup present : " + instaCoach);
 
 		if (instaCoach == true) {
-			logger.info(
-					"TC_Insta_loan_05 - To verify the Display Coach mark and popup banner for 1st time whitelisted user.");
-			extent.extentLogger("TC_Insta_loan_05",
-					"TC_Insta_loan_05 -To verify the Display Coach mark and popup banner for 1st time whitelisted user");
+			logger.info("TC_Insta_loan_05 - To verify the Display Coach mark and popup banner for 1st time whitelisted user.");
+			extent.extentLogger("TC_Insta_loan_05","TC_Insta_loan_05 -To verify the Display Coach mark and popup banner for 1st time whitelisted user");
 			verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
 		} else {
-			logger.info(
-					"TC_Insta_loan_06 - To verify that Display Coach mark and popup banner should not be displayed if user is not whitelisted");
-			extent.extentLoggerPass("C_Insta_loan_06",
-					"TC_Insta_loan_06 - To verify that Display Coach mark and popup banner should not be displayed if user is not whitelisted");
+			logger.info("TC_Insta_loan_06 - To verify that Display Coach mark and popup banner should not be displayed if user is not whitelisted");
+			extent.extentLoggerPass("C_Insta_loan_06","TC_Insta_loan_06 - To verify that Display Coach mark and popup banner should not be displayed if user is not whitelisted");
 		}
 
 		if (verifyElementPresent2(InstaLoanPage.objOkayGotIt, "Okay, Got It!")) {
@@ -6303,19 +6015,14 @@ public class RingPayBusinessLogic extends Utilities {
 		}
 		if (number == 0) {
 			click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-			logger.info(
-					"TC_Insta_loan_03 - To verify if whitelisted user clicks on apply now button when Outstanding amount = 0");
-			extent.extentLoggerPass("TC_Insta_loan_03",
-					"TC_Insta_loan_03 -To verify if whitelisted user clicks on apply now button when Outstanding amount = 0");
+			logger.info("TC_Insta_loan_03 - To verify if whitelisted user clicks on apply now button when Outstanding amount = 0");
+			extent.extentLoggerPass("TC_Insta_loan_03","TC_Insta_loan_03 -To verify if whitelisted user clicks on apply now button when Outstanding amount = 0");
 		} else if ((number <= 1)) {
 			click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-			verifyElementPresent(InstaLoanPage.objRepayDues,
-					getText(InstaLoanPage.objRepayDues) + getText(InstaLoanPage.objRepayDuesDescription));
+			verifyElementPresent(InstaLoanPage.objRepayDues,getText(InstaLoanPage.objRepayDues) + getText(InstaLoanPage.objRepayDuesDescription));
 			click(InstaLoanPage.objRepayPopupCrossBtn, "Cross Button");
-			logger.info(
-					"TC_Insta_loan_04 - To verify if whitelisted user clicks on apply now button when Outstanding amount > 0");
-			extent.extentLoggerPass("TC_Insta_loan_04",
-					"TC_Insta_loan_04 - To verify if whitelisted user clicks on apply now button when Outstanding amount > 0");
+			logger.info("TC_Insta_loan_04 - To verify if whitelisted user clicks on apply now button when Outstanding amount > 0");
+			extent.extentLoggerPass("TC_Insta_loan_04","TC_Insta_loan_04 - To verify if whitelisted user clicks on apply now button when Outstanding amount > 0");
 		}
 	}
 
@@ -6338,8 +6045,7 @@ public class RingPayBusinessLogic extends Utilities {
 	public void offerPage() throws Exception {
 		if (verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page")) {
 			verifyElementPresent(InstaLoanPage.objOfferHeader, getText(InstaLoanPage.objOfferHeader) + "Header");
-			verifyElementPresent(InstaLoanPage.objEligible,
-					getText(InstaLoanPage.objEligible) + getText(InstaLoanPage.objEligibleInstaLoanAmt));
+			verifyElementPresent(InstaLoanPage.objEligible,getText(InstaLoanPage.objEligible) + getText(InstaLoanPage.objEligibleInstaLoanAmt));
 			verifyElementPresentAndClick(InstaLoanPage.objAddBankButton, getText(InstaLoanPage.objAddBankButton));
 			addbankAccount("5" + RandomIntegerGenerator(4), firstName + " " + lastName);
 		}
@@ -6355,38 +6061,28 @@ public class RingPayBusinessLogic extends Utilities {
 		System.out.println(values);
 		softAssertion.assertEquals(value, values);
 		if (value == values) {
-			logger.info(
-					"TC_Insta_loan_08 - To verify if user gets the same amount of loan if user is present in whitelist ");
-			extent.extentLoggerPass("TC_Insta_loan_08",
-					"TC_Insta_loan_08 - To verify if user gets the same amount of loan if user is present in whitelist ");
+			logger.info("TC_Insta_loan_08 - To verify if user gets the same amount of loan if user is present in whitelist ");
+			extent.extentLoggerPass("TC_Insta_loan_08","TC_Insta_loan_08 - To verify if user gets the same amount of loan if user is present in whitelist ");
 		}
 
 		verifyElementPresentAndClick(InstaLoanPage.objViewDetails, getText(InstaLoanPage.objViewDetails) + " Button");
 		click(InstaLoanPage.objPayFullAmountRadioBtn, "Pay Full Amount RadioButton");
 		verifyElementPresentAndClick(InstaLoanPage.objPayNowBtn, getText(InstaLoanPage.objPayNowBtn) + " Button");
 		explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
-		verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,
-				getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
+		verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
 		waitTime(20000);
 		verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
 		addNewCard();
-		String refAfterRepayment = executeQuery2(
-				"SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '"
-						+ userReferenceNo + "';");
+		String refAfterRepayment = executeQuery2("SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '"+ userReferenceNo + "';");
 		System.out.println(refAfterRepayment);
 		softAssertion.assertEquals(refBeforeRepayment, refAfterRepayment);
 
-		boolean reApplyForInstaLoanBanner = verifyElementPresent2(InstaLoanPage.objReApplyForInstaLoan,
-				getText(InstaLoanPage.objReApplyForInstaLoan));
+		boolean reApplyForInstaLoanBanner = verifyElementPresent2(InstaLoanPage.objReApplyForInstaLoan,getText(InstaLoanPage.objReApplyForInstaLoan));
 		if (reApplyForInstaLoanBanner == true) {
-			logger.info(
-					"TC_Insta_loan_07 - To verify if user remains in whitelist table even if user has repaid the previous loan");
-			extent.extentLoggerPass("TC_Insta_loan_07",
-					"TC_Insta_loan_07 - To verify if user remains in whitelist table even if user has repaid the previous loan");
+			logger.info("TC_Insta_loan_07 - To verify if user remains in whitelist table even if user has repaid the previous loan");
+			extent.extentLoggerPass("TC_Insta_loan_07","TC_Insta_loan_07 - To verify if user remains in whitelist table even if user has repaid the previous loan");
 		}
-		deleteRowFromInstaLoanWhitelistTable(
-				"DELETE FROM db_tradofina.instaloan_whitelisted_users WHERE user_reference_number = '" + userReferenceNo
-						+ "';");
+		deleteRowFromInstaLoanWhitelistTable("DELETE FROM db_tradofina.instaloan_whitelisted_users WHERE user_reference_number = '" + userReferenceNo+ "';");
 	}
 
 	public void addNewCard() throws Exception {
@@ -6403,16 +6099,14 @@ public class RingPayBusinessLogic extends Utilities {
 		type(InstaLoanPage.objCVV, prop.getproperty("cvv"), "CVV Field");
 
 		verifyElementPresentAndClick(InstaLoanPage.objPayNowBtn, getText(InstaLoanPage.objPayNowBtn) + " Button");
-		verifyElementPresentAndClick(InstaLoanPage.objPayWithoutSavingCardBtn,
-				getText(InstaLoanPage.objPayWithoutSavingCardBtn) + " Button");
+		verifyElementPresentAndClick(InstaLoanPage.objPayWithoutSavingCardBtn,getText(InstaLoanPage.objPayWithoutSavingCardBtn) + " Button");
 
 		if (verifyElementPresent2(InstaLoanPage.objSuccessBtn, "Success Button")) {
 			verifyElementPresentAndClick(InstaLoanPage.objSuccessBtn, getText(InstaLoanPage.objSuccessBtn));
 		} else {
 			click(InstaLoanPage.objCardOTPField, "OTP field");
 			type(InstaLoanPage.objCardOTPField, prop.getproperty("OTP"), "OTP Field");
-			verifyElementPresentAndClick(InstaLoanPage.objSubmitButton,
-					getText(InstaLoanPage.objSubmitButton) + " Button");
+			verifyElementPresentAndClick(InstaLoanPage.objSubmitButton,getText(InstaLoanPage.objSubmitButton) + " Button");
 		}
 		waitTime(20000);
 		verifyElementPresentAndClick(HomPageNew.objHomePage, "Go to homepage button");
@@ -6428,13 +6122,10 @@ public class RingPayBusinessLogic extends Utilities {
 
 		if (reApplyForInstaLoanBanner == true) {
 			logger.info("InstaLoan Banner is present even if it isremoved from whitelist table");
-			extent.extentLoggerFail("InstaLoan Banner",
-					"InstaLoan Banner is present even if it isremoved from whitelist table");
+			extent.extentLoggerFail("InstaLoan Banner","InstaLoan Banner is present even if it isremoved from whitelist table");
 		} else {
-			logger.info(
-					"TC_Insta_loan_09 - To verify if user has repaid the previous Insta loan and removed from whitelist");
-			extent.extentLoggerPass("TC_Insta_loan_09",
-					"TC_Insta_loan_09 - To verify if user has repaid the previous Insta loan and removed from whitelist");
+			logger.info("TC_Insta_loan_09 - To verify if user has repaid the previous Insta loan and removed from whitelist");
+			extent.extentLoggerPass("TC_Insta_loan_09","TC_Insta_loan_09 - To verify if user has repaid the previous Insta loan and removed from whitelist");
 		}
 	}
 
@@ -6473,18 +6164,14 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(5000);
 
 		executeInsertBlockUser(prop.getproperty("blocked_reason"), mobileNumber, prop.getproperty("entryType"));
-		String blockUser = executeQuery3(
-				"SELECT * FROM db_tradofina.blocked_users Where entity_value = '" + mobileNumber + "';", 5);
+		String blockUser = executeQuery3("SELECT * FROM db_tradofina.blocked_users Where entity_value = '" + mobileNumber + "';", 5);
 		System.out.println(blockUser);
 
 		verifyElementPresentAndClick(InstaLoanOptionalJourney.objUPITab, "UPI Tab");
 		waitTime(20000);
 		Back(1);
 
-		String instaLoanWhitelistNo = executeQuery3(
-				"SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '" + referenceNo
-						+ "';",
-				2);
+		String instaLoanWhitelistNo = executeQuery3("SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '" + referenceNo+ "';",2);
 		System.out.println("User is present in WhiteListTable : " + instaLoanWhitelistNo);
 
 		if (instaLoanWhitelistNo.equals(referenceNo)) {
@@ -6497,19 +6184,15 @@ public class RingPayBusinessLogic extends Utilities {
 
 			if (instaLoanBanner == true) {
 				logger.info("InstaLoan Banner is present even if it isremoved from whitelist table");
-				extent.extentLoggerFail("InstaLoan Banner",
-						"InstaLoan Banner is present even if it is removed from whitelist table");
+				extent.extentLoggerFail("InstaLoan Banner","InstaLoan Banner is present even if it is removed from whitelist table");
 			} else {
-				logger.info(
-						"TC_Insta_loan_11 - To verify Insta loan offer is not avail if user becomes blocked even if customer is present in whitelist");
-				extent.extentLoggerPass("TC_Insta_loan_11",
-						"TC_Insta_loan_11 - To verify Insta loan offer is not avail if user becomes blocked even if customer is present in whitelist");
+				logger.info("TC_Insta_loan_11 - To verify Insta loan offer is not avail if user becomes blocked even if customer is present in whitelist");
+				extent.extentLoggerPass("TC_Insta_loan_11","TC_Insta_loan_11 - To verify Insta loan offer is not avail if user becomes blocked even if customer is present in whitelist");
 			}
 		}
 	}
 
-	public void instaApprovedAmountNull(String ringAdminEmail, String ringAdminPassword, String ringAdminOTP,
-			String eligible_type, String approved_amount, String offer_id, String repeat_offer_id) throws Exception {
+	public void instaApprovedAmountNull(String ringAdminEmail, String ringAdminPassword, String ringAdminOTP,String eligible_type, String approved_amount, String offer_id, String repeat_offer_id) throws Exception {
 		waitTime(5000);
 		setPlatform("Web");
 		System.out.println("platform changed to web");
@@ -6570,9 +6253,7 @@ public class RingPayBusinessLogic extends Utilities {
 		}
 	}
 
-	public void instaReferenceNoNull(String ringAdminEmail, String ringAdminPassword, String ringAdminOTP,
-			String ref_No, String eligible_type, String approved_amount, String offer_id, String repeat_offer_id)
-			throws Exception {
+	public void instaReferenceNoNull(String ringAdminEmail, String ringAdminPassword, String ringAdminOTP,String ref_No, String eligible_type, String approved_amount, String offer_id, String repeat_offer_id)throws Exception {
 		waitTime(5000);
 		setPlatform("Web");
 		System.out.println("platform changed to web");
@@ -6637,1239 +6318,939 @@ public class RingPayBusinessLogic extends Utilities {
 		click(InstaLoanPage.objPayFullAmountRadioBtn, "Pay Full Amount RadioButton");
 		verifyElementPresentAndClick(InstaLoanPage.objPayNowBtn, getText(InstaLoanPage.objPayNowBtn) + " Button");
 		explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
-		verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,
-				getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
+		verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
 		waitTime(20000);
 		verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
 		addNewCard();
 
-		boolean reApplyForInstaLoanBanner = verifyElementPresent2(InstaLoanPage.objReApplyForInstaLoan,
-				"ReApply for Insta Loan! Banner");
+		boolean reApplyForInstaLoanBanner = verifyElementPresent2(InstaLoanPage.objReApplyForInstaLoan,"ReApply for Insta Loan! Banner");
 		if (reApplyForInstaLoanBanner == false) {
 			logger.info("TC_Insta_loan_18 - To verify if User is removed from Whitelist Loan after taking InstaLoan");
-			extent.extentLoggerPass("TC_Insta_loan_18",
-					"TC_Insta_loan_18 - To verify if User is removed from Whitelist Loan after taking InstaLoan");
+			extent.extentLoggerPass("TC_Insta_loan_18","TC_Insta_loan_18 - To verify if User is removed from Whitelist Loan after taking InstaLoan");
 		}
 	}
 
-//===========================================InstaLoan WhiteList Logic Ends=====================================================================================	
-//==============================================Transaction History Start==========================================================================================
-	public void instaTransactionHistory(String InstatransactionHistoryNo, String OTP) throws Exception {
-		extent.HeaderChildNode("Transaction History");
-		getDriver().resetApp();
-		loginOnboarding("1");
-		mobileNoValidation1(InstatransactionHistoryNo);
-		enterOtp(OTP);
-		readAndAccept();
+//=====================================================InstaLoan WhiteList Logic Ends============================================================================	
+//========================================================Transaction History Start==========================================================================================
 
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objIacceptCheckBox, "CheckBox");
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objOkGotItBtn, "Ok, Got It Button");
-		explicitWaitVisibility(InstaLoanTransactionHistoryPage.objHamburgerTab, 10);
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objHamburgerTab, "Hamburger Tab");
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objTransactionChip,
-				getText(InstaLoanTransactionHistoryPage.objTransactionChip) + " Chip");
-		explicitWaitVisibility(InstaLoanTransactionHistoryPage.objHistoryHeader, 10);
-		verifyElementPresent(InstaLoanTransactionHistoryPage.objHistoryHeader,
-				getText(InstaLoanTransactionHistoryPage.objHistoryHeader));
-		softAssertion.assertEquals(InstaLoanTransactionHistoryPage.objHistoryHeader, "History");
-		verifyElementPresent(InstaLoanTransactionHistoryPage.objTransactionHistoryTab,
-				getText(InstaLoanTransactionHistoryPage.objTransactionHistoryTab));
+		public void instaTransactionHistory(String InstatransactionHistoryNo, String OTP) throws Exception {
+			extent.HeaderChildNode("Transaction History");
+			getDriver().resetApp();
+			loginOnboarding("1");
+			mobileNoValidation1(InstatransactionHistoryNo);
+			enterOtp(OTP);
+			readAndAccept();
+			verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
+			if(verifyElementPresent2(InstaLoanOptionalJourney.objNoBtn, "No Button")) {
+				click(InstaLoanOptionalJourney.objNoBtn, getText(InstaLoanOptionalJourney.objNoBtn) + " Button");
+			}
+			explicitWaitVisibility(InstaLoanTransactionHistoryPage.objHamburgerTab, 10);
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objHamburgerTab, "Hamburger Tab");
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objTransactionChip,getText(InstaLoanTransactionHistoryPage.objTransactionChip) + " Chip");
+			explicitWaitVisibility(InstaLoanTransactionHistoryPage.objHistoryHeader, 10);
+			verifyElementPresent(InstaLoanTransactionHistoryPage.objHistoryHeader,getText(InstaLoanTransactionHistoryPage.objHistoryHeader));
+			softAssertion.assertEquals(InstaLoanTransactionHistoryPage.objHistoryHeader, "History");
+			verifyElementPresent(InstaLoanTransactionHistoryPage.objTransactionHistoryTab,getText(InstaLoanTransactionHistoryPage.objTransactionHistoryTab));
 
-		List<WebElement> transactionList = getDriver().findElements(InstaLoanTransactionHistoryPage.objTransactionList);
-		for (WebElement wb : transactionList) {
-			String list = wb.getText();
-			logger.info(list);
-			extent.extentLogger("Transaction_list", list);
-		}
+			List<WebElement> transactionList = getDriver().findElements(InstaLoanTransactionHistoryPage.objTransactionList);
+			for (WebElement wb : transactionList) {
+				String list = wb.getText();
+				logger.info(list);
+				extent.extentLogger("Transaction_list", list);
+			}
 
-		softAssertion.assertEquals(InstaLoanTransactionHistoryPage.objTransactionHistoryTab, " Transaction History");
-		verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryTab,
-				getText(InstaLoanTransactionHistoryPage.objLoanHistoryTab));
-		softAssertion.assertEquals(InstaLoanTransactionHistoryPage.objLoanHistoryTab, "Loan History");
-		verifyElementPresent(InstaLoanTransactionHistoryPage.objFilterOption, "Filter Option");
+			softAssertion.assertEquals(InstaLoanTransactionHistoryPage.objTransactionHistoryTab, " Transaction History");
+			verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryTab,getText(InstaLoanTransactionHistoryPage.objLoanHistoryTab));
+			softAssertion.assertEquals(InstaLoanTransactionHistoryPage.objLoanHistoryTab, "Loan History");
+			verifyElementPresent(InstaLoanTransactionHistoryPage.objFilterOption, "Filter Option");
 
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryTab, "Loan History");
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objFilterOption, "Filter Option");
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryTab, "Loan History");
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objFilterOption, "Filter Option");
 
-		if (verifyElementPresent2(InstaLoanTransactionHistoryPage.objTimePeriod,
-				getText(InstaLoanTransactionHistoryPage.objTimePeriod))) {
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objThisMonthChip,
-					getText(InstaLoanTransactionHistoryPage.objThisMonthChip));
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objLastMonth,
-					getText(InstaLoanTransactionHistoryPage.objLastMonth));
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objCustomDate,
-					getText(InstaLoanTransactionHistoryPage.objCustomDate));
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanType,
-					getText(InstaLoanTransactionHistoryPage.objLoanType));
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objAll,
-					getText(InstaLoanTransactionHistoryPage.objAll));
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objActiveLoan,
-					getText(InstaLoanTransactionHistoryPage.objActiveLoan));
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objClosedLoan,
-					getText(InstaLoanTransactionHistoryPage.objClosedLoan));
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objClearBtn,
-					getText(InstaLoanTransactionHistoryPage.objClearBtn));
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objApplyBtn,
-					getText(InstaLoanTransactionHistoryPage.objApplyBtn));
+			if (verifyElementPresent2(InstaLoanTransactionHistoryPage.objTimePeriod,getText(InstaLoanTransactionHistoryPage.objTimePeriod))) {
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objThisMonthChip,getText(InstaLoanTransactionHistoryPage.objThisMonthChip));
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objLastMonth,getText(InstaLoanTransactionHistoryPage.objLastMonth));
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objCustomDate,getText(InstaLoanTransactionHistoryPage.objCustomDate));
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanType,getText(InstaLoanTransactionHistoryPage.objLoanType));
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objAll,getText(InstaLoanTransactionHistoryPage.objAll));
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objActiveLoan,getText(InstaLoanTransactionHistoryPage.objActiveLoan));
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objClosedLoan,getText(InstaLoanTransactionHistoryPage.objClosedLoan));
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objClearBtn,getText(InstaLoanTransactionHistoryPage.objClearBtn));
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objApplyBtn,getText(InstaLoanTransactionHistoryPage.objApplyBtn));
 
-			for (int i = 1; i <= 3; i++) {
-				click(InstaLoanTransactionHistoryPage.objTimePeriodSelect(i), "Element " + i + " " + " of TimePeriod");
-				if (verifyElementPresent2(InstaLoanTransactionHistoryPage.objDatePicker, "Date-picker")) {
-					verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objOkBtn,
-							getText(InstaLoanTransactionHistoryPage.objOkBtn));
-				}
-				for (int j = 1; j <= 3; j++) {
-					verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanTypeSelect(j),
-							"Element " + j + " " + " of LoanTypes");
-					waitTime(5000);
-					click(InstaLoanTransactionHistoryPage.objApplyBtn, "Apply Button");
-					waitTime(3000);
-					if (!verifyElementPresent2(InstaLoanTransactionHistoryPage.objTimePeriod, "Time Period")) {
-						verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objFilterOption, "Filter Option");
+				for (int i = 1; i <= 3; i++) {
+					click(InstaLoanTransactionHistoryPage.objTimePeriodSelect(i), "Element " + i + " " + " of TimePeriod");
+					if (verifyElementPresent2(InstaLoanTransactionHistoryPage.objDatePicker, "Date-picker")) {
+						verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objOkBtn,
+								getText(InstaLoanTransactionHistoryPage.objOkBtn));
+					}
+					for (int j = 1; j <= 3; j++) {
+						verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanTypeSelect(j),"Element " + j + " " + " of LoanTypes");
+						waitTime(5000);
+						click(InstaLoanTransactionHistoryPage.objApplyBtn, "Apply Button");
+						waitTime(3000);
+						if (!verifyElementPresent2(InstaLoanTransactionHistoryPage.objTimePeriod, "Time Period")) {
+							verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objFilterOption, "Filter Option");
+						}
 					}
 				}
+				click(InstaLoanTransactionHistoryPage.objApplyBtn, "Apply Button");
 			}
-			click(InstaLoanTransactionHistoryPage.objApplyBtn, "Apply Button");
+
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objFilterOption, "Filter Option");
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objClearBtn,getText(InstaLoanTransactionHistoryPage.objClearBtn));
+
+			if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatus,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatus))) {
+				verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails));
+				waitTime(5000);
+				List<WebElement> viewList = getDriver().findElements(InstaLoanTransactionHistoryPage.objAllLoanDetail);
+				for (WebElement wb : viewList) {
+					String vlist = wb.getText();
+					logger.info(vlist);
+					extent.extentLogger("Loan_Details", vlist);
+				}
+				Swipe("up", 1);
+				verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objPayNoBtn,getText(InstaLoanTransactionHistoryPage.objPayNoBtn));
+				if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMIPaymentPage,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMIPaymentPage))) {
+					Back(2);
+				}
+				verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails));
+				if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetailsLoanDetailsPage,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetailsLoanDetailsPage))) {
+					Back(1);
+				}
+				verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMI,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMI));
+				if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMIPaymentPage,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMIPaymentPage))) {
+					Back(1);
+				}
+			}
+
+			if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryClosedDownloadNocBtn,getText(InstaLoanTransactionHistoryPage.objLoanHistoryClosedDownloadNocBtn))) {
+				verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryClosedStatus,getText(InstaLoanTransactionHistoryPage.objLoanHistoryClosedStatus));
+				verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails));
+				if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetailsLoanDetailsPage,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetailsLoanDetailsPage))) {
+					Back(1);
+				}
+				verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryClosedDownloadNocBtn,getText(InstaLoanTransactionHistoryPage.objLoanHistoryClosedDownloadNocBtn));
+
+				Set<String> windows = getDriver().getContextHandles();
+				for (String window : windows) {
+					System.out.println("Active Applications " + window);
+					getDriver().context("NATIVE_APP");
+				}
+				verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objNOCPdf,getText(InstaLoanTransactionHistoryPage.objNOCPdf));
+				verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objThreeDotForDownloadPDF,"Three Dot to DownloadPDF file");
+				verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objDownloadBtn,getText(InstaLoanTransactionHistoryPage.objDownloadBtn));
+
+				String toastPDFDownloadMsg = getText(InstaLoanTransactionHistoryPage.objDownloadPDFToastMsg);
+				System.out.println(toastPDFDownloadMsg);
+				if (toastPDFDownloadMsg.contains("Downloaded Noc_Letter")) {
+					logger.info("TC_Insta_loan_136 - To Verify for Loan details page for Closed loans from Loan History View Details option ");
+					extent.extentLoggerPass("TC_Insta_loan_136","TC_Insta_loan_136 - To Verify for Loan details page for Closed loans from Loan History View Details option ");
+				}
+				Back(1);
+			}
+
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails,getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails));
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanDetailViewFeeDetailsBtn,getText(InstaLoanTransactionHistoryPage.objLoanDetailViewFeeDetailsBtn));
+			verifyElementPresent(InstaLoanTransactionHistoryPage.objFeeDetailsHeader,getText(InstaLoanTransactionHistoryPage.objFeeDetailsHeader));
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanAmountText,getText(InstaLoanTransactionHistoryPage.objLoanAmountText) + " is : "+ getText(InstaLoanTransactionHistoryPage.objLoanAmount));
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objTotalFeesChargesText,getText(InstaLoanTransactionHistoryPage.objTotalFeesChargesText) + " is : "+ getText(InstaLoanTransactionHistoryPage.objTotalFeesCharges));
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objProcessingFeesText,getText(InstaLoanTransactionHistoryPage.objProcessingFeesText) + " is : "+ getText(InstaLoanTransactionHistoryPage.objProcessingFees));
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objGSTText,getText(InstaLoanTransactionHistoryPage.objGSTText) + " is : "+ getText(InstaLoanTransactionHistoryPage.objGST));
+			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objDisbursalAmountText,getText(InstaLoanTransactionHistoryPage.objDisbursalAmountText) + " is : "+ getText(InstaLoanTransactionHistoryPage.objDisbursalAmount));
+
+			logger.info("TC_Insta_loan_128 - To Verify After Click on History Tab from Home page, User should  Redirect on History Page & It should display  All  Transaction History on page");
+			extent.extentLoggerPass("TC_Insta_loan_128","TC_Insta_loan_128 - To Verify After Click on History Tab from Home page, User should  Redirect on History Page & It should display  All  Transaction History on page");
+
+			logger.info("TC_Insta_loan_129 - User should able to see Filter option in Loan History tab");
+			extent.extentLoggerPass("TC_Insta_loan_129", "TC_Insta_loan_129 - User should able to see Filter option in Loan History tab");
+
+			logger.info("TC_Insta_loan_130 - User should able to see & select all option to filter out loans");
+			extent.extentLoggerPass("TC_Insta_loan_130", "TC_Insta_loan_130 - User should able to see & select all option to filter out loans");
+
+			logger.info("TC_Insta_loan_131 - To Verify On Transaction History Page should display all Transaction History of User");
+			extent.extentLoggerPass("TC_Insta_loan_131","TC_Insta_loan_131 - To Verify On Transaction History Page should display all Transaction History of User");
+
+			logger.info("TC_Insta_loan_133 - To Verify On Loan history page for Active loan  \"View Details\"link  & \"Pay EMI\" button should be display.");
+			extent.extentLoggerPass("TC_Insta_loan_133","TC_Insta_loan_133 - To Verify On Loan history page for Active loan  \"View Details\"link  & \"Pay EMI\" button should be display.");
+
+			logger.info("TC_Insta_loan_134 - To Verify On Loan History page for Closed Loan \"View Details\" link & \"Download NOC\" button should  be display ");
+			extent.extentLoggerPass("TC_Insta_loan_134","TC_Insta_loan_134 - To Verify On Loan History page for Closed Loan \"View Details\" link & \"Download NOC\" button should  be display ");
+
+			logger.info("TC_Insta_loan_135 - To Verify for Loan details page for active loans from Loan History View Details option ");
+			extent.extentLoggerPass("TC_Insta_loan_135","TC_Insta_loan_135 - To Verify for Loan details page for active loans from Loan History View Details option ");
+
+			logger.info("TC_Insta_loan_137 - To verify View Fee Details from Loan Details page");
+			extent.extentLoggerPass("TC_Insta_loan_137", "TC_Insta_loan_137 - To verify View Fee Details from Loan Details page");
 		}
 
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objFilterOption, "Filter Option");
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objClearBtn,
-				getText(InstaLoanTransactionHistoryPage.objClearBtn));
-
-		if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatus,
-				getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatus))) {
-			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails));
+//==============================================Transaction History Start===================================================================================================================
+		//============================================Insta Loan Optional Journey start=============================================================================================================
+		public void instaLoanOptioanlJourney() throws Exception {
+			extent.HeaderChildNode("InstaLoan Optional Journey");
+			getDriver().resetApp();
+			instalonAPIKycVerification();	
+			loginOnboarding("1");
+			mobileNoValidation1(mobileNumber);
+			enterOtp(prop.getproperty("OTP"));
+			readAndAccept();
+			waitTime(30000);
+			instaUserDetails(firstName, lastName, mothersName, email, gender);
+			instaNewCommunicationAddress();
+			waitTime(10000);
+			instaKycDocument();
+			instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2311", "2319");
+			panCardDetails();
 			waitTime(5000);
-			List<WebElement> viewList = getDriver().findElements(InstaLoanTransactionHistoryPage.objAllLoanDetail);
-			for (WebElement wb : viewList) {
-				String vlist = wb.getText();
-				logger.info(vlist);
-				extent.extentLogger("Loan_Details", vlist);
-			}
-			Swipe("up", 1);
-			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objPayNoBtn,
-					getText(InstaLoanTransactionHistoryPage.objPayNoBtn));
-			if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMIPaymentPage,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMIPaymentPage))) {
-				Back(2);
-			}
-			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails));
-			if (verifyElementPresent(
-					InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetailsLoanDetailsPage,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetailsLoanDetailsPage))) {
-				Back(1);
-			}
-			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMI,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMI));
-			if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMIPaymentPage,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusPayEMIPaymentPage))) {
-				Back(1);
-			}
-		}
-
-		if (verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryClosedDownloadNocBtn,
-				getText(InstaLoanTransactionHistoryPage.objLoanHistoryClosedDownloadNocBtn))) {
-			verifyElementPresent(InstaLoanTransactionHistoryPage.objLoanHistoryClosedStatus,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryClosedStatus));
-			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails));
-			if (verifyElementPresent(
-					InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetailsLoanDetailsPage,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetailsLoanDetailsPage))) {
-				Back(1);
-			}
-			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryClosedDownloadNocBtn,
-					getText(InstaLoanTransactionHistoryPage.objLoanHistoryClosedDownloadNocBtn));
-
-			Set<String> windows = getDriver().getContextHandles();
-			for (String window : windows) {
-				System.out.println("Active Applications " + window);
-				getDriver().context("NATIVE_APP");
-			}
-			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objNOCPdf,
-					getText(InstaLoanTransactionHistoryPage.objNOCPdf));
-			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objThreeDotForDownloadPDF,
-					"Three Dot to DownloadPDF file");
-			verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objDownloadBtn,
-					getText(InstaLoanTransactionHistoryPage.objDownloadBtn));
-
-			String toastPDFDownloadMsg = getText(InstaLoanTransactionHistoryPage.objDownloadPDFToastMsg);
-			System.out.println(toastPDFDownloadMsg);
-			if (toastPDFDownloadMsg.contains("Downloaded Noc_Letter")) {
-				logger.info(
-						"TC_Insta_loan_136 - To Verify for Loan details page for Closed loans from Loan History View Details option ");
-				extent.extentLoggerPass("TC_Insta_loan_136",
-						"To Verify for Loan details page for Closed loans from Loan History View Details option ");
-			}
-			Back(1);
-		}
-
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails,
-				getText(InstaLoanTransactionHistoryPage.objLoanHistoryActiveStatusViewDetails));
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanDetailViewFeeDetailsBtn,
-				getText(InstaLoanTransactionHistoryPage.objLoanDetailViewFeeDetailsBtn));
-		verifyElementPresent(InstaLoanTransactionHistoryPage.objFeeDetailsHeader,
-				getText(InstaLoanTransactionHistoryPage.objFeeDetailsHeader));
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objLoanAmountText,
-				getText(InstaLoanTransactionHistoryPage.objLoanAmountText) + " is : "
-						+ getText(InstaLoanTransactionHistoryPage.objLoanAmount));
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objTotalFeesChargesText,
-				getText(InstaLoanTransactionHistoryPage.objTotalFeesChargesText) + " is : "
-						+ getText(InstaLoanTransactionHistoryPage.objTotalFeesCharges));
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objProcessingFeesText,
-				getText(InstaLoanTransactionHistoryPage.objProcessingFeesText) + " is : "
-						+ getText(InstaLoanTransactionHistoryPage.objProcessingFees));
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objGSTText,
-				getText(InstaLoanTransactionHistoryPage.objGSTText) + " is : "
-						+ getText(InstaLoanTransactionHistoryPage.objGST));
-		verifyElementPresentAndClick(InstaLoanTransactionHistoryPage.objDisbursalAmountText,
-				getText(InstaLoanTransactionHistoryPage.objDisbursalAmountText) + " is : "
-						+ getText(InstaLoanTransactionHistoryPage.objDisbursalAmount));
-
-		logger.info(
-				"TC_Insta_loan_128 - To Verify After Click on History Tab from Home page, User should  Redirect on History Page & It should display  All  Transaction History on page");
-		extent.extentLoggerPass("TC_Insta_loan_128",
-				"To Verify After Click on History Tab from Home page, User should  Redirect on History Page & It should display  All  Transaction History on page");
-
-		logger.info("TC_Insta_loan_129 - User should able to see Filter option in Loan History tab");
-		extent.extentLoggerPass("TC_Insta_loan_129", "User should able to see Filter option in Loan History tab");
-
-		logger.info("TC_Insta_loan_130 - User should able to see & select all option to filter out loans");
-		extent.extentLoggerPass("TC_Insta_loan_130", "User should able to see & select all option to filter out loans");
-
-		logger.info(
-				"TC_Insta_loan_131 - To Verify On Transaction History Page should display all Transaction History of User");
-		extent.extentLoggerPass("TC_Insta_loan_131",
-				"To Verify On Transaction History Page should display all Transaction History of User");
-
-		logger.info(
-				"TC_Insta_loan_133 - To Verify On Loan history page for Active loan  \"View Details\"link  & \"Pay EMI\" button should be display.");
-		extent.extentLoggerPass("TC_Insta_loan_133",
-				"To Verify On Loan history page for Active loan  \"View Details\"link  & \"Pay EMI\" button should be display.");
-
-		logger.info(
-				"TC_Insta_loan_134 - To Verify On Loan History page for Closed Loan \"View Details\" link & \"Download NOC\" button should  be display ");
-		extent.extentLoggerPass("TC_Insta_loan_134",
-				"To Verify On Loan History page for Closed Loan \"View Details\" link & \"Download NOC\" button should  be display ");
-
-		logger.info(
-				"TC_Insta_loan_135 - To Verify for Loan details page for active loans from Loan History View Details option ");
-		extent.extentLoggerPass("TC_Insta_loan_135",
-				"To Verify for Loan details page for active loans from Loan History View Details option ");
-
-		logger.info("TC_Insta_loan_137 - To verify View Fee Details from Loan Details page");
-		extent.extentLoggerPass("TC_Insta_loan_137", "To verify View Fee Details from Loan Details page");
-	}
-
-//==============================================Transaction History End===================================================================================================================
-//============================================Insta Loan Optional Journey start=============================================================================================================
-	public void instaLoanOptioanlJourney() throws Exception {
-		extent.HeaderChildNode("InstaLoan Optional Journey");
-		mockUserAPI();
-		getDriver().resetApp();
-		loginOnboarding("1");
-		mobileNoValidation1(mobileNumber);
-		enterOtp(prop.getproperty("OTP"));
-		readAndAccept();
-		waitTime(30000);
-		instaUserDetails(firstName, lastName, mothersName, email, gender);
-		instaNewCommunicationAddress();
-		waitTime(10000);
-		instaKycDocument();
-		instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2311", "2319");
-		panCardDetails();
-		waitTime(5000);
-		instaLoancongratsScreen("Congrats");
-		instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
-		waitTime(5000);
-		verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
-		verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
-		if (verifyElementPresent2(InstaLoanPage.objOkayGotIt, "Okay, Got It!")) {
+			instaLoancongratsScreen("Congrats");
+			instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
+			waitTime(5000);
+			verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
+			verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
 			click(InstaLoanPage.objOkayGotIt, "Okay, Got It!");
-		}
-		Swipe("up", 2);
-		String referenceNo = switchAdminPanelForRefNo();
-		String refNoFromDB = executeQuery3(
-				"SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '" + referenceNo
-						+ "';",
-				4);
-		logger.info("Eligible type : " + refNoFromDB);
-		extent.extentLogger("Eligible type : ", "Eligible type : " + refNoFromDB);
+			
+			Swipe("up", 2);
+			String referenceNo = switchAdminPanelForRefNo();
+			String refNoFromDB = executeQuery3("SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '" + referenceNo+ "';",4);
+			logger.info("Eligible type : " + refNoFromDB);
+			extent.extentLogger("Eligible type : ", "Eligible type : " + refNoFromDB);
 
-		boolean instaBanner = verifyElementPresent(InstaLoanOptionalJourney.objInstaOfferBanner,
-				getText(InstaLoanOptionalJourney.objInstaOfferBanner));
+			verifyElementPresent(InstaLoanOptionalJourney.objInstaOfferBanner,getText(InstaLoanOptionalJourney.objInstaOfferBanner));
+			logger.info("TC_Insta_loan_40 - To verify when the user eligible type is optional, user should choose either Ring limit or an insta loan offer");
+			extent.extentLoggerPass("TC_Insta_loan_40","To verify when the user eligible type is optional, user should choose either Ring limit or an insta loan offer");
+			
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objQRScanner, "QR Code Scann Button");
+			String scanAndPayToastMsg = getText(InstaLoanOptionalJourney.objScanAndPayToastMsg);
+			logger.info(scanAndPayToastMsg);
+			extent.extentLogger("Toast Message", scanAndPayToastMsg);
+			verifyElementPresent(InstaLoanOptionalJourney.objQRScannPage,getText(InstaLoanOptionalJourney.objQRScannPage));
+			logger.info("TC_Insta_loan_42 - To verify optional eligible users, all transaction instruments like Scan & pay will be enabled until avail(FA) insta loan offer ");
+			extent.extentLoggerPass("TC_Insta_loan_42","To verify optional eligible users, all transaction instruments like Scan & pay will be enabled until avail(FA) insta loan offer ");
 
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objQRScanner, "QR Code Scann Button");
-		String scanAndPayToastMsg = getText(InstaLoanOptionalJourney.objScanAndPayToastMsg);
-		logger.info(scanAndPayToastMsg);
-		extent.extentLogger("Toast Message", scanAndPayToastMsg);
-		boolean scannPage = verifyElementPresent(InstaLoanOptionalJourney.objQRScannPage,
-				getText(InstaLoanOptionalJourney.objQRScannPage));
-		if (scannPage == true && instaBanner == true) {
-			logger.info(
-					"TC_Insta_loan_40 - To verify when the user eligible type is optional, user should choose either Ring limit or an insta loan offer");
-			extent.extentLoggerPass("TC_Insta_loan_40",
-					"To verify when the user eligible type is optional, user should choose either Ring limit or an insta loan offer");
-
-			logger.info(
-					"TC_Insta_loan_42 - To verify optional eligible users, all transaction instruments like Scan & pay will be enabled until avail(FA) insta loan offer ");
-			extent.extentLoggerPass("TC_Insta_loan_42",
-					"To verify optional eligible users, all transaction instruments like Scan & pay will be enabled until avail(FA) insta loan offer ");
-		}
-
-		scannQRSwitch();
-		waitTime(10000);
-		type(InstaLoanOptionalJourney.objAmountEnter, "100", "Amount Field");
-		doubleTap(InstaLoanOptionalJourney.objPayNowBtn, 1, "Pay Now Button");
-		waitTime(40000);
-		click(InstaLoanOptionalJourney.objPINField, "PIN Field");
-		type(InstaLoanOptionalJourney.objPINField, prop.getproperty("ValidPin"), "PIN Field");
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objContinueBtn,
-				getText(InstaLoanOptionalJourney.objContinueBtn));
-		waitTime(20000);
-		verifyElementPresentAndClick(HomPageNew.objHomePage, "Go to homepage button");
-		if (verifyElementPresent2(InstaLoanOptionalJourney.objNoBtn, "No Button")) {
-			click(InstaLoanOptionalJourney.objNoBtn, getText(InstaLoanOptionalJourney.objNoBtn) + " Button");
-		}
-		explicitWaitVisibility(InstaLoanOptionalJourney.objPayEarly, 20);
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objPayEarly,
-				getText(InstaLoanOptionalJourney.objPayEarly));
-		verifyElementPresent(InstaLoanOptionalJourney.objUPIPaymentMethod,
-				getText(InstaLoanOptionalJourney.objUPIPaymentMethod));
-		verifyElementPresent(InstaLoanOptionalJourney.objNetBankingAndDebitCardPaymentMethod,
-				getText(InstaLoanOptionalJourney.objNetBankingAndDebitCardPaymentMethod));
-		verifyElementPresent(InstaLoanOptionalJourney.objBankTransferPaymentMethod,
-				getText(InstaLoanOptionalJourney.objBankTransferPaymentMethod));
-		verifyElementPresent(InstaLoanOptionalJourney.objPaymentViaUPIPaymentMethod,
-				getText(InstaLoanOptionalJourney.objPaymentViaUPIPaymentMethod));
-		Back(1);
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objMoreBottomTab,
-				getText(InstaLoanOptionalJourney.objMoreBottomTab));
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objBankTransfer,
-				getText(InstaLoanOptionalJourney.objBankTransfer));
-		explicitWaitVisibility(InstaLoanOptionalJourney.objAddBankAccount, 20);
-		boolean addBankHeader = verifyElementPresent(InstaLoanOptionalJourney.objAddBankAccount,
-				getText(InstaLoanOptionalJourney.objAddBankAccount));
-		if (addBankHeader == true) {
-			logger.info(
-					"TC_Insta_loan_41 - To verify optional eligible users, all transaction instruments like Card will be enabled until avail(FA) insta loan offer ");
-			extent.extentLoggerPass("TC_Insta_loan_41",
-					"To verify optional eligible users, all transaction instruments like Card will be enabled until avail(FA) insta loan offer ");
-
-			addbankAccount("5" + RandomIntegerGenerator(4), firstName + " " + lastName);
-			explicitWaitVisibility(InstaLoanOptionalJourney.objMakePaymentPage, 30);
-			type(InstaLoanOptionalJourney.objMakePaymentAmount, "100", "Amount Field");
-			click(InstaLoanOptionalJourney.objPayNowBtn, "Pay Now Button");
+			scannQRSwitch();
+			waitTime(10000);
+			type(InstaLoanOptionalJourney.objAmountEnter, "100", "Amount Field");
 			doubleTap(InstaLoanOptionalJourney.objPayNowBtn, 1, "Pay Now Button");
+			waitTime(40000);
 			click(InstaLoanOptionalJourney.objPINField, "PIN Field");
 			type(InstaLoanOptionalJourney.objPINField, prop.getproperty("ValidPin"), "PIN Field");
-			click(InstaLoanOptionalJourney.objCircularBtn, "Circular Button");
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objContinueBtn,getText(InstaLoanOptionalJourney.objContinueBtn));
+			waitTime(20000);
 			verifyElementPresentAndClick(HomPageNew.objHomePage, "Go to homepage button");
+			click(InstaLoanOptionalJourney.objNoBtn, getText(InstaLoanOptionalJourney.objNoBtn) + " Button");
+			
+			explicitWaitVisibility(InstaLoanOptionalJourney.objPayEarly, 20);
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objPayEarly,getText(InstaLoanOptionalJourney.objPayEarly));
+			verifyElementPresent(InstaLoanOptionalJourney.objUPIPaymentMethod,getText(InstaLoanOptionalJourney.objUPIPaymentMethod));
+			verifyElementPresent(InstaLoanOptionalJourney.objNetBankingAndDebitCardPaymentMethod,getText(InstaLoanOptionalJourney.objNetBankingAndDebitCardPaymentMethod));
+			verifyElementPresent(InstaLoanOptionalJourney.objBankTransferPaymentMethod,getText(InstaLoanOptionalJourney.objBankTransferPaymentMethod));
+			Back(1);
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objMoreBottomTab,getText(InstaLoanOptionalJourney.objMoreBottomTab));
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objBankTransfer,getText(InstaLoanOptionalJourney.objBankTransfer));
+			explicitWaitVisibility(InstaLoanOptionalJourney.objAddBankAccount, 20);
+			boolean addBankHeader = verifyElementPresent(InstaLoanOptionalJourney.objAddBankAccount,getText(InstaLoanOptionalJourney.objAddBankAccount));
+			if (addBankHeader == true) {
+				logger.info("TC_Insta_loan_41 - To verify optional eligible users, all transaction instruments like Card will be enabled until avail(FA) insta loan offer ");
+				extent.extentLoggerPass("TC_Insta_loan_41","To verify optional eligible users, all transaction instruments like Card will be enabled until avail(FA) insta loan offer ");
 
-			logger.info(
-					"TC_Insta_loan_44 - To verify optional eligible users, all transaction instruments like bank transfer will be enabled until avail insta loan offer ");
-			extent.extentLoggerPass("TC_Insta_loan_44",
-					"To verify optional eligible users, all transaction instruments like bank transfer will be enabled until avail insta loan offer ");
-		}
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objMoreBottomTab,
-				getText(InstaLoanOptionalJourney.objMoreBottomTab));
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objBBPSFlowElectricity,
-				getText(InstaLoanOptionalJourney.objBBPSFlowElectricity));
-		explicitWaitVisibility(InstaLoanOptionalJourney.objSelectBiller, 20);
-		scrollToElement("text", "Bangalore Electricity Supply Co. Ltd (BESCOM)").click();
-		click(InstaLoanOptionalJourney.objEnterCustomerID, "Customer ID Field");
-		waitTime(5000);
-		type(InstaLoanOptionalJourney.objEnterCustomerID, "10001", "Customer Number Field");
+				addbankAccount("5" + RandomIntegerGenerator(4), firstName + " " + lastName);
+				explicitWaitVisibility(InstaLoanOptionalJourney.objMakePaymentPage, 30);
+				type(InstaLoanOptionalJourney.objMakePaymentAmount, "100", "Amount Field");
+				click(InstaLoanOptionalJourney.objPayNowBtn, "Pay Now Button");
+				doubleTap(InstaLoanOptionalJourney.objPayNowBtn, 1, "Pay Now Button");
+				click(InstaLoanOptionalJourney.objPINField, "PIN Field");
+				type(InstaLoanOptionalJourney.objPINField, prop.getproperty("ValidPin"), "PIN Field");
+				click(InstaLoanOptionalJourney.objCircularBtn, "Circular Button");
+				verifyElementPresentAndClick(HomPageNew.objHomePage, "Go to homepage button");
 
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objFetchBill,
-				getText(InstaLoanOptionalJourney.objFetchBill));
-		waitTime(20000);
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objPayBtn,
-				getText(InstaLoanOptionalJourney.objPayBtn) + " Button");
-		explicitWaitVisibility(InstaLoanOptionalJourney.objPaymentInProgress, 20);
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objPayWithRingLimit,
-				getText(InstaLoanOptionalJourney.objPayWithRingLimit) + " Button");
-		explicitWaitVisibility(InstaLoanOptionalJourney.objEnterSecurityPinforElectricityBill, 20);
-		click(InstaLoanOptionalJourney.objPINFieldElectricityBill, "PIN Field");
-		type(InstaLoanOptionalJourney.objPINFieldElectricityBill, prop.getproperty("ValidPin"), "PIN Field");
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objContinueBtn,
-				getText(InstaLoanOptionalJourney.objContinueBtn));
-		boolean processingYourPayment = verifyElementPresent2(InstaLoanOptionalJourney.objProcessing,
-				"Processing your Payment");
-		if (processingYourPayment == true) {
+				logger.info("TC_Insta_loan_44 - To verify optional eligible users, all transaction instruments like bank transfer will be enabled until avail insta loan offer ");
+				extent.extentLoggerPass("TC_Insta_loan_44","To verify optional eligible users, all transaction instruments like bank transfer will be enabled until avail insta loan offer ");
+			}
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objMoreBottomTab,getText(InstaLoanOptionalJourney.objMoreBottomTab));
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objBBPSFlowElectricity,getText(InstaLoanOptionalJourney.objBBPSFlowElectricity));
+			explicitWaitVisibility(InstaLoanOptionalJourney.objSelectBiller, 20);
+			scrollToElement("text", "Bangalore Electricity Supply Co. Ltd (BESCOM)").click();
+			click(InstaLoanOptionalJourney.objEnterCustomerID, "Customer ID Field");
+			waitTime(5000);
+			type(InstaLoanOptionalJourney.objEnterCustomerID, "10001", "Customer Number Field");
+
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objFetchBill,getText(InstaLoanOptionalJourney.objFetchBill));
+			waitTime(20000);
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objPayBtn,getText(InstaLoanOptionalJourney.objPayBtn) + " Button");
+			explicitWaitVisibility(InstaLoanOptionalJourney.objPaymentInProgress, 20);
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objPayWithRingLimit,getText(InstaLoanOptionalJourney.objPayWithRingLimit) + " Button");
+			explicitWaitVisibility(InstaLoanOptionalJourney.objEnterSecurityPinforElectricityBill, 20);
+			click(InstaLoanOptionalJourney.objPINFieldElectricityBill, "PIN Field");
+			type(InstaLoanOptionalJourney.objPINFieldElectricityBill, prop.getproperty("ValidPin"), "PIN Field");
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objContinueBtn,getText(InstaLoanOptionalJourney.objContinueBtn));
+			verifyElementPresent2(InstaLoanOptionalJourney.objProcessing,"Processing your Payment");
 			waitTime(30000);
 			Back(2);
-			logger.info(
-					"TC_Insta_loan_43 - To verify optional eligible users, all transaction instruments like BBPS  will be enabled until avail(FA) insta loan offer ");
-			extent.extentLoggerPass("TC_Insta_loan_43",
-					"To verify optional eligible users, all transaction instruments like BBPS  will be enabled until avail(FA) insta loan offer ");
-		} else {
-			Back(2);
-			logger.info(
-					"TC_Insta_loan_43 - To verify optional eligible users, all transaction instruments like BBPS  will be enabled until avail(FA) insta loan offer ");
-			extent.extentLoggerFail("TC_Insta_loan_43",
-					"To verify optional eligible users, all transaction instruments like BBPS  will be enabled until avail(FA) insta loan offer ");
-		}
-		boolean payEarly = verifyElementPresent(InstaLoanOptionalJourney.objPayEarly,
-				getText(InstaLoanOptionalJourney.objPayEarly));
-		if (payEarly == true) {
-			verifyElementPresent(InstaLoanOptionalJourney.objCurrentSpending,
-					getText(InstaLoanOptionalJourney.objCurrentSpending));
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objPayEarly,
-					getText(InstaLoanOptionalJourney.objPayEarly));
-			logger.info(
-					"TC_Insta_loan_46 - To verify ring limit outstanding non 0 and entry in the whitelisting table");
-			extent.extentLoggerPass("TC_Insta_loan_46",
-					"To verify ring limit outstanding non 0 and entry in the whitelisting table");
-		}
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objNetBankingAndDebitCardPaymentMethod,
-				getText(InstaLoanOptionalJourney.objNetBankingAndDebitCardPaymentMethod));
-		waitTime(20000);
-		verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
-		addNewCard();
-		verifyElementPresentAndClick(HomPageNew.objHomePage, "Go to homepage button");
-		Swipe("up", 2);
-		executeUpdateFatherName(
-				"Update db_tradofina.users set father_name='Arun' where mobile_number='" + mobileNumber + "';",
-				"Select * from db_tradofina.users where mobile_number='" + mobileNumber + "';");
-		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
+			logger.info("TC_Insta_loan_43 - To verify optional eligible users, all transaction instruments like BBPS  will be enabled until avail(FA) insta loan offer ");
+			extent.extentLoggerPass("TC_Insta_loan_43","To verify optional eligible users, all transaction instruments like BBPS  will be enabled until avail(FA) insta loan offer ");
+			
+			verifyElementPresent(InstaLoanOptionalJourney.objPayEarly,getText(InstaLoanOptionalJourney.objPayEarly));
+			verifyElementPresent(InstaLoanOptionalJourney.objCurrentSpending,getText(InstaLoanOptionalJourney.objCurrentSpending));
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objPayEarly,getText(InstaLoanOptionalJourney.objPayEarly));
+			logger.info("TC_Insta_loan_46 - To verify ring limit outstanding non 0 and entry in the whitelisting table");
+			extent.extentLoggerPass("TC_Insta_loan_46","To verify ring limit outstanding non 0 and entry in the whitelisting table");
+			
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objNetBankingAndDebitCardPaymentMethod,getText(InstaLoanOptionalJourney.objNetBankingAndDebitCardPaymentMethod));
+			waitTime(20000);
+			verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
+			addNewCard();
+			verifyElementPresentAndClick(HomPageNew.objHomePage, "Go to homepage button");
+			Swipe("up", 2);
+			executeUpdateFatherName("Update db_tradofina.users set father_name='Arun' where mobile_number='" + mobileNumber + "';","Select * from db_tradofina.users where mobile_number='" + mobileNumber + "';");
+			click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
 
-		boolean basicDetailsPage = verifyElementPresent2(InstaLoanOptionalJourney.objFathersNameBasicDetails,
-				"Fathers Name Basic Details Page");
-		if (basicDetailsPage == false) {
+			verifyElementPresent2(InstaLoanOptionalJourney.objFathersNameBasicDetails,"Fathers Name Basic Details Page");
 			logger.info("TC_Insta_loan_50 - To verifiy Basic deatils page should be skipped if father name is present");
-			extent.extentLoggerPass("TC_Insta_loan_50",
-					"To verifiy Basic deatils page should be skipped if father name is present");
-		}
-		boolean kycDocumentPage = verifyElementPresent2(InstaLoanPage.objKYCHeader, "KYC Document Page");
-		if (kycDocumentPage == false) {
+			extent.extentLoggerPass("TC_Insta_loan_50","To verifiy Basic deatils page should be skipped if father name is present");
+			
+			verifyElementPresent2(InstaLoanPage.objKYCHeader, "KYC Document Page");
 			Back(1);
 			waitTime(3000);
 			click(InstaLoanOptionalJourney.objYesBtn, "yes Button");
-			logger.info(
-					"TC_Insta_loan_47 - To verify if KYC is completed, then skip KYC, KYC can be in the onboarding/profile-page");
-			extent.extentLoggerPass("TC_Insta_loan_47",
-					"To verify if KYC is completed, then skip KYC, KYC can be in the onboarding/profile-page");
-		}
-		waitTime(5000);
-		Back(2);
-		click(InstaLoanOptionalJourney.objYesBtn, "yes Button");
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objMoreBottomTab,
-				getText(InstaLoanOptionalJourney.objMoreBottomTab));
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objBankTransfer,
-				getText(InstaLoanOptionalJourney.objBankTransfer));
-		explicitWaitVisibility(InstaLoanOptionalJourney.objExistingBankAccount, 20);
-		boolean addBankHeader1 = verifyElementPresent(InstaLoanOptionalJourney.objExistingBankAccount,
-				getText(InstaLoanOptionalJourney.objExistingBankAccount));
-		Back(1);
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objBBPSFlowElectricity,
-				getText(InstaLoanOptionalJourney.objBBPSFlowElectricity));
-		boolean selectBillerBBPS = verifyElementPresent(InstaLoanOptionalJourney.objSelectBiller,
-				getText(InstaLoanOptionalJourney.objSelectBiller));
-		Back(1);
-		boolean qrScanBtn = verifyElementPresent(InstaLoanOptionalJourney.objQRScanner, "QR Code Scann Button");
-		if (addBankHeader1 && selectBillerBBPS && qrScanBtn == true) {
-			logger.info(
-					"TC_Insta_loan_45 - To verify when an optional user applies for an offer but has not completed documentation, all transaction instruments like Scan & pay, Card, BBPS and Bank transfer will be enabled until the insta loan journey is completed.");
-			extent.extentLoggerPass("TC_Insta_loan_45",
-					"To verify when an optional user applies for an offer but has not completed documentation, all transaction instruments like Scan & pay, Card, BBPS and Bank transfer will be enabled until the insta loan journey is completed.");
-		}
-
-		mockUserAPI();
-		getDriver().resetApp();
-		loginOnboarding("1");
-		mobileNoValidation1(mobileNumber);
-		enterOtp(prop.getproperty("OTP"));
-		readAndAccept();
-		waitTime(30000);
-		instaUserDetails(firstName, lastName, mothersName, email, gender);
-		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
-		instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2311", "2319");
-		panCardDetails();
-		waitTime(5000);
-		instaLoancongratsScreen("Congrats");
-		instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
-		waitTime(5000);
-		verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
-		verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
-		if (verifyElementPresent2(InstaLoanPage.objOkayGotIt, "Okay, Got It!")) {
-			click(InstaLoanPage.objOkayGotIt, "Okay, Got It!");
-		}
-		Swipe("up", 2);
-		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-		boolean basicDetailsPageSecondTime = verifyElementPresent2(InstaLoanOptionalJourney.objBasicDetailsPage,
-				"Basic Details Page");
-		List<WebElement> toatalField = getDriver().findElements(InstaLoanOptionalJourney.objOnlyFathersNameField);
-		for (WebElement web : toatalField) {
-			String name = web.getText();
-			logger.info(name);
-			extent.extentLoggerPass("Name", name);
-			if (web.getText().equals("Father Name") && basicDetailsPageSecondTime == true) {
-				logger.info("TC_Insta_loan_51 - To verify basic detail page");
-				extent.extentLoggerPass("TC_Insta_loan_51", "To verify basic detail page");
+			logger.info("TC_Insta_loan_47 - To verify if KYC is completed, then skip KYC, KYC can be in the onboarding/profile-page");
+			extent.extentLoggerPass("TC_Insta_loan_47","To verify if KYC is completed, then skip KYC, KYC can be in the onboarding/profile-page");
+			
+			waitTime(5000);
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objMoreBottomTab,getText(InstaLoanOptionalJourney.objMoreBottomTab));
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objBankTransfer,getText(InstaLoanOptionalJourney.objBankTransfer));
+			explicitWaitVisibility(InstaLoanOptionalJourney.objExistingBankAccount, 20);
+			boolean addBankHeader1 = verifyElementPresent(InstaLoanOptionalJourney.objExistingBankAccount,getText(InstaLoanOptionalJourney.objExistingBankAccount));
+			Back(1);
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objBBPSFlowElectricity,getText(InstaLoanOptionalJourney.objBBPSFlowElectricity));
+			boolean selectBillerBBPS = verifyElementPresent(InstaLoanOptionalJourney.objSelectBiller,getText(InstaLoanOptionalJourney.objSelectBiller));
+			Back(2);
+			boolean qrScanBtn = verifyElementPresent(InstaLoanOptionalJourney.objQRScanner, "QR Code Scann Button");
+			if (addBankHeader1 && selectBillerBBPS && qrScanBtn == true) {
+				logger.info("TC_Insta_loan_45 - To verify when an optional user applies for an offer but has not completed documentation, all transaction instruments like Scan & pay, Card, BBPS and Bank transfer will be enabled until the insta loan journey is completed.");
+				extent.extentLoggerPass("TC_Insta_loan_45","To verify when an optional user applies for an offer but has not completed documentation, all transaction instruments like Scan & pay, Card, BBPS and Bank transfer will be enabled until the insta loan journey is completed.");
 			}
-		}
-		waitTime(10000);
-		click(InstaLoanPage.objFatherName, "Father Name Field");
-		type(InstaLoanPage.objFatherName, "Arun", "Father Name Field");
-		verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
-		waitTime(10000);
-		boolean checkBureauHyperlink = verifyElementPresent(InstaLoanOptionalJourney.objIallowCreditBureauChecksText,
-				getText(InstaLoanOptionalJourney.objIallowCreditBureauChecksText));
-		boolean ihearByConfirm = verifyElementPresent(InstaLoanOptionalJourney.objIhearbyConfirmText,
-				getText(InstaLoanOptionalJourney.objIhearbyConfirmText));
-		if (checkBureauHyperlink && ihearByConfirm == true) {
-			logger.info("TC_Insta_loan_53 - To verify personal detail page should be skipped ");
-			extent.extentLoggerPass("TC_Insta_loan_53", "To verify personal detail page should be skipped");
-		}
 
-		tapUsingCoordinates(385, 1061);
-		boolean creditbureaupopup = verifyElementPresent(InstaLoanOptionalJourney.objCreditBureauConsentPopup,
-				getText(InstaLoanOptionalJourney.objCreditBureauConsentPopup));
-		if (creditbureaupopup == true) {
+			getDriver().resetApp();
+			instalonAPIKycVerification();
+			loginOnboarding("1");
+			mobileNoValidation1(mobileNumber);
+			enterOtp(prop.getproperty("OTP"));
+			readAndAccept();
+			waitTime(30000);
+			instaUserDetails(firstName, lastName, mothersName, email, gender);
+			instaNewCommunicationAddress();
+			waitTime(5000);
+			instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2311", "2319");
+			panCardDetails();
+			waitTime(5000);
+			instaLoancongratsScreen("Congrats");
+			instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
+			waitTime(5000);
+			verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
+			verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
+			click(InstaLoanPage.objOkayGotIt, "Okay, Got It!");
+			Swipe("up", 2);
+			click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
+			boolean basicDetailsPageSecondTime = verifyElementPresent2(InstaLoanOptionalJourney.objBasicDetailsPage,"Basic Details Page");
+			List<WebElement> toatalField = getDriver().findElements(InstaLoanOptionalJourney.objOnlyFathersNameField);
+			for (WebElement web : toatalField) {
+				String name = web.getText();
+				logger.info(name);
+				extent.extentLoggerPass("Name", name);
+				if (web.getText().equals("Father Name") && basicDetailsPageSecondTime == true) {
+					logger.info("TC_Insta_loan_51 - To verify basic detail page");
+					extent.extentLoggerPass("TC_Insta_loan_51", "To verify basic detail page");
+				}
+			}
+			waitTime(10000);
+			click(InstaLoanPage.objFatherName, "Father Name Field");
+			type(InstaLoanPage.objFatherName, "Arun", "Father Name Field");
+			verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
+			waitTime(10000);
+			boolean checkBureauHyperlink = verifyElementPresent(InstaLoanOptionalJourney.objIallowCreditBureauChecksText,getText(InstaLoanOptionalJourney.objIallowCreditBureauChecksText));
+			boolean ihearByConfirm = verifyElementPresent(InstaLoanOptionalJourney.objIhearbyConfirmText,getText(InstaLoanOptionalJourney.objIhearbyConfirmText));
+			if (checkBureauHyperlink && ihearByConfirm == true) {
+				logger.info("TC_Insta_loan_53 - To verify personal detail page should be skipped ");
+				extent.extentLoggerPass("TC_Insta_loan_53", "To verify personal detail page should be skipped");
+			}
+
+			tapUsingCoordinates(385, 1061);
+			verifyElementPresent(InstaLoanOptionalJourney.objCreditBureauConsentPopup,getText(InstaLoanOptionalJourney.objCreditBureauConsentPopup));
 			logger.info("TC_Insta_loan_54 - To Verify If the customer clicks on “Credit bureau checks” hyperlink");
-			extent.extentLoggerPass("TC_Insta_loan_54",
-					"TC_Insta_loan_54 - To Verify If the customer clicks on Credit bureau checks hyperlink");
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup,
-					getText(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup));
-		}
-		waitTime(5000);
-		tapUsingCoordinates(178, 1102);
-		boolean ckycConsent = verifyElementPresent(InstaLoanOptionalJourney.objCKYCConsentHyperlink,
-				getText(InstaLoanOptionalJourney.objCKYCConsentHyperlink));
-		if (creditbureaupopup == true) {
+			extent.extentLoggerPass("TC_Insta_loan_54","TC_Insta_loan_54 - To Verify If the customer clicks on Credit bureau checks hyperlink");
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup,getText(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup));
+			
+			waitTime(5000);
+			tapUsingCoordinates(178, 1102);
+			verifyElementPresent(InstaLoanOptionalJourney.objCKYCConsentHyperlink,getText(InstaLoanOptionalJourney.objCKYCConsentHyperlink));
 			logger.info("TC_Insta_loan_55 - To Verify If the customer clicks on “Credit bureau checks” hyperlink");
-			extent.extentLoggerPass("TC_Insta_loan_55",
-					"TC_Insta_loan_55 - To Verify If the customer clicks on “Credit bureau checks” hyperlink");
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup,
-					getText(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup));
-		}
+			extent.extentLoggerPass("TC_Insta_loan_55","TC_Insta_loan_55 - To Verify If the customer clicks on “Credit bureau checks” hyperlink");
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup,getText(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup));
 
-		click(InstaLoanOptionalJourney.objIallowCheckBox, "I allow Ring to run checkBox");
-		click(InstaLoanOptionalJourney.objReadmoreCheckBox,
-				"I, do hearby confirm that my annual household income checkBox");
-		verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
-		String text = getText(InstaLoanOptionalJourney.objScanAndPayToastMsg);
-		if (text.equals("Please select the checkbox for relevant authorizations")) {
-			logger.info(
-					"TC_Insta_loan_56 - To Verify If the customer unchecks any one or both check boxes for consent and clicks on proceed");
-			extent.extentLoggerPass("TC_Insta_loan_56",
-					"To Verify If the customer unchecks any one or both check boxes for consent and clicks on proceed");
-		}
-		click(InstaLoanOptionalJourney.objIallowCheckBox, "I allow Ring to run checkBox");
-		click(InstaLoanOptionalJourney.objReadmoreCheckBox,
-				"I, do hearby confirm that my annual household income checkBox");
-		verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
-
-		verifyElementPresent(InstaLoanOptionalJourney.objSelectAddressDropDown,
-				getText(InstaLoanOptionalJourney.objSelectAddressDropDown));
-		verifyElementPresent(InstaLoanOptionalJourney.objIdeclaretheAboveAddressCheckBox,
-				"I declare the above address is same as my communication address");
-
-		click(InstaLoanOptionalJourney.objIdeclaretheAboveAddressCheckBox,
-				"I declare the above address is same as my communication address checkBox");
-		waitTime(5000);
-		isClickable(InstaLoanOptionalJourney.objAddCommunicationAddress);
-
-		logger.info(
-				"TC_Insta_loan_58 - To Verify user if check box is not ticked user should able to  click on add communication address link");
-		extent.extentLoggerPass("TC_Insta_loan_58",
-				"To Verify user if check box is not ticked user should able to  click on add communication address link");
-
-		click(InstaLoanOptionalJourney.objAddCommunicationAddress,
-				getText(InstaLoanOptionalJourney.objAddCommunicationAddress));
-		instaNewCommunicationAddress();
-		verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page");
-		logger.info("TC_Insta_loan_59 - User should able to add communication address");
-		extent.extentLoggerPass("TC_Insta_loan_59", "User should able to add communication address");
-
-		offerPage();
-		click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
-		verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
-		verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
-		waitTime(100000);
-		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
-		waitTime(40000);
-
-		explicitWaitVisibility(InstaLoanPage.objInstaLoanAmountApproved, 10);
-		verifyElementPresentAndClick(InstaLoanPage.objViewDetails, getText(InstaLoanPage.objViewDetails) + " Button");
-		click(InstaLoanPage.objPayFullAmountRadioBtn, "Pay Full Amount RadioButton");
-		verifyElementPresentAndClick(InstaLoanPage.objPayNowBtn, getText(InstaLoanPage.objPayNowBtn) + " Button");
-		explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
-		verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,
-				getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
-		waitTime(20000);
-		verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
-		addNewCard();
-
-		Swipe("up", 2);
-		click(InstaLoanPage.objApplyNowBtn, getText(InstaLoanPage.objApplyNowBtn) + " Button is displayed");
-		verifyElementPresentAndClick(InstaLoanPage.objSelectAddress, "Select Address Dropdown");
-		explicitWaitVisibility(InstaLoanPage.objAddressSelected, 30);
-		verifyElementPresentAndClick(InstaLoanPage.objAddressSelected, getText(InstaLoanPage.objAddressSelected));
-		verifyElementPresentAndClick(RingUserDetailPage.objRegisterBtn, "Proceed Button");
-		verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page");
-		logger.info("TC_Insta_loan_57 - To Verify Address page");
-		extent.extentLoggerPass("TC_Insta_loan_57", "To Verify Address page");
-
-		System.out.println(
-				"--------------------------15 days loans show a second EMI as waived off EMI----------------------");
-		mockUserAPI();
-		getDriver().resetApp();
-		loginOnboarding("1");
-		mobileNoValidation1(mobileNumber);
-		enterOtp(prop.getproperty("OTP"));
-		readAndAccept();
-		waitTime(30000);
-		instaUserDetails(firstName, lastName, mothersName, email, gender);
-		instaNewCommunicationAddress();
-		waitTime(10000);
-		instaKycDocument();
-		instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2135", "2319");
-		panCardDetails();
-		waitTime(5000);
-		instaLoancongratsScreen("Congrats");
-		instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
-		waitTime(5000);
-		verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
-		verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
-		if (verifyElementPresent2(InstaLoanPage.objOkayGotIt, "Okay, Got It!")) {
-			click(InstaLoanPage.objOkayGotIt, "Okay, Got It!");
-		}
-		Swipe("up", 2);
-		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-		waitTime(10000);
-
-		basicDetails();
-		click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
-		verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
-		verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
-		waitTime(90000);
-		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
-		waitTime(30000);
-		verifyElementPresentAndClick(InstaLoanPage.objViewDetails, getText(InstaLoanPage.objViewDetails) + " Button");
-
-		boolean FirstEMIWaiver15Days = verifyElementPresent(InstaLoanOptionalJourney.objFirstEMIDueIN15Days,
-				getText(InstaLoanOptionalJourney.objFirstEMIDueIN15Days) + " 15 Days");
-		boolean SecondInstallmentWaiver = verifyElementPresent(InstaLoanOptionalJourney.objSecondInstallmentWaiver,
-				getText(InstaLoanOptionalJourney.objSecondInstallmentWaiver));
-		boolean WaiverMsg = verifyElementPresent(InstaLoanOptionalJourney.objWaiverMsg,
-				getText(InstaLoanOptionalJourney.objWaiverMsg));
-		if (FirstEMIWaiver15Days && SecondInstallmentWaiver && WaiverMsg == true) {
-			logger.info("TC_Insta_loan_60 - To verify  for 15 days loans show a second EMI as waived off EMI");
-			extent.extentLoggerPass("TC_Insta_loan_60",
-					"TC_Insta_loan_60 - To verify  for 15 days loans show a second EMI as waived off EMI");
-
-			logger.info("TC_Insta_loan_93 - To verify  for 15 days loans show a second EMI as waived off EMI");
-			extent.extentLoggerPass("TC_Insta_loan_93",
-					"TC_Insta_loan_93 - To verify  for 15 days loans show a second EMI as waived off EMI");
-
-			logger.info("TC_Insta_loan_160 - To verify  for 15 days loans show a second EMI as waived off EMI");
-			extent.extentLoggerPass("TC_Insta_loan_160",
-					"TC_Insta_loan_160 -To verify  for 15 days loans show a second EMI as waived off EMI");
-
-			logger.info("TC_Insta_loan_164 - To verify for 15 days loans show a second EMI as waived off EMI");
-			extent.extentLoggerPass("TC_Insta_loan_164",
-					"TC_Insta_loan_164 - To verify for 15 days loans show a second EMI as waived off EMI");
-		}
-
-		System.out.println("------------------------------62 days loan EMI--------------------------");
-		getDriver().resetApp();
-		mockUserAPI();
-		loginOnboarding("1");
-		mobileNoValidation1(mobileNumber);
-		enterOtp(prop.getproperty("OTP"));
-		readAndAccept();
-		waitTime(30000);
-		instaUserDetails(firstName, lastName, mothersName, email, gender);
-		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			e.printStackTrace();
-			instaKycDocument();
-		}
-		instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2251", "2319");
-		panCardDetails();
-		waitTime(5000);
-		instaLoancongratsScreen("Congrats");
-		instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
-		waitTime(5000);
-		verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
-		verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
-		if (verifyElementPresent2(InstaLoanPage.objOkayGotIt, "Okay, Got It!")) {
-			click(InstaLoanPage.objOkayGotIt, "Okay, Got It!");
-		}
-		Swipe("up", 2);
-		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-		waitTime(10000);
-
-		basicDetails();
-		click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
-		verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
-		verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
-		waitTime(90000);
-		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
-		if (!verifyElementPresent2(InstaLoanOptionalJourney.objPayNowBtnAtHomePage, "Pay Now Button")) {
-			waitTime(120000);
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objUPITab, "UPI Tab");
-			waitTime(90000);
-			Back(1);
-		}
-		int EMIDueDatesInInteger = 0;
-		int count = 1;
-		for (int i = 0; i < count; i++) {
-			if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
-				verifyElementPresentAndClick(InstaLoanPage.objViewDetails,
-						getText(InstaLoanPage.objViewDetails) + " Button");
-				String EMIDueDates = getText(InstaLoanOptionalJourney.objEMIDueDays);
-				EMIDueDatesInInteger = convertToInt(EMIDueDates);
-				if (EMIDueDatesInInteger == 62) {
-					List<WebElement> installmentDisbursed = getDriver()
-							.findElements(InstaLoanOptionalJourney.objInstallment);
-					for (WebElement web : installmentDisbursed) {
-						String installment = web.getText();
-						if (installment.equalsIgnoreCase("2nd installment")) {
-							verifyElementPresent(InstaLoanOptionalJourney.objEMIDueDays,
-									getText(InstaLoanOptionalJourney.objEMIDueDays));
-							verifyElementPresent(InstaLoanOptionalJourney.objTenureDates,
-									getText(InstaLoanOptionalJourney.objTenureDates));
-							verifyElementPresent(InstaLoanOptionalJourney.objAmtToBePaid,
-									getText(InstaLoanOptionalJourney.objAmtToBePaid));
-							logger.info("TC_Insta_loan_62 - To verify  for 62 days loan EMI");
-							extent.extentLoggerPass("TC_Insta_loan_62",
-									"TC_Insta_loan_62 - To verify  for 62 days loan EMI");
-
-							logger.info("TC_Insta_loan_95 - To verify  for 62 days loan EMI");
-							extent.extentLoggerPass("TC_Insta_loan_95",
-									"TC_Insta_loan_95 - To verify  for 62 days loan EMI");
-
-							logger.info("TC_Insta_loan_161 - To verify  for 62 days loan EMI");
-							extent.extentLoggerPass("TC_Insta_loan_161",
-									"TC_Insta_loan_161 - To verify  for 62 days loan EMI");
-						}
-					}
-				}
+			click(InstaLoanOptionalJourney.objIallowCheckBox, "I allow Ring to run checkBox");
+			click(InstaLoanOptionalJourney.objReadmoreCheckBox,"I, do hearby confirm that my annual household income checkBox");
+			verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
+			String text = getText(InstaLoanOptionalJourney.objScanAndPayToastMsg);
+			if (text.equals("Please select the checkbox for relevant authorizations")) {
+				logger.info("TC_Insta_loan_56 - To Verify If the customer unchecks any one or both check boxes for consent and clicks on proceed");
+				extent.extentLoggerPass("TC_Insta_loan_56","To Verify If the customer unchecks any one or both check boxes for consent and clicks on proceed");
 			}
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objDayEMI,
-					getText(InstaLoanOptionalJourney.objDayEMI));
+			click(InstaLoanOptionalJourney.objIallowCheckBox, "I allow Ring to run checkBox");
+			click(InstaLoanOptionalJourney.objReadmoreCheckBox,"I, do hearby confirm that my annual household income checkBox");
+			verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
+
+			verifyElementPresent(InstaLoanOptionalJourney.objSelectAddressDropDown,getText(InstaLoanOptionalJourney.objSelectAddressDropDown));
+			verifyElementPresent(InstaLoanOptionalJourney.objIdeclaretheAboveAddressCheckBox,"I declare the above address is same as my communication address");
+
+			click(InstaLoanOptionalJourney.objIdeclaretheAboveAddressCheckBox,"I declare the above address is same as my communication address checkBox");
+			waitTime(5000);
+			isClickable(InstaLoanOptionalJourney.objAddCommunicationAddress);
+
+			logger.info("TC_Insta_loan_58 - To Verify user if check box is not ticked user should able to  click on add communication address link");
+			extent.extentLoggerPass("TC_Insta_loan_58","To Verify user if check box is not ticked user should able to  click on add communication address link");
+
+			click(InstaLoanOptionalJourney.objAddCommunicationAddress,getText(InstaLoanOptionalJourney.objAddCommunicationAddress));
+			instaNewCommunicationAddress();
+			verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page");
+			logger.info("TC_Insta_loan_59 - User should able to add communication address");
+			extent.extentLoggerPass("TC_Insta_loan_59", "User should able to add communication address");
+
+			offerPage();
+			click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
+			verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
+			verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
+			waitTime(100000);
+			verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
+			waitTime(40000);
+
+			explicitWaitVisibility(InstaLoanPage.objInstaLoanAmountApproved, 10);
+			verifyElementPresentAndClick(InstaLoanPage.objViewDetails, getText(InstaLoanPage.objViewDetails) + " Button");
+			click(InstaLoanPage.objPayFullAmountRadioBtn, "Pay Full Amount RadioButton");
+			verifyElementPresentAndClick(InstaLoanPage.objPayNowBtn, getText(InstaLoanPage.objPayNowBtn) + " Button");
 			explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
-			verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,
-					getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
+			verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
 			waitTime(20000);
 			verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
 			addNewCard();
 
-			if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
-				count++;
-			} else {
-				break;
-			}
-		}
+			Swipe("up", 2);
+			click(InstaLoanPage.objApplyNowBtn, getText(InstaLoanPage.objApplyNowBtn) + " Button is displayed");
+			verifyElementPresentAndClick(InstaLoanPage.objSelectAddress, "Select Address Dropdown");
+			explicitWaitVisibility(InstaLoanPage.objAddressSelected, 30);
+			verifyElementPresentAndClick(InstaLoanPage.objAddressSelected, getText(InstaLoanPage.objAddressSelected));
+			verifyElementPresentAndClick(RingUserDetailPage.objRegisterBtn, "Proceed Button");
+			verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page");
+			logger.info("TC_Insta_loan_57 - To Verify Address page");
+			extent.extentLoggerPass("TC_Insta_loan_57", "To Verify Address page");
 
-		System.out.println("------------------------------3 months loan EMI--------------------------");
-		getDriver().resetApp();
-		mockUserAPI();
-		loginOnboarding("1");
-		mobileNoValidation1(mobileNumber);
-		enterOtp(prop.getproperty("OTP"));
-		readAndAccept();
-		waitTime(30000);
-		instaUserDetails(firstName, lastName, mothersName, email, gender);
-		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			e.printStackTrace();
-			instaKycDocument();
-		}
-		instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2412", "2319");
-		panCardDetails();
-		waitTime(5000);
-		instaLoancongratsScreen("Congrats");
-		instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
-		waitTime(5000);
-		verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
-		verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
-		if (verifyElementPresent2(InstaLoanPage.objOkayGotIt, "Okay, Got It!")) {
+			System.out.println("--------------------------15 days loans show a second EMI as waived off EMI----------------------");
+			mockUserAPI();
+			getDriver().resetApp();
+			loginOnboarding("1");
+			mobileNoValidation1(mobileNumber);
+			enterOtp(prop.getproperty("OTP"));
+			readAndAccept();
+			waitTime(30000);
+			instaUserDetails(firstName, lastName, mothersName, email, gender);
+			instaNewCommunicationAddress();
+			waitTime(5000);
+			instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2135", "2319");
+			panCardDetails();
+			waitTime(5000);
+			instaLoancongratsScreen("Congrats");
+			instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
+			waitTime(5000);
+			verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
+			verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
 			click(InstaLoanPage.objOkayGotIt, "Okay, Got It!");
-		}
-		Swipe("up", 2);
-		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-		waitTime(10000);
+			
+			Swipe("up", 2);
+			click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
+			waitTime(10000);
 
-		basicDetails();
-		click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
-		verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
-		verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
-		waitTime(90000);
-		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
-		waitTime(90000);
-		int EMIDueDatesInInteger1 = 0;
-		int count3MonthEMI = 1;
-		for (int i = 0; i < count3MonthEMI; i++) {
-			if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
-				verifyElementPresentAndClick(InstaLoanPage.objViewDetails,
-						getText(InstaLoanPage.objViewDetails) + " Button");
-				String EMIDueDates = getText(InstaLoanOptionalJourney.objEMIDueDays);
-				EMIDueDatesInInteger1 = convertToInt(EMIDueDates);
-				if (EMIDueDatesInInteger1 == 90) {
-					List<WebElement> installmentDisbursed = getDriver()
-							.findElements(InstaLoanOptionalJourney.objInstallment);
-					for (WebElement web : installmentDisbursed) {
-						String installment = web.getText();
-						if (installment.equalsIgnoreCase("3rd installment")) {
-							verifyElementPresent(InstaLoanOptionalJourney.objEMIDueDays,
-									getText(InstaLoanOptionalJourney.objEMIDueDays));
-							verifyElementPresent(InstaLoanOptionalJourney.objTenureDates,
-									getText(InstaLoanOptionalJourney.objTenureDates));
-							verifyElementPresent(InstaLoanOptionalJourney.objAmtToBePaid,
-									getText(InstaLoanOptionalJourney.objAmtToBePaid));
-							logger.info("TC_Insta_loan_63 - To verify  for 3 months loan EMI");
-							extent.extentLoggerPass("TC_Insta_loan_63",
-									"TC_Insta_loan_63 - To verify  for 3 months loan EMI");
+			basicDetails();
+			click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
+			verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
+			verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
+			waitTime(90000);
+			verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
+			waitTime(30000);
+			verifyElementPresentAndClick(InstaLoanPage.objViewDetails, getText(InstaLoanPage.objViewDetails) + " Button");
 
-							logger.info("TC_Insta_loan_96 - To verify  for 3 months loan EMI");
-							extent.extentLoggerPass("TC_Insta_loan_96",
-									"TC_Insta_loan_96 - To verify  for 3 months loan EMI");
+			boolean FirstEMIWaiver15Days = verifyElementPresent(InstaLoanOptionalJourney.objFirstEMIDueIN15Days,getText(InstaLoanOptionalJourney.objFirstEMIDueIN15Days) + " 15 Days");
+			boolean SecondInstallmentWaiver = verifyElementPresent(InstaLoanOptionalJourney.objSecondInstallmentWaiver,getText(InstaLoanOptionalJourney.objSecondInstallmentWaiver));
+			boolean WaiverMsg = verifyElementPresent(InstaLoanOptionalJourney.objWaiverMsg,getText(InstaLoanOptionalJourney.objWaiverMsg));
+			if (FirstEMIWaiver15Days && SecondInstallmentWaiver && WaiverMsg == true) {
+				logger.info("TC_Insta_loan_60 - To verify  for 15 days loans show a second EMI as waived off EMI");
+				extent.extentLoggerPass("TC_Insta_loan_60","TC_Insta_loan_60 - To verify  for 15 days loans show a second EMI as waived off EMI");
 
-							logger.info("TC_Insta_loan_162 - To verify  for 3 months loan EMI");
-							extent.extentLoggerPass("TC_Insta_loan_162",
-									"TC_Insta_loan_162 - To verify  for 3 months loan EMI");
-						}
-					}
-				}
+				logger.info("TC_Insta_loan_93 - To verify  for 15 days loans show a second EMI as waived off EMI");
+				extent.extentLoggerPass("TC_Insta_loan_93","TC_Insta_loan_93 - To verify  for 15 days loans show a second EMI as waived off EMI");
+
+				logger.info("TC_Insta_loan_160 - To verify  for 15 days loans show a second EMI as waived off EMI");
+				extent.extentLoggerPass("TC_Insta_loan_160","TC_Insta_loan_160 -To verify  for 15 days loans show a second EMI as waived off EMI");
+
+				logger.info("TC_Insta_loan_164 - To verify for 15 days loans show a second EMI as waived off EMI");
+				extent.extentLoggerPass("TC_Insta_loan_164","TC_Insta_loan_164 - To verify for 15 days loans show a second EMI as waived off EMI");
 			}
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objDayEMI,
-					getText(InstaLoanOptionalJourney.objDayEMI));
-			explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
-			verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,
-					getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
-			waitTime(20000);
-			verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
-			addNewCard();
-			if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
-				count3MonthEMI++;
-			} else {
-				break;
-			}
-		}
-		executeUpdateFatherName(
-				"Update db_tradofina.instaloan_whitelisted_users set eligible_type='MANDATORY' where user_reference_number='"
-						+ userReferenceNo + "';",
-				"Select * from db_tradofina.instaloan_whitelisted_users where user_reference_number='" + userReferenceNo
-						+ "';");
-		waitTime(5000);
-		Swipe("DOWN", 2);
 
-		verifyElementPresent(InstaLoanOptionalJourney.objReApplyInstaLoan,
-				getText(InstaLoanOptionalJourney.objReApplyInstaLoan));
-		verifyElementPresentAndClick(InstaLoanPage.objApplyNowBtn, "ReApply Button");
-
-		verifyElementPresentAndClick(InstaLoanPage.objSelectAddress, "Select Address Dropdown");
-		waitTime(2000);
-		verifyElementPresentAndClick(InstaLoanPage.objAddressSelected, getText(InstaLoanPage.objAddressSelected));
-		verifyElementPresentAndClick(RingUserDetailPage.objRegisterBtn, "Proceed Button");
-
-		verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page");
-		click(InstaLoanOptionalJourney.objAddBankDetails,
-				getTextVal(InstaLoanOptionalJourney.objAddBankDetails, "Text"));
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objExistingBankContinue,
-				"Existing Bank Account Continue Button");
-
-		click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
-		verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
-		verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
-		waitTime(90000);
-		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
-		waitTime(30000);
-
-		explicitWaitVisibility(InstaLoanPage.objInstaLoanAmountApproved, 10);
-		verifyElementPresentAndClick(InstaLoanPage.objViewDetails, getText(InstaLoanPage.objViewDetails) + " Button");
-		click(InstaLoanPage.objPayFullAmountRadioBtn, "Pay Full Amount RadioButton");
-		verifyElementPresentAndClick(InstaLoanPage.objPayNowBtn, getText(InstaLoanPage.objPayNowBtn) + " Button");
-		explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
-		verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,
-				getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
-		waitTime(20000);
-		verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
-		addNewCard();
-		verifyElementPresent(InstaLoanOptionalJourney.objLimitPausedForMandatoryEligiblityType,
-				getText(InstaLoanOptionalJourney.objLimitPausedForMandatoryEligiblityType));
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objQRScanner, "QR Code Scann Button");
-		verifyElementPresent(InstaLoanOptionalJourney.objSorryMsgInstaLoanApproved,
-				getText(InstaLoanOptionalJourney.objSorryMsgInstaLoanApproved)
-						+ getText(InstaLoanOptionalJourney.objSorryMsgInstaLoanApprovedCurrentlyUnavailable));
-		logger.info(
-				"TC_Insta_loan_75 - To verify when the user loan is closed and change the eligible type to mandatory for repeat journey");
-		extent.extentLoggerPass("TC_Insta_loan_75",
-				"TC_Insta_loan_75 - To verify when the user loan is closed and change the eligible type to mandatory for repeat journey");
-
-		System.out.println("------------------------------6 months loan EMI--------------------------");
-		getDriver().resetApp();
-		mockUserAPI();
-		loginOnboarding("1");
-		mobileNoValidation1(mobileNumber);
-		enterOtp(prop.getproperty("OTP"));
-		readAndAccept();
-		waitTime(30000);
-		instaUserDetails(firstName, lastName, mothersName, email, gender);
-		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
-		instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2319", "2319");
-		panCardDetails();
-		waitTime(5000);
-		instaLoancongratsScreen("Congrats");
-		instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
-		waitTime(5000);
-		verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
-		verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
-		if (verifyElementPresent2(InstaLoanPage.objOkayGotIt, "Okay, Got It!")) {
+			System.out.println("------------------------------62 days loan EMI--------------------------");
+			getDriver().resetApp();
+			instalonAPIKycVerification();
+			loginOnboarding("1");
+			mobileNoValidation1(mobileNumber);
+			enterOtp(prop.getproperty("OTP"));
+			readAndAccept();
+			waitTime(30000);
+			instaUserDetails(firstName, lastName, mothersName, email, gender);
+			instaNewCommunicationAddress();
+			waitTime(5000);
+			instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2251", "2319");
+			panCardDetails();
+			waitTime(5000);
+			instaLoancongratsScreen("Congrats");
+			instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
+			waitTime(5000);
+			verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
+			verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
 			click(InstaLoanPage.objOkayGotIt, "Okay, Got It!");
-		}
-		transactionValidation();
+			
+			Swipe("up", 2);
+			click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
+			waitTime(10000);
 
-		Swipe("up", 2);
-		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-		waitTime(10000);
-
-		basicDetails();
-		waitTime(10000);
-		boolean IacceptCheckBoxNotClicked = getDriver().findElement(InstaLoanPage.objAcceptCheckBox).isSelected();
-		verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
-		String toast = getText(InstaLoanOptionalJourney.objScanAndPayToastMsg);
-		logger.info(toast);
-		extent.extentLogger("Toast Msg", toast);
-
-		click(InstaLoanPage.objAcceptCheckBox, "CheckBox");
-		verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
-		boolean importantPopupMsg = verifyElementPresent(InstaLoanOptionalJourney.objRingLimitpausedPopup,
-				getText(InstaLoanOptionalJourney.objRingLimitpausedPopup));
-		boolean ringLimitPausedpopup = verifyElementPresent(InstaLoanOptionalJourney.objRingLimitPausedTextPopup,
-				getText(InstaLoanOptionalJourney.objRingLimitPausedTextPopup));
-		boolean confirmOfferBtn = verifyElementPresent(InstaLoanPage.objConfirmOfferBtn,
-				getText(InstaLoanPage.objConfirmOfferBtn));
-		verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
-		if (IacceptCheckBoxNotClicked == false && confirmOfferBtn == true && importantPopupMsg == true
-				&& ringLimitPausedpopup == true) {
-			logger.info("TC_Insta_loan_65 - To verify terms and conditions data to check");
-			extent.extentLoggerPass("TC_Insta_loan_65",
-					"TC_Insta_loan_65 - To verify terms and conditions data to check");
-
-			logger.info(
-					"TC_Insta_loan_71 - To verify, Pop -up of deactivating Ring limit is shown once user click on 'Accept offer'");
-			extent.extentLoggerPass("TC_Insta_loan_71",
-					"To verify, Pop -up of deactivating Ring limit is shown once user click on 'Accept offer'");
-		}
-		waitTime(120000);
-		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
-
-		verifyElementPresent(InstaLoanOptionalJourney.objRingLimitPaused,
-				getText(InstaLoanOptionalJourney.objRingLimitPaused));
-		String FAStatus = executeQuery3(
-				"SELECT * FROM db_tradofina.line_application where user_reference_number='" + userReferenceNo + "';",
-				7);
-		System.out.println(FAStatus);
-		softAssertion.assertEquals(FAStatus, "FINAL_APPROVED");
-		logger.info("TC_Insta_loan_72 - To verify status should be changed to FA when user accept offer");
-		extent.extentLoggerPass("TC_Insta_loan_72",
-				"TC_Insta_loan_72 - To verify status should be changed to FA when user accept offer");
-
-		boolean inProcessStatus = verifyElementPresent(InstaLoanOptionalJourney.objInProcessStatus,
-				getText(InstaLoanOptionalJourney.objInProcessStatus));
-		if (!verifyElementPresent2(InstaLoanOptionalJourney.objPayNowBtnAtHomePage, "Pay Now Button")) {
-			waitTime(120000);
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objUPITab, "UPI Tab");
+			basicDetails();
+			click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
+			verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
+			verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
 			waitTime(90000);
-			Back(1);
-		}
-		boolean disbursedStatus = verifyElementPresent(InstaLoanOptionalJourney.objDisbursedStatus,
-				getText(InstaLoanOptionalJourney.objDisbursedStatus));
-		if (inProcessStatus == true && disbursedStatus == true) {
-			logger.info("TC_Insta_loan_73 - To verify different disbursement status are working");
-			extent.extentLoggerPass("TC_Insta_loan_73",
-					"TC_Insta_loan_73 - To verify different disbursement status are working");
-		}
-
-		int EMIDueDatesInInteger2 = 0;
-		int count6MonthEMI = 1;
-		for (int i = 0; i < count6MonthEMI; i++) {
-			if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
-				verifyElementPresentAndClick(InstaLoanPage.objViewDetails,
-						getText(InstaLoanPage.objViewDetails) + " Button");
-				String EMIDueDates = getText(InstaLoanOptionalJourney.objEMIDueDays);
-				EMIDueDatesInInteger2 = convertToInt(EMIDueDates);
-				waitTime(3000);
-				Swipe("up", 1);
-				if (EMIDueDatesInInteger2 == 181) {
-					List<WebElement> installmentDisbursed = getDriver()
-							.findElements(InstaLoanOptionalJourney.objInstallment);
-					for (WebElement web : installmentDisbursed) {
-						String installment = web.getText();
-
-						if (installment.equalsIgnoreCase("6th installment")) {
-							verifyElementPresent(InstaLoanOptionalJourney.objEMIDueDays,
-									getText(InstaLoanOptionalJourney.objEMIDueDays));
-							verifyElementPresent(InstaLoanOptionalJourney.objTenureDates,
-									getText(InstaLoanOptionalJourney.objTenureDates));
-							verifyElementPresent(InstaLoanOptionalJourney.objAmtToBePaid,
-									getText(InstaLoanOptionalJourney.objAmtToBePaid));
-							logger.info("TC_Insta_loan_64 - To verify  for 6 months loan EMI");
-							extent.extentLoggerPass("TC_Insta_loan_64",
-									"TC_Insta_loan_64 - To verify  for 6 months loan EMI");
-
-							logger.info("TC_Insta_loan_97 - To verify  for 6 months loan EMI");
-							extent.extentLoggerPass("TC_Insta_loan_97",
-									"TC_Insta_loan_97 - To verify  for 6 months loan EMI");
-
-							logger.info("TC_Insta_loan_163 - To verify  for 6 months loan EMI");
-							extent.extentLoggerPass("TC_Insta_loan_163",
-									"TC_Insta_loan_163 - To verify  for 6 months loan EMI");
-						}
-					}
-				}
-			}
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objDayEMI,
-					getText(InstaLoanOptionalJourney.objDayEMI));
-			explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
-			verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,
-					getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
-			waitTime(20000);
-			verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
-			addNewCard();
-			if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
-				count6MonthEMI++;
-			} else {
-				break;
-			}
-		}
-
-		verifyElementPresent(InstaLoanOptionalJourney.objAvailableLimit,
-				getText(InstaLoanOptionalJourney.objAvailableLimit));
-		logger.info("TC_Insta_loan_74 - After repayment of previous insta loan ring limit should get active");
-		extent.extentLoggerPass("TC_Insta_loan_74",
-				"TC_Insta_loan_74 - After repayment of previous insta loan ring limit should get active");
-
-		explicitWaitVisibility(HomePage.objHome, 10);
-		String sHomeTxt = getText(HomePage.objHome);
-		softAssertion.assertEquals(sHomeTxt, "Home");
-		logger.info("Navigated to Home Page");
-		extent.extentLoggerPass("Home Page", "Navigated to Home Page");
-		waitTime(2000);
-		Swipe("DOWN", 2);
-
-		verifyElementPresent(InstaLoanOptionalJourney.objReApplyInstaLoan,
-				getText(InstaLoanOptionalJourney.objReApplyInstaLoan));
-		logger.info(
-				"TC_Insta_loan_76 - To verify when the user repays the loan amount or closed the Loan and Reapply for  insta loan then banner should be visible on the homepage ");
-		extent.extentLoggerPass("TC_Insta_loan_76",
-				"TC_Insta_loan_76 - To verify when the user repays the loan amount or closed the Loan and Reapply for  insta loan then banner should be visible on the homepage ");
-
-		verifyElementPresentAndClick(InstaLoanPage.objApplyNowBtn, "ReApply Button");
-
-		verifyElementPresentAndClick(InstaLoanPage.objSelectAddress, "Select Address Dropdown");
-		verifyElementPresentAndClick(InstaLoanPage.objAddressSelected, getText(InstaLoanPage.objAddressSelected));
-		verifyElementPresentAndClick(RingUserDetailPage.objRegisterBtn, "Proceed Button");
-
-		verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page");
-		if (verifyElementPresent(InstaLoanPage.objAddBankButton, getText(InstaLoanPage.objAddBankButton))) {
-			click(InstaLoanOptionalJourney.objAddBankDetails,
-					getTextVal(InstaLoanOptionalJourney.objAddBankDetails, "Text"));
-			if (verifyElementPresent(InstaLoanOptionalJourney.objExistingBankAcc,
-					getTextVal(InstaLoanOptionalJourney.objExistingBankAcc, "Text"))) {
-				logger.info(
-						"TC_Insta_loan_68 - Existing Bank Accounts are displayed After clicking on Add Bank Details");
-				extent.extentLoggerPass("TC_Insta_loan_68",
-						"TC_Insta_loan_68 -  Existing Bank Accounts are displayed After clicking on Add Bank Details");
-				System.out.println("-----------------------------------------------------------");
-
-				verifyElementPresent(InstaLoanOptionalJourney.objApproved,
-						getTextVal(InstaLoanOptionalJourney.objApproved, "Text"));
-				logger.info("TC_Insta_loan_69 - Bank should be added on bank name match percent");
-				extent.extentLoggerPass("TC_Insta_loan_69",
-						"TC_Insta_loan_69, Bank should be added on bank name match percent");
-				System.out.println("-----------------------------------------------------------");
-			}
-		}
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objAddNewBankAccount,
-				getText(InstaLoanOptionalJourney.objAddNewBankAccount) + " Button");
-		addbankAccount("6" + RandomIntegerGenerator(4), firstName + " " + lastName);
-		explicitWaitVisibility(BankTransferModule.objBottomSheetPopup, 10);
-		verifyElementExist(BankTransferModule.objBottomSheetPopup, "Verify Bank Details Pop Up");
-		click(BankTransferModule.objConfirmBtn, "Confirm Button");
-		if (verifyElementPresent(InstaLoanOptionalJourney.objUnableToAddAcc,
-				getTextVal(InstaLoanOptionalJourney.objUnableToAddAcc, "Text"))) {
-			click(InstaLoanOptionalJourney.objOkGotIt2, getTextVal(InstaLoanOptionalJourney.objOkGotIt2, "Text"));
-		}
-		Swipe("up", 2);
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objContinue1, "Continue Button");
-		verifyElementPresentAndClick(InstaLoanOptionalJourney.objAddBankDetails,
-				getTextVal(InstaLoanOptionalJourney.objAddBankDetails, "Text"));
-
-		verifyElementPresent(InstaLoanOptionalJourney.objExistingBankAcc,
-				getTextVal(InstaLoanOptionalJourney.objExistingBankAcc, "Text"));
-		verifyElementPresent(InstaLoanOptionalJourney.objRejected,
-				getTextVal(InstaLoanOptionalJourney.objRejected, "Status of Accunt"));
-		logger.info("TC_Insta_loan_70 - Bank should be reject on bank name match percent");
-		extent.extentLoggerPass("TC_Insta_loan_70",
-				"TC_Insta_loan_70, Bank should be reject on bank name match percent");
-		System.out.println("-----------------------------------------------------------");
-
-	}
-
-	public void instaLoanOnHold() throws Exception {
-		extent.HeaderChildNode("Insta Loan OnHold Status");
-		getDriver().resetApp();
-		mockUserAPI();
-		instalonAPIKycVerification();
-		loginOnboarding("1");
-		mobileNoValidation1(mobileNumber);
-		enterOtp(prop.getproperty("OTP"));
-		readAndAccept();
-		waitTime(30000);
-		instaUserDetails(firstName, lastName, mothersName, email, gender);
-		instaNewCommunicationAddress();
-		waitTime(10000);
-		try {
-			instaKycDocument();
-		} catch (Exception e) {
-			instaKycDocument();
-		}
-		instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "MANDATORY", "13000", "2311", "2319");
-		panCardDetails();
-		waitTime(5000);
-		instaLoancongratsScreen("Congrats");
-		instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
-		waitTime(5000);
-		verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
-		waitTime(2000);
-		instaLoanCoachPopup();
-		Swipe("up", 2);
-		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-
-		waitTime(5000);
-		click(InstaLoanPage.objFatherName, "Father Name Field");
-		type(InstaLoanPage.objFatherName, "Arun", "Father Name Field");
-		waitTime(5000);
-		verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
-		click(InstaLoanPage.objProceedBtn, "Proceed Button");
-		verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
-		verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
-		waitTime(10000);
-		verifyElementPresentAndClick(InstaLoanPage.objSelectAddress, "Select Address Dropdown");
-		verifyElementPresentAndClick(InstaLoanPage.objAddressSelected, getText(InstaLoanPage.objAddressSelected));
-		verifyElementPresentAndClick(RingUserDetailPage.objRegisterBtn, "Proceed Button");
-		verifyElementPresent(InstaLoanPage.objOfferHeader, getText(InstaLoanPage.objOfferHeader) + "Header");
-		verifyElementPresent(InstaLoanPage.objEligible,
-				getText(InstaLoanPage.objEligible) + getText(InstaLoanPage.objEligibleInstaLoanAmt));
-		verifyElementPresentAndClick(InstaLoanPage.objAddBankButton, getText(InstaLoanPage.objAddBankButton));
-		String BankAccount = addbankAccount("5" + RandomIntegerGenerator(4), firstName + " " + lastName);
-		updateBankAccStatus("ONHOLD", BankAccount, userReferenceNo);
-
-		String cond_ApprovedStatus = executeQuery3(
-				"SELECT * FROM db_tradofina.user_attributes where user_reference_number='" + userReferenceNo + "';",
-				51);
-		System.out.println(cond_ApprovedStatus);
-		softAssertion.assertEquals(cond_ApprovedStatus, "COND_APPROVED");
-		logger.info("TC_Insta_loan_67 - To verify transaction will be CA before loading offer page");
-		extent.extentLoggerPass("TC_Insta_loan_67",
-				"TC_Insta_loan_67 - To verify transaction will be CA before loading offer page");
-
-		verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
-		click(InstaLoanPage.objAcceptCheckBox, "CheckBox");
-		verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
-		waitTime(120000);
-		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
-		if (!verifyElementPresent2(InstaLoanOptionalJourney.objPayNowBtnAtHomePage, "Pay Now Button")) {
-			waitTime(120000);
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objUPITab, "UPI Tab");
-			waitTime(90000);
-			Back(1);
-		}
-		if (verifyElementPresent(InstaLoanHomePage.objOnHold, getTextVal(InstaLoanHomePage.objOnHold, "Text"))) {
-			verifyElementPresentAndClick(InstaLoanHomePage.objViewDetails,
-					getTextVal(InstaLoanHomePage.objViewDetails, "Link"));
-			explicitWaitVisibility(InstaLoanHomePage.objDisbursementOnHold, 10);
-			if (verifyElementPresent(InstaLoanHomePage.objDisbursementOnHold,
-					getTextVal(InstaLoanHomePage.objDisbursementOnHold, "Text"))) {
-				verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementStructure,
-						getTextVal(InstaLoanViewDetailsPage.objDisbursementStructure, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objApprovedInstaLoan,
-						getTextVal(InstaLoanViewDetailsPage.objApprovedInstaLoan, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objApprovedInstaLoanAmount,
-						getTextVal(InstaLoanViewDetailsPage.objApprovedInstaLoanAmount, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objProcessingFee,
-						getTextVal(InstaLoanViewDetailsPage.objProcessingFee, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objProcessingFeeAmount,
-						getTextVal(InstaLoanViewDetailsPage.objProcessingFeeAmount, "Amount"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objGST,
-						getTextVal(InstaLoanViewDetailsPage.objGST, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objGSTAmount,
-						getTextVal(InstaLoanViewDetailsPage.objGSTAmount, "Amount"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementAmountTxt,
-						getTextVal(InstaLoanViewDetailsPage.objDisbursementAmountTxt, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementAmount,
-						getTextVal(InstaLoanViewDetailsPage.objDisbursementAmount, "Amount"));
-				logger.info("TC_Insta_loan_73, Disbursement On Hold screen is validated");
-				extent.extentLoggerPass("TC_Insta_loan_73",
-						"TC_Insta_loan_73, Disbursement On Hold screen is validated");
-				System.out.println("-----------------------------------------------------------");
+			verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
+			if (!verifyElementPresent2(InstaLoanOptionalJourney.objPayNowBtnAtHomePage, "Pay Now Button")) {
+				waitTime(120000);
+				verifyElementPresentAndClick(InstaLoanOptionalJourney.objUPITab, "UPI Tab");
+				waitTime(90000);
 				Back(1);
 			}
+			int EMIDueDatesInInteger = 0;
+			int count = 1;
+			for (int i = 0; i < count; i++) {
+				if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
+					verifyElementPresentAndClick(InstaLoanPage.objViewDetails,getText(InstaLoanPage.objViewDetails) + " Button");
+					String EMIDueDates = getText(InstaLoanOptionalJourney.objEMIDueDays);
+					EMIDueDatesInInteger = convertToInt(EMIDueDates);
+					if (EMIDueDatesInInteger == 62) {
+						List<WebElement> installmentDisbursed = getDriver().findElements(InstaLoanOptionalJourney.objInstallment);
+						for (WebElement web : installmentDisbursed) {
+							String installment = web.getText();
+							if (installment.equalsIgnoreCase("2nd installment")) {
+								verifyElementPresent(InstaLoanOptionalJourney.objEMIDueDays,getText(InstaLoanOptionalJourney.objEMIDueDays));
+								verifyElementPresent(InstaLoanOptionalJourney.objTenureDates,getText(InstaLoanOptionalJourney.objTenureDates));
+								verifyElementPresent(InstaLoanOptionalJourney.objAmtToBePaid,getText(InstaLoanOptionalJourney.objAmtToBePaid));
+								logger.info("TC_Insta_loan_62 - To verify  for 62 days loan EMI");
+								extent.extentLoggerPass("TC_Insta_loan_62","TC_Insta_loan_62 - To verify  for 62 days loan EMI");
 
-		} else {
-			logger.info("On Hold status is not displayed");
-		}
-		softAssertion.assertAll();
-	}
+								logger.info("TC_Insta_loan_95 - To verify  for 62 days loan EMI");
+								extent.extentLoggerPass("TC_Insta_loan_95","TC_Insta_loan_95 - To verify  for 62 days loan EMI");
 
-	public void transactionValidation() throws Exception {
-		extent.HeaderChildNode("Transaction Validation");
-		if (verifyElementPresent(HomePage.objScanAndPay, "Scan and Pay Button")) {
-			click(HomePage.objScanAndPay, "Scan and Pay Button");
-			verifyElementPresent(HomePage.objScanAnyQRToPay, "Scan Any QR To Pay");
+								logger.info("TC_Insta_loan_161 - To verify  for 62 days loan EMI");
+								extent.extentLoggerPass("TC_Insta_loan_161","TC_Insta_loan_161 - To verify  for 62 days loan EMI");
+							}
+						}
+					}
+				}
+				verifyElementPresentAndClick(InstaLoanOptionalJourney.objDayEMI,getText(InstaLoanOptionalJourney.objDayEMI));
+				explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
+				verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
+				waitTime(20000);
+				verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
+				addNewCard();
 
-			scannQRSwitch();
-			verifyElementPresent(InstaLoanOptionalJourney.objScanAndPayPage,
-					getTextVal(InstaLoanOptionalJourney.objScanAndPayPage, "Text"));
-			logger.info("TC_Insta_loan_66 - To verify transaction will be initiated after KYC is completed");
-			extent.extentLoggerPass("TC_Insta_loan_66",
-					"TC_Insta_loan_66 - To verify transaction will be initiated after KYC is completed");
+				if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
+					count++;
+				} else {
+					break;
+				}
+			}
+
+			System.out.println("------------------------------3 months loan EMI--------------------------");
+			getDriver().resetApp();
+			instalonAPIKycVerification();
+			loginOnboarding("1");
+			mobileNoValidation1(mobileNumber);
+			enterOtp(prop.getproperty("OTP"));
+			readAndAccept();
+			waitTime(30000);
+			instaUserDetails(firstName, lastName, mothersName, email, gender);
+			instaNewCommunicationAddress();
+			waitTime(5000);
+			instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2412", "2319");
+			panCardDetails();
+			waitTime(5000);
+			instaLoancongratsScreen("Congrats");
+			instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
+			waitTime(5000);
+			verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
+			verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
+			click(InstaLoanPage.objOkayGotIt, "Okay, Got It!");
+			Swipe("up", 2);
+			click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
+			waitTime(10000);
+
+			basicDetails();
+			click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
+			verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
+			verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
+			waitTime(90000);
+			verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
+			waitTime(90000);
+			int EMIDueDatesInInteger1 = 0;
+			int count3MonthEMI = 1;
+			for (int i = 0; i < count3MonthEMI; i++) {
+				if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
+					verifyElementPresentAndClick(InstaLoanPage.objViewDetails,getText(InstaLoanPage.objViewDetails) + " Button");
+					String EMIDueDates = getText(InstaLoanOptionalJourney.objEMIDueDays);
+					EMIDueDatesInInteger1 = convertToInt(EMIDueDates);
+					if (EMIDueDatesInInteger1 == 90) {
+						List<WebElement> installmentDisbursed = getDriver().findElements(InstaLoanOptionalJourney.objInstallment);
+						for (WebElement web : installmentDisbursed) {
+							String installment = web.getText();
+							if (installment.equalsIgnoreCase("3rd installment")) {
+								verifyElementPresent(InstaLoanOptionalJourney.objEMIDueDays,getText(InstaLoanOptionalJourney.objEMIDueDays));
+								verifyElementPresent(InstaLoanOptionalJourney.objTenureDates,getText(InstaLoanOptionalJourney.objTenureDates));
+								verifyElementPresent(InstaLoanOptionalJourney.objAmtToBePaid,getText(InstaLoanOptionalJourney.objAmtToBePaid));
+								logger.info("TC_Insta_loan_63 - To verify  for 3 months loan EMI");
+								extent.extentLoggerPass("TC_Insta_loan_63","TC_Insta_loan_63 - To verify  for 3 months loan EMI");
+
+								logger.info("TC_Insta_loan_96 - To verify  for 3 months loan EMI");
+								extent.extentLoggerPass("TC_Insta_loan_96","TC_Insta_loan_96 - To verify  for 3 months loan EMI");
+
+								logger.info("TC_Insta_loan_162 - To verify  for 3 months loan EMI");
+								extent.extentLoggerPass("TC_Insta_loan_162","TC_Insta_loan_162 - To verify  for 3 months loan EMI");
+							}
+						}
+					}
+				}
+				verifyElementPresentAndClick(InstaLoanOptionalJourney.objDayEMI,getText(InstaLoanOptionalJourney.objDayEMI));
+				explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
+				verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
+				waitTime(20000);
+				verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
+				addNewCard();
+				if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
+					count3MonthEMI++;
+				} else {
+					break;
+				}
+			}
+			executeUpdateFatherName("Update db_tradofina.instaloan_whitelisted_users set eligible_type='MANDATORY' where user_reference_number='"+ userReferenceNo + "';","Select * from db_tradofina.instaloan_whitelisted_users where user_reference_number='" + userReferenceNo+ "';");
+			waitTime(5000);
+			Swipe("DOWN", 2);
+
+			verifyElementPresent(InstaLoanOptionalJourney.objReApplyInstaLoan,getText(InstaLoanOptionalJourney.objReApplyInstaLoan));
+			verifyElementPresentAndClick(InstaLoanPage.objApplyNowBtn, "ReApply Button");
+
+			verifyElementPresentAndClick(InstaLoanPage.objSelectAddress, "Select Address Dropdown");
+			waitTime(2000);
+			verifyElementPresentAndClick(InstaLoanPage.objAddressSelected, getText(InstaLoanPage.objAddressSelected));
+			verifyElementPresentAndClick(RingUserDetailPage.objRegisterBtn, "Proceed Button");
+
+			verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page");
+			click(InstaLoanOptionalJourney.objAddBankDetails,getTextVal(InstaLoanOptionalJourney.objAddBankDetails, "Text"));
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objExistingBankContinue,"Existing Bank Account Continue Button");
+
+			click(InstaLoanPage.objAcceptCheckBox, getText(InstaLoanPage.objAcceptCheckBox));
+			verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
+			verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
+			waitTime(90000);
+			verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
+			waitTime(30000);
+
+			explicitWaitVisibility(InstaLoanPage.objInstaLoanAmountApproved, 10);
+			verifyElementPresentAndClick(InstaLoanPage.objViewDetails, getText(InstaLoanPage.objViewDetails) + " Button");
+			click(InstaLoanPage.objPayFullAmountRadioBtn, "Pay Full Amount RadioButton");
+			verifyElementPresentAndClick(InstaLoanPage.objPayNowBtn, getText(InstaLoanPage.objPayNowBtn) + " Button");
+			explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
+			verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
+			waitTime(20000);
+			verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
+			addNewCard();
+			verifyElementPresent(InstaLoanOptionalJourney.objLimitPausedForMandatoryEligiblityType,getText(InstaLoanOptionalJourney.objLimitPausedForMandatoryEligiblityType));
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objQRScanner, "QR Code Scann Button");
+			verifyElementPresent(InstaLoanOptionalJourney.objSorryMsgInstaLoanApproved,getText(InstaLoanOptionalJourney.objSorryMsgInstaLoanApproved)+ getText(InstaLoanOptionalJourney.objSorryMsgInstaLoanApprovedCurrentlyUnavailable));
+			logger.info("TC_Insta_loan_75 - To verify when the user loan is closed and change the eligible type to mandatory for repeat journey");
+			extent.extentLoggerPass("TC_Insta_loan_75","TC_Insta_loan_75 - To verify when the user loan is closed and change the eligible type to mandatory for repeat journey");
+
+			System.out.println("------------------------------6 months loan EMI--------------------------");
+			getDriver().resetApp();
+			instalonAPIKycVerification();
+			loginOnboarding("1");
+			mobileNoValidation1(mobileNumber);
+			enterOtp(prop.getproperty("OTP"));
+			readAndAccept();
+			waitTime(30000);
+			instaUserDetails(firstName, lastName, mothersName, email, gender);
+			instaNewCommunicationAddress();
+			waitTime(5000);
+			instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "OPTIONAL", "13000", "2319", "2319");
+			panCardDetails();
+			waitTime(5000);
+			instaLoancongratsScreen("Congrats");
+			instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
+			waitTime(5000);
+			verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
+			verifyElementPresentAndClick(InstaLoanPage.instaPopupBannerCrossBtn, "Cross Button");
+			click(InstaLoanPage.objOkayGotIt, "Okay, Got It!");
+			transactionValidation();
+
+			Swipe("up", 2);
+			click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
+			waitTime(10000);
+
+			basicDetails();
+			waitTime(10000);
+			boolean IacceptCheckBoxNotClicked = getDriver().findElement(InstaLoanPage.objAcceptCheckBox).isSelected();
+			verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
+			String toast = getText(InstaLoanOptionalJourney.objScanAndPayToastMsg);
+			logger.info(toast);
+			extent.extentLogger("Toast Msg", toast);
+
+			click(InstaLoanPage.objAcceptCheckBox, "CheckBox");
+			verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
+			boolean importantPopupMsg = verifyElementPresent(InstaLoanOptionalJourney.objRingLimitpausedPopup,getText(InstaLoanOptionalJourney.objRingLimitpausedPopup));
+			boolean ringLimitPausedpopup = verifyElementPresent(InstaLoanOptionalJourney.objRingLimitPausedTextPopup,getText(InstaLoanOptionalJourney.objRingLimitPausedTextPopup));
+			boolean confirmOfferBtn = verifyElementPresent(InstaLoanPage.objConfirmOfferBtn,getText(InstaLoanPage.objConfirmOfferBtn));
+			verifyElementPresentAndClick(InstaLoanPage.objConfirmOfferBtn, getText(InstaLoanPage.objConfirmOfferBtn));
+			if (IacceptCheckBoxNotClicked == false && confirmOfferBtn == true && importantPopupMsg == true && ringLimitPausedpopup == true) {
+				logger.info("TC_Insta_loan_65 - To verify terms and conditions data to check");
+				extent.extentLoggerPass("TC_Insta_loan_65","TC_Insta_loan_65 - To verify terms and conditions data to check");
+
+				logger.info("TC_Insta_loan_71 - To verify, Pop -up of deactivating Ring limit is shown once user click on 'Accept offer'");
+				extent.extentLoggerPass("TC_Insta_loan_71","To verify, Pop -up of deactivating Ring limit is shown once user click on 'Accept offer'");
+			}
+			waitTime(120000);
+			verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
+
+			verifyElementPresent(InstaLoanOptionalJourney.objRingLimitPaused,getText(InstaLoanOptionalJourney.objRingLimitPaused));
+			String FAStatus = executeQuery3("SELECT * FROM db_tradofina.line_application where user_reference_number='" + userReferenceNo + "';",7);
+			System.out.println(FAStatus);
+			softAssertion.assertEquals(FAStatus, "FINAL_APPROVED");
+			logger.info("TC_Insta_loan_72 - To verify status should be changed to FA when user accept offer");
+			extent.extentLoggerPass("TC_Insta_loan_72","TC_Insta_loan_72 - To verify status should be changed to FA when user accept offer");
+
+			boolean inProcessStatus = verifyElementPresent(InstaLoanOptionalJourney.objInProcessStatus,getText(InstaLoanOptionalJourney.objInProcessStatus));
+			if (!verifyElementPresent2(InstaLoanOptionalJourney.objPayNowBtnAtHomePage, "Pay Now Button")) {
+				waitTime(120000);
+				verifyElementPresentAndClick(InstaLoanOptionalJourney.objUPITab, "UPI Tab");
+				waitTime(90000);
+				Back(1);
+			}
+			boolean disbursedStatus = verifyElementPresent(InstaLoanOptionalJourney.objDisbursedStatus,getText(InstaLoanOptionalJourney.objDisbursedStatus));
+			if (inProcessStatus == true && disbursedStatus == true) {
+				logger.info("TC_Insta_loan_73 - To verify different disbursement status are working");
+				extent.extentLoggerPass("TC_Insta_loan_73","TC_Insta_loan_73 - To verify different disbursement status are working");
+			}
+
+			int EMIDueDatesInInteger2 = 0;
+			int count6MonthEMI = 1;
+			for (int i = 0; i < count6MonthEMI; i++) {
+				if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
+					verifyElementPresentAndClick(InstaLoanPage.objViewDetails,getText(InstaLoanPage.objViewDetails) + " Button");
+					String EMIDueDates = getText(InstaLoanOptionalJourney.objEMIDueDays);
+					EMIDueDatesInInteger2 = convertToInt(EMIDueDates);
+					waitTime(3000);
+					Swipe("up", 1);
+					if (EMIDueDatesInInteger2 == 181) {
+						List<WebElement> installmentDisbursed = getDriver().findElements(InstaLoanOptionalJourney.objInstallment);
+						for (WebElement web : installmentDisbursed) {
+							String installment = web.getText();
+
+							if (installment.equalsIgnoreCase("6th installment")) {
+								verifyElementPresent(InstaLoanOptionalJourney.objEMIDueDays,getText(InstaLoanOptionalJourney.objEMIDueDays));
+								verifyElementPresent(InstaLoanOptionalJourney.objTenureDates,getText(InstaLoanOptionalJourney.objTenureDates));
+								verifyElementPresent(InstaLoanOptionalJourney.objAmtToBePaid,getText(InstaLoanOptionalJourney.objAmtToBePaid));
+								logger.info("TC_Insta_loan_64 - To verify  for 6 months loan EMI");
+								extent.extentLoggerPass("TC_Insta_loan_64","TC_Insta_loan_64 - To verify  for 6 months loan EMI");
+
+								logger.info("TC_Insta_loan_97 - To verify  for 6 months loan EMI");
+								extent.extentLoggerPass("TC_Insta_loan_97","TC_Insta_loan_97 - To verify  for 6 months loan EMI");
+
+								logger.info("TC_Insta_loan_163 - To verify  for 6 months loan EMI");
+								extent.extentLoggerPass("TC_Insta_loan_163","TC_Insta_loan_163 - To verify  for 6 months loan EMI");
+							}
+						}
+					}
+				}
+				verifyElementPresentAndClick(InstaLoanOptionalJourney.objDayEMI,getText(InstaLoanOptionalJourney.objDayEMI));
+				explicitWaitVisibility(InstaLoanPage.objNetBankingDebitCard, 20);
+				verifyElementPresentAndClick(InstaLoanPage.objNetBankingDebitCard,getText(InstaLoanPage.objNetBankingDebitCard) + " Chip");
+				waitTime(20000);
+				verifyElementPresentAndClick(InstaLoanPage.objCard, "Card chip");
+				addNewCard();
+				if (verifyElementPresent2(InstaLoanPage.objViewDetails, "View Details")) {
+					count6MonthEMI++;
+				} else {
+					break;
+				}
+			}
+
+			verifyElementPresent(InstaLoanOptionalJourney.objAvailableLimit,getText(InstaLoanOptionalJourney.objAvailableLimit));
+			logger.info("TC_Insta_loan_74 - After repayment of previous insta loan ring limit should get active");
+			extent.extentLoggerPass("TC_Insta_loan_74","TC_Insta_loan_74 - After repayment of previous insta loan ring limit should get active");
+
+			explicitWaitVisibility(HomePage.objHome, 10);
+			String sHomeTxt = getText(HomePage.objHome);
+			softAssertion.assertEquals(sHomeTxt, "Home");
+			logger.info("Navigated to Home Page");
+			extent.extentLoggerPass("Home Page", "Navigated to Home Page");
+			waitTime(2000);
+			Swipe("DOWN", 2);
+
+			verifyElementPresent(InstaLoanOptionalJourney.objReApplyInstaLoan,getText(InstaLoanOptionalJourney.objReApplyInstaLoan));
+			logger.info("TC_Insta_loan_76 - To verify when the user repays the loan amount or closed the Loan and Reapply for  insta loan then banner should be visible on the homepage ");
+			extent.extentLoggerPass("TC_Insta_loan_76","TC_Insta_loan_76 - To verify when the user repays the loan amount or closed the Loan and Reapply for  insta loan then banner should be visible on the homepage ");
+
+			verifyElementPresentAndClick(InstaLoanPage.objApplyNowBtn, "ReApply Button");
+
+			verifyElementPresentAndClick(InstaLoanPage.objSelectAddress, "Select Address Dropdown");
+			verifyElementPresentAndClick(InstaLoanPage.objAddressSelected, getText(InstaLoanPage.objAddressSelected));
+			verifyElementPresentAndClick(RingUserDetailPage.objRegisterBtn, "Proceed Button");
+
+			verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page");
+			if (verifyElementPresent(InstaLoanPage.objAddBankButton, getText(InstaLoanPage.objAddBankButton))) {
+				click(InstaLoanOptionalJourney.objAddBankDetails,getTextVal(InstaLoanOptionalJourney.objAddBankDetails, "Text"));
+				if (verifyElementPresent(InstaLoanOptionalJourney.objExistingBankAcc,getTextVal(InstaLoanOptionalJourney.objExistingBankAcc, "Text"))) {
+					logger.info("TC_Insta_loan_68 - Existing Bank Accounts are displayed After clicking on Add Bank Details");
+					extent.extentLoggerPass("TC_Insta_loan_68","TC_Insta_loan_68 -  Existing Bank Accounts are displayed After clicking on Add Bank Details");
+					System.out.println("-----------------------------------------------------------");
+
+					verifyElementPresent(InstaLoanOptionalJourney.objApproved,getTextVal(InstaLoanOptionalJourney.objApproved, "Text"));
+					logger.info("TC_Insta_loan_69 - Bank should be added on bank name match percent");
+					extent.extentLoggerPass("TC_Insta_loan_69","TC_Insta_loan_69, Bank should be added on bank name match percent");
+					System.out.println("-----------------------------------------------------------");
+				}
+			}
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objAddNewBankAccount,getText(InstaLoanOptionalJourney.objAddNewBankAccount) + " Button");
+			addbankAccount("6" + RandomIntegerGenerator(4), firstName + " " + lastName);
+			explicitWaitVisibility(BankTransferModule.objBottomSheetPopup, 10);
+			verifyElementExist(BankTransferModule.objBottomSheetPopup, "Verify Bank Details Pop Up");
+			click(BankTransferModule.objConfirmBtn, "Confirm Button");
+			if (verifyElementPresent(InstaLoanOptionalJourney.objUnableToAddAcc,getTextVal(InstaLoanOptionalJourney.objUnableToAddAcc, "Text"))) {
+				click(InstaLoanOptionalJourney.objOkGotIt2, getTextVal(InstaLoanOptionalJourney.objOkGotIt2, "Text"));
+			}
+			Swipe("up", 2);
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objContinue1, "Continue Button");
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objAddBankDetails,getTextVal(InstaLoanOptionalJourney.objAddBankDetails, "Text"));
+
+			verifyElementPresent(InstaLoanOptionalJourney.objExistingBankAcc,getTextVal(InstaLoanOptionalJourney.objExistingBankAcc, "Text"));
+			verifyElementPresent(InstaLoanOptionalJourney.objRejected,getTextVal(InstaLoanOptionalJourney.objRejected, "Status of Accunt"));
+			logger.info("TC_Insta_loan_70 - Bank should be reject on bank name match percent");
+			extent.extentLoggerPass("TC_Insta_loan_70","TC_Insta_loan_70, Bank should be reject on bank name match percent");
 			System.out.println("-----------------------------------------------------------");
 
-			Back(1);
-			waitTime(3000);
-			Back(1);
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objYesButton,
-					getTextVal(InstaLoanOptionalJourney.objYesButton, "Text"));
-			explicitWaitVisibility(HomePage.objHome, 10);
-			String sHome = getText(HomePage.objHome);
-			softAssertion.assertEquals(sHome, "Home");
-			logger.info("Navigated to Home Page");
 		}
-	}
+
+		public void instaLoanOnHold() throws Exception {
+			extent.HeaderChildNode("Insta Loan OnHold Status");
+			instalonAPIKycVerification();
+			loginOnboarding("1");
+			mobileNoValidation1(mobileNumber);
+			enterOtp(prop.getproperty("OTP"));
+			readAndAccept();
+			waitTime(30000);
+			instaUserDetails(firstName, lastName, mothersName, email, gender);
+			instaNewCommunicationAddress();
+			waitTime(5000);
+			instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "MANDATORY", "13000", "2311", "2319");
+			panCardDetails();
+			waitTime(5000);
+			instaLoancongratsScreen("Congrats");
+			instaLoanSetPin(prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"));
+			waitTime(5000);
+			verifyElementPresentAndClick(RingUserDetailPage.objCrossBtn, "Cross Button");
+			waitTime(2000);
+			instaLoanCoachPopup();
+			Swipe("up", 2);
+			click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
+
+			waitTime(5000);
+			click(InstaLoanPage.objFatherName, "Father Name Field");
+			type(InstaLoanPage.objFatherName, "Arun", "Father Name Field");
+			waitTime(5000);
+			verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
+			click(InstaLoanPage.objProceedBtn, "Proceed Button");
+			verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
+			verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
+			waitTime(10000);
+			verifyElementPresentAndClick(InstaLoanPage.objSelectAddress, "Select Address Dropdown");
+			verifyElementPresentAndClick(InstaLoanPage.objAddressSelected, getText(InstaLoanPage.objAddressSelected));
+			verifyElementPresentAndClick(RingUserDetailPage.objRegisterBtn, "Proceed Button");
+			verifyElementPresent(InstaLoanPage.objOfferHeader, getText(InstaLoanPage.objOfferHeader) + "Header");
+			verifyElementPresent(InstaLoanPage.objEligible,getText(InstaLoanPage.objEligible) + getText(InstaLoanPage.objEligibleInstaLoanAmt));
+			verifyElementPresentAndClick(InstaLoanPage.objAddBankButton, getText(InstaLoanPage.objAddBankButton));
+			String BankAccount = addbankAccount("5" + RandomIntegerGenerator(4), firstName + " " + lastName);
+			updateBankAccStatus("ONHOLD", BankAccount, userReferenceNo);
+
+			String cond_ApprovedStatus = executeQuery3("SELECT * FROM db_tradofina.user_attributes where user_reference_number='" + userReferenceNo + "';",51);
+			System.out.println(cond_ApprovedStatus);
+			softAssertion.assertEquals(cond_ApprovedStatus, "COND_APPROVED");
+			logger.info("TC_Insta_loan_67 - To verify transaction will be CA before loading offer page");
+			extent.extentLoggerPass("TC_Insta_loan_67","TC_Insta_loan_67 - To verify transaction will be CA before loading offer page");
+
+			verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
+			click(InstaLoanPage.objAcceptCheckBox, "CheckBox");
+			verifyElementPresentAndClick(InstaLoanPage.objAcceptOffer, getText(InstaLoanPage.objAcceptOffer));
+			waitTime(120000);
+			verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
+			if (!verifyElementPresent2(InstaLoanOptionalJourney.objPayNowBtnAtHomePage, "Pay Now Button")) {
+				waitTime(120000);
+				verifyElementPresentAndClick(InstaLoanOptionalJourney.objUPITab, "UPI Tab");
+				waitTime(90000);
+				Back(1);
+			}
+			if (verifyElementPresent(InstaLoanHomePage.objOnHold, "On Hold Status")) {
+				verifyElementPresentAndClick(InstaLoanHomePage.objViewDetails,getTextVal(InstaLoanHomePage.objViewDetails, "Link"));
+				explicitWaitVisibility(InstaLoanHomePage.objDisbursementOnHold, 10);
+				if (verifyElementPresent(InstaLoanHomePage.objDisbursementOnHold,getTextVal(InstaLoanHomePage.objDisbursementOnHold, "Text"))) {
+					verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementStructure,getTextVal(InstaLoanViewDetailsPage.objDisbursementStructure, "Text"));
+					verifyElementPresent(InstaLoanViewDetailsPage.objApprovedInstaLoan,getTextVal(InstaLoanViewDetailsPage.objApprovedInstaLoan, "Text"));
+					verifyElementPresent(InstaLoanViewDetailsPage.objApprovedInstaLoanAmount,getTextVal(InstaLoanViewDetailsPage.objApprovedInstaLoanAmount, "Text"));
+					verifyElementPresent(InstaLoanViewDetailsPage.objProcessingFee,getTextVal(InstaLoanViewDetailsPage.objProcessingFee, "Text"));
+					verifyElementPresent(InstaLoanViewDetailsPage.objProcessingFeeAmount,getTextVal(InstaLoanViewDetailsPage.objProcessingFeeAmount, "Amount"));
+					verifyElementPresent(InstaLoanViewDetailsPage.objGST,getTextVal(InstaLoanViewDetailsPage.objGST, "Text"));
+					verifyElementPresent(InstaLoanViewDetailsPage.objGSTAmount,getTextVal(InstaLoanViewDetailsPage.objGSTAmount, "Amount"));
+					verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementAmountTxt,getTextVal(InstaLoanViewDetailsPage.objDisbursementAmountTxt, "Text"));
+					verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementAmount,getTextVal(InstaLoanViewDetailsPage.objDisbursementAmount, "Amount"));
+					logger.info("TC_Insta_loan_73, Disbursement On Hold screen is validated");
+					extent.extentLoggerPass("TC_Insta_loan_73","TC_Insta_loan_73, Disbursement On Hold screen is validated");
+					System.out.println("-----------------------------------------------------------");
+					Back(1);
+				}
+			}
+		}
+
+		public void transactionValidation() throws Exception {
+			extent.HeaderChildNode("Transaction Validation");
+			if (verifyElementPresent(HomePage.objScanAndPay, "Scan and Pay Button")) {
+				click(HomePage.objScanAndPay, "Scan and Pay Button");
+				verifyElementPresent(HomePage.objScanAnyQRToPay, "Scan Any QR To Pay");
+
+				scannQRSwitch();
+				verifyElementPresent(InstaLoanOptionalJourney.objScanAndPayPage,getTextVal(InstaLoanOptionalJourney.objScanAndPayPage, "Text"));
+				logger.info("TC_Insta_loan_66 - To verify transaction will be initiated after KYC is completed");
+				extent.extentLoggerPass("TC_Insta_loan_66","TC_Insta_loan_66 - To verify transaction will be initiated after KYC is completed");
+				System.out.println("-----------------------------------------------------------");
+
+				Back(1);
+				waitTime(3000);
+				Back(1);
+				verifyElementPresentAndClick(InstaLoanOptionalJourney.objYesButton,getTextVal(InstaLoanOptionalJourney.objYesButton, "Text"));
+				explicitWaitVisibility(HomePage.objHome, 10);
+				String sHome = getText(HomePage.objHome);
+				softAssertion.assertEquals(sHome, "Home");
+				logger.info("Navigated to Home Page");
+			}
+		}
+//============================================InstaLoan Optional journey End==========================================================================
 
 	public void scannQRSwitch() {
 		// Scan here
@@ -7887,8 +7268,7 @@ public class RingPayBusinessLogic extends Utilities {
 		initDriver();
 	}
 
-	// -----------------------------Instaloan Optional Journey End---------------------------//
-	// ---------------------------------Pulkit Code End------------------------------------//
+// ---------------------------------Pulkit Code End------------------------------------//
 	public void instaLoancongratsScreen(String offer) throws Exception {
 		switch (offer) {
 		case "Congrats":
@@ -7952,11 +7332,9 @@ public class RingPayBusinessLogic extends Utilities {
 //--------------------------------------------Pulkit Code End------------------------------------//
 	
 //--------------------------------------------TShashi Code Start----------------------------------//
-	//========================HomeScrean Scenario Start==============================================//
+//======================================================HomeScrean Scenario Start==================================================================//
 
 	public void instaLoanWhitelistOnBoarding() throws Exception {
-		extent.HeaderChildNode("WhiteList Logic");
-		mockUserAPI();
 		instalonAPIKycVerification();		
 		loginOnboarding("1");
 		mobileNoValidation1(mobileNumber);
@@ -8073,9 +7451,7 @@ public class RingPayBusinessLogic extends Utilities {
 		ringPayLogout();
 
 	}
-//======================================instaLoan Disbursed HomePage==========================================//
-	
-	
+//===============================================instaLoan Disbursed HomePage=================================================================//
 	
 	public void instaLoanDisbursedHomePage() throws Exception {
 		extent.HeaderChildNode("Insta Loan Disbursed Home Page Validation");
@@ -8117,7 +7493,7 @@ public class RingPayBusinessLogic extends Utilities {
 		}
 
 		if (verifyElementPresent(InstaLoanHomePage.objViewDetails, getTextVal(InstaLoanHomePage.objViewDetails, "Text"))) {
-			Aclick(InstaLoanHomePage.objViewDetails, "View Details");
+			click(InstaLoanHomePage.objViewDetails, "View Details");
 			if (verifyElementPresent(InstaLoanViewDetailsPage.objInstaLoan, getTextVal(InstaLoanViewDetailsPage.objInstaLoan, "Text"))) {
 				String sInstaLoan = getText(InstaLoanViewDetailsPage.objInstaLoan);
 				softAssertion.assertEquals(sInstaLoan, "Insta Loan");
@@ -8136,7 +7512,7 @@ public class RingPayBusinessLogic extends Utilities {
 			}
 		}
 		if (verifyElementPresent(InstaLoanHomePage.objPayNow, getTextVal(InstaLoanHomePage.objPayNow, "Text"))) {
-			Aclick(InstaLoanHomePage.objPayNow, "Pay Now Button");
+			click(InstaLoanHomePage.objPayNow, "Pay Now Button");
 			if (verifyElementPresent(InstaLoanHomePage.objPayment, getTextVal(InstaLoanHomePage.objPayment, "Text"))) {
 				verifyElementPresent(PayEarlyPaymentPage.objAmountDue, getTextVal(PayEarlyPaymentPage.objAmountDue, "Text"));
 				verifyElementPresent(PayEarlyPaymentPage.objAmountToBePaid, getTextVal(PayEarlyPaymentPage.objAmountToBePaid, "Text"));
@@ -8157,7 +7533,7 @@ public class RingPayBusinessLogic extends Utilities {
 			}
 		}
 		if (verifyElementPresent(HomePage.objScanAndPay, "Scan And Pay Button")) {
-			Aclick(HomePage.objScanAndPay, "Scan and Pay Button");
+			click(HomePage.objScanAndPay, "Scan and Pay Button");
 			if (verifyElementPresent(InstaLoanHomePage.objLimitPausedPopup, getTextVal(InstaLoanHomePage.objLimitPausedPopup, "Text"))) {
 				verifyElementPresentAndClick(InstaLoanHomePage.objOkGotIt, getTextVal(InstaLoanHomePage.objOkGotIt, "Text"));
 				explicitWaitVisibility(HomePage.objHome, 10);
@@ -8171,8 +7547,7 @@ public class RingPayBusinessLogic extends Utilities {
 			System.out.println("-----------------------------------------------------------");
 		}
 		if (verifyElementPresent(HomePage.objMore, getTextVal(HomePage.objMore, "Text"))) {
-			Aclick(HomePage.objMore, "More Button");
-			;
+			click(HomePage.objMore, "More Button");
 			verifyElementPresentAndClick(InstaLoanHomePage.objBankTransfer, getTextVal(InstaLoanHomePage.objBankTransfer, "Text"));
 			if (verifyElementPresent(InstaLoanHomePage.objLimitPausedPopup, getTextVal(InstaLoanHomePage.objLimitPausedPopup, "Text"))) {
 				verifyElementPresentAndClick(InstaLoanHomePage.objOkGotIt, getTextVal(InstaLoanHomePage.objOkGotIt, "Text"));
@@ -8192,13 +7567,8 @@ public class RingPayBusinessLogic extends Utilities {
 	}
 
 
-//================================ insta Loan InProcess Status =============================================//
-
-
-	
-//=========================== Backdated ======================================================//
-
-
+//==================================================== instaLoan InProcess Status==============================================================//
+//========================================================== Backdated =======================================================================//
 	public void backDatedScenario() throws Exception {
 		extent.HeaderChildNode("Insta Loan Approval Journey");
 		getDriver().resetApp();
@@ -8422,10 +7792,7 @@ public class RingPayBusinessLogic extends Utilities {
 				System.out.println("-----------------------------------------------------------");
 			}
 		}
-
 	}
-
-
 	public String backDate(int x){
 		Calendar cal = Calendar.getInstance();
 		LocalDate TodayDate = LocalDate.now();
@@ -8439,19 +7806,8 @@ public class RingPayBusinessLogic extends Utilities {
 		System.out.println("Converted String: " + strDate);
 		return strDate;
 	}
-
-
-
-
-
-
-
-	
-	//========================HomeScrean Scenario End==============================================//
-	
-	
-
-	// =========================FeedBack Validation Start==================================//
+//======================================================HomeScrean Scenario End==================================================================//
+// ==============================================================FeedBack Validation Start==================================//
 
 	public void feedBackValidationWithGlobalFlag() throws Exception {
 		extent.HeaderChildNode("FeedBack Validation With Global Flag");
@@ -8914,44 +8270,27 @@ public class RingPayBusinessLogic extends Utilities {
 		if (verifyElementPresent(InstaLoanViewDetailsPage.objInProcess, "InProcess")) {
 			String sInProcess = getText(InstaLoanViewDetailsPage.objInProcess);
 			softAssertion.assertEquals(sInProcess, "In Process");
-			verifyElementPresentAndClick(InstaLoanHomePage.objViewDetails,
-					getTextVal(InstaLoanHomePage.objViewDetails, "Link"));
-			if (verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementInProcess,
-					getTextVal(InstaLoanViewDetailsPage.objDisbursementInProcess, "Text"))) {
-				verifyElementPresent(InstaLoanViewDetailsPage.objInProcessAmount,
-						getTextVal(InstaLoanViewDetailsPage.objInProcessAmount, "Amount"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementStructure,
-						getTextVal(InstaLoanViewDetailsPage.objDisbursementStructure, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objApprovedInstaLoan,
-						getTextVal(InstaLoanViewDetailsPage.objApprovedInstaLoan, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objApprovedInstaLoanAmount,
-						getTextVal(InstaLoanViewDetailsPage.objApprovedInstaLoanAmount, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objProcessingFee,
-						getTextVal(InstaLoanViewDetailsPage.objProcessingFee, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objProcessingFeeAmount,
-						getTextVal(InstaLoanViewDetailsPage.objProcessingFeeAmount, "Amount"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objActivationFee,
-						getTextVal(InstaLoanViewDetailsPage.objActivationFee, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objActivationFeeAmount,
-						getTextVal(InstaLoanViewDetailsPage.objActivationFeeAmount, "Amount"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objGST,
-						getTextVal(InstaLoanViewDetailsPage.objGST, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objGSTAmount,
-						getTextVal(InstaLoanViewDetailsPage.objGSTAmount, "Amount"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementAmountTxt,
-						getTextVal(InstaLoanViewDetailsPage.objDisbursementAmountTxt, "Text"));
-				verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementAmount,
-						getTextVal(InstaLoanViewDetailsPage.objDisbursementAmount, "Amount"));
+			verifyElementPresentAndClick(InstaLoanHomePage.objViewDetails,getTextVal(InstaLoanHomePage.objViewDetails, "Link"));
+			if (verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementInProcess,getTextVal(InstaLoanViewDetailsPage.objDisbursementInProcess, "Text"))) {
+				verifyElementPresent(InstaLoanViewDetailsPage.objInProcessAmount,getTextVal(InstaLoanViewDetailsPage.objInProcessAmount, "Amount"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementStructure,getTextVal(InstaLoanViewDetailsPage.objDisbursementStructure, "Text"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objApprovedInstaLoan,getTextVal(InstaLoanViewDetailsPage.objApprovedInstaLoan, "Text"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objApprovedInstaLoanAmount,getTextVal(InstaLoanViewDetailsPage.objApprovedInstaLoanAmount, "Text"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objProcessingFee,getTextVal(InstaLoanViewDetailsPage.objProcessingFee, "Text"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objProcessingFeeAmount,getTextVal(InstaLoanViewDetailsPage.objProcessingFeeAmount, "Amount"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objActivationFee,getTextVal(InstaLoanViewDetailsPage.objActivationFee, "Text"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objActivationFeeAmount,getTextVal(InstaLoanViewDetailsPage.objActivationFeeAmount, "Amount"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objGST,getTextVal(InstaLoanViewDetailsPage.objGST, "Text"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objGSTAmount,getTextVal(InstaLoanViewDetailsPage.objGSTAmount, "Amount"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementAmountTxt,getTextVal(InstaLoanViewDetailsPage.objDisbursementAmountTxt, "Text"));
+				verifyElementPresent(InstaLoanViewDetailsPage.objDisbursementAmount,getTextVal(InstaLoanViewDetailsPage.objDisbursementAmount, "Amount"));
 				logger.info("TC_Insta_loan_25, Disbursement in process screen is validated");
-				extent.extentLoggerPass("TC_Insta_loan_25",
-						"TC_Insta_loan_25, Disbursement in process screen is validated");
+				extent.extentLoggerPass("TC_Insta_loan_25","TC_Insta_loan_25, Disbursement in process screen is validated");
 				System.out.println("-----------------------------------------------------------");
 				Back(1);
 			}
-			if (verifyElementPresent(InstaLoanViewDetailsPage.objLimitPaused,
-					getTextVal(InstaLoanViewDetailsPage.objLimitPaused, "Text"))) {
-				verifyElementPresent(InstaLoanViewDetailsPage.objLimitPausedMsg,
-						getTextVal(InstaLoanViewDetailsPage.objLimitPausedMsg, "Message"));
+			if (verifyElementPresent(InstaLoanViewDetailsPage.objLimitPaused,getTextVal(InstaLoanViewDetailsPage.objLimitPaused, "Text"))) {
+				verifyElementPresent(InstaLoanViewDetailsPage.objLimitPausedMsg,getTextVal(InstaLoanViewDetailsPage.objLimitPausedMsg, "Message"));
 				logger.info("TC_Insta_loan_26, Limit Paused text Message is validated");
 				extent.extentLoggerPass("TC_Insta_loan_26", "TC_Insta_loan_26, Limit Paused text Message is validated");
 				System.out.println("-----------------------------------------------------------");
@@ -8965,47 +8304,35 @@ public class RingPayBusinessLogic extends Utilities {
 		extent.HeaderChildNode("Insta Loan Mandatory Journey");
 		getDriver().resetApp();
 		String userReferenceNo = instaLoanWhitelistOnBoardingMandatory();
-		transactionValidation1();
-
+		transactionValidation();
 		Swipe("UP", 2);
 
-		executeUpdateFatherName(
-				"Update db_tradofina.users set father_name='Arun' where mobile_number='" + mobileNumber + "';",
-				"Select * from db_tradofina.users where mobile_number='" + mobileNumber + "';");
+		executeUpdateFatherName("Update db_tradofina.users set father_name='Arun' where mobile_number='" + mobileNumber + "';","Select * from db_tradofina.users where mobile_number='" + mobileNumber + "';");
 		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-		boolean basicDetailsPage = verifyElementPresent2(InstaLoanMandatoryJourney.objFathersNameBasicDetails,
-				"Fathers Name Basic Details Page");
+		boolean basicDetailsPage = verifyElementPresent2(InstaLoanMandatoryJourney.objFathersNameBasicDetails,"Fathers Name Basic Details Page");
 		if (basicDetailsPage == false) {
 			logger.info("TC_Insta_loan_84 - To verify Basic details page should be skipped if father name is present");
-			extent.extentLoggerPass("TC_Insta_loan_84",
-					"TC_Insta_loan_84, To verify Basic details page should be skipped if father name is present");
+			extent.extentLoggerPass("TC_Insta_loan_84","TC_Insta_loan_84, To verify Basic details page should be skipped if father name is present");
 		}
 
 		tapUsingCoordinates(540, 1540);
-		boolean creditbureaupopup = verifyElementPresent(InstaLoanOptionalJourney.objCreditBureauConsentPopup,
-				getText(InstaLoanOptionalJourney.objCreditBureauConsentPopup));
+		boolean creditbureaupopup = verifyElementPresent(InstaLoanOptionalJourney.objCreditBureauConsentPopup,getText(InstaLoanOptionalJourney.objCreditBureauConsentPopup));
 		if (creditbureaupopup == true) {
 			logger.info("TC_Insta_loan_87 - To Verify If the customer clicks on “Credit bureau checks” hyperlink");
-			extent.extentLoggerPass("TC_Insta_loan_87",
-					"TC_Insta_loan_87 - To Verify If the customer clicks on Credit bureau checks hyperlink");
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup,
-					getText(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup));
+			extent.extentLoggerPass("TC_Insta_loan_87","TC_Insta_loan_87 - To Verify If the customer clicks on Credit bureau checks hyperlink");
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup,getText(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup));
 		}
 		waitTime(5000);
 		tapUsingCoordinates(268, 1599);
-		boolean ckycConsent = verifyElementPresent(InstaLoanOptionalJourney.objCKYCConsentHyperlink,
-				getText(InstaLoanOptionalJourney.objCKYCConsentHyperlink));
+		boolean ckycConsent = verifyElementPresent(InstaLoanOptionalJourney.objCKYCConsentHyperlink,getText(InstaLoanOptionalJourney.objCKYCConsentHyperlink));
 		if (creditbureaupopup == true) {
 			logger.info("TC_Insta_loan_88 - To Verify If the customer clicks on “Credit bureau checks” hyperlink");
-			extent.extentLoggerPass("TC_Insta_loan_88",
-					"TC_Insta_loan_88 - To Verify If the customer clicks on “Credit bureau checks” hyperlink");
-			verifyElementPresentAndClick(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup,
-					getText(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup));
+			extent.extentLoggerPass("TC_Insta_loan_88","TC_Insta_loan_88 - To Verify If the customer clicks on “Credit bureau checks” hyperlink");
+			verifyElementPresentAndClick(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup,getText(InstaLoanOptionalJourney.objOkGotItCreditBureaupopup));
 		}
 
 		click(InstaLoanHomePage.objProceedBtn, "Proceed Button");
 		click(InstaLoanHomePage.objSelectAddress, getTextVal(InstaLoanHomePage.objSelectAddress, "Text"));
-
 		verifyElementPresentAndClick(InstaLoanPage.objAddressSelected, getText(InstaLoanPage.objAddressSelected));
 
 //		click(InstaLoanHomePage.objAddress,getTextVal(InstaLoanHomePage.objAddress,"Text"));
@@ -9015,25 +8342,20 @@ public class RingPayBusinessLogic extends Utilities {
 
 		addbankAccount("5" + RandomIntegerGenerator(4), firstName + " " + lastName);
 
-		String cond_ApprovedStatus = executeQuery3(
-				"SELECT * FROM db_tradofina.user_attributes where user_reference_number='" + userReferenceNo + "';",
-				51);
+		String cond_ApprovedStatus = executeQuery3("SELECT * FROM db_tradofina.user_attributes where user_reference_number='" + userReferenceNo + "';",51);
 		System.out.println(cond_ApprovedStatus);
 		softAssertion.assertEquals(cond_ApprovedStatus, "COND_APPROVED");
 		logger.info("TC_Insta_loan_99 - To verify transaction will be CA before loading offer page");
-		extent.extentLoggerPass("TC_Insta_loan_99",
-				"TC_Insta_loan_99 - To verify transaction will be CA before loading offer page");
+		extent.extentLoggerPass("TC_Insta_loan_99","TC_Insta_loan_99 - To verify transaction will be CA before loading offer page");
 
 		if (verifyElementPresent(InstaLoanHomePage.objOffer, getTextVal(InstaLoanHomePage.objOffer, "Text"))) {
 			verifyElementPresentAndClick(InstaLoanHomePage.objCheckBox, "Check Box");
-			verifyElementPresentAndClick(InstaLoanHomePage.objAcceptOffer,
-					getTextVal(InstaLoanHomePage.objAcceptOffer, "Text"));
+			verifyElementPresentAndClick(InstaLoanHomePage.objAcceptOffer,getTextVal(InstaLoanHomePage.objAcceptOffer, "Text"));
 //			verifyElementPresentAndClick(InstaLoanHomePage.objConfirmOffer, getTextVal(InstaLoanHomePage.objConfirmOffer, "Text"));
 			waitTime(90000);
 		}
 		if (verifyElementPresent(InstaLoanHomePage.objInstaLoanDisbursement, "Disbursement Text")) {
-			verifyElementPresent(InstaLoanHomePage.objInstaLoanAmount,
-					getTextVal(InstaLoanHomePage.objInstaLoanAmount, "Amount"));
+			verifyElementPresent(InstaLoanHomePage.objInstaLoanAmount,getTextVal(InstaLoanHomePage.objInstaLoanAmount, "Amount"));
 			verifyElementPresentAndClick(InstaLoanHomePage.objHome, getTextVal(InstaLoanHomePage.objHome, "Button"));
 			waitTime(10000);
 		} else {
@@ -9041,7 +8363,6 @@ public class RingPayBusinessLogic extends Utilities {
 		}
 		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
 		waitTime(10000);
-//
 		instaLoanInProcessStatus();
 		waitTime(120000);
 
@@ -9052,13 +8373,10 @@ public class RingPayBusinessLogic extends Utilities {
 			Back(1);
 		}
 
-		if (verifyElementPresent(InstaLoanViewDetailsPage.objLimitPaused,
-				getTextVal(InstaLoanViewDetailsPage.objLimitPaused, "Text"))) {
-			verifyElementPresent(InstaLoanViewDetailsPage.objLimitPausedMsg,
-					getTextVal(InstaLoanViewDetailsPage.objLimitPausedMsg, "Message"));
+		if (verifyElementPresent(InstaLoanViewDetailsPage.objLimitPaused,getTextVal(InstaLoanViewDetailsPage.objLimitPaused, "Text"))) {
+			verifyElementPresent(InstaLoanViewDetailsPage.objLimitPausedMsg,getTextVal(InstaLoanViewDetailsPage.objLimitPausedMsg, "Message"));
 			logger.info("TC_Insta_loan_103, Loan status should be change to FA after accepting te offer");
-			extent.extentLoggerPass("TC_Insta_loan_103",
-					"TC_Insta_loan_103, Loan status should be change to FA after accepting te offer");
+			extent.extentLoggerPass("TC_Insta_loan_103","TC_Insta_loan_103, Loan status should be change to FA after accepting te offer");
 			System.out.println("-----------------------------------------------------------");
 		}
 
@@ -9074,40 +8392,29 @@ public class RingPayBusinessLogic extends Utilities {
 
 		String sLimitPaused = getText(InstaLoanHomePage.objLimitPaused);
 		softAssertion.assertEquals(sLimitPaused, "Limit Paused");
-		if (verifyElementPresent(InstaLoanViewDetailsPage.objLimitPaused,
-				getTextVal(InstaLoanViewDetailsPage.objLimitPaused, "Text"))) {
-			verifyElementPresent(InstaLoanViewDetailsPage.objLimitPausedMsg,
-					getTextVal(InstaLoanViewDetailsPage.objLimitPausedMsg, "Message"));
-			logger.info(
-					"TC_Insta_loan_104, Ring limit should be inactive state after repayment of insta loan for mandatory user");
-			extent.extentLoggerPass("TC_Insta_loan_104",
-					"TC_Insta_loan_104, Ring limit should be inactive state after repayment of insta loan for mandatory user");
+		if (verifyElementPresent(InstaLoanViewDetailsPage.objLimitPaused,getTextVal(InstaLoanViewDetailsPage.objLimitPaused, "Text"))) {
+			verifyElementPresent(InstaLoanViewDetailsPage.objLimitPausedMsg,getTextVal(InstaLoanViewDetailsPage.objLimitPausedMsg, "Message"));
+			logger.info("TC_Insta_loan_104, Ring limit should be inactive state after repayment of insta loan for mandatory user");
+			extent.extentLoggerPass("TC_Insta_loan_104","TC_Insta_loan_104, Ring limit should be inactive state after repayment of insta loan for mandatory user");
 			System.out.println("-----------------------------------------------------------");
 
 		}
-		if (verifyElementPresent(InstaLoanViewDetailsPage.objLimitPaused,
-				getTextVal(InstaLoanViewDetailsPage.objLimitPaused, "Text"))) {
-			verifyElementPresent(InstaLoanViewDetailsPage.objLimitPausedMsg,
-					getTextVal(InstaLoanViewDetailsPage.objLimitPausedMsg, "Message"));
+		if (verifyElementPresent(InstaLoanViewDetailsPage.objLimitPaused,getTextVal(InstaLoanViewDetailsPage.objLimitPaused, "Text"))) {
+			verifyElementPresent(InstaLoanViewDetailsPage.objLimitPausedMsg,getTextVal(InstaLoanViewDetailsPage.objLimitPausedMsg, "Message"));
 			logger.info("TC_Insta_loan_107, Ring limit should not get activated post full repayment of instaloan");
-			extent.extentLoggerPass("TC_Insta_loan_107",
-					"TC_Insta_loan_107, Ring limit should not get activated post full repayment of instaloan");
+			extent.extentLoggerPass("TC_Insta_loan_107","TC_Insta_loan_107, Ring limit should not get activated post full repayment of instaloan");
 			System.out.println("-----------------------------------------------------------");
 		}
-		if (verifyElementPresent(InstaLoanHomePage.objReApplyInstaLoan,
-				getTextVal(InstaLoanHomePage.objReApplyInstaLoan, "Text"))) {
+		if (verifyElementPresent(InstaLoanHomePage.objReApplyInstaLoan,getTextVal(InstaLoanHomePage.objReApplyInstaLoan, "Text"))) {
 			logger.info("TC_Insta_loan_106, Insta loan avail banner should be visible again for that user");
-			extent.extentLoggerPass("TC_Insta_loan_106",
-					"TC_Insta_loan_106, Insta loan avail banner should be visible again for that user");
+			extent.extentLoggerPass("TC_Insta_loan_106","TC_Insta_loan_106, Insta loan avail banner should be visible again for that user");
 			System.out.println("-----------------------------------------------------------");
 		}
 		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
 		explicitWaitVisibility(InstaLoanHomePage.objPermanentAddress, 10);
-		if (verifyElementPresent(InstaLoanHomePage.objPermanentAddress,
-				getTextVal(InstaLoanHomePage.objPermanentAddress, "Text"))) {
+		if (verifyElementPresent(InstaLoanHomePage.objPermanentAddress,getTextVal(InstaLoanHomePage.objPermanentAddress, "Text"))) {
 			logger.info("TC_Insta_loan_77, user should able to continue the insta loan mandatory journey");
-			extent.extentLoggerPass("TC_Insta_loan_77",
-					"TC_Insta_loan_77, user should able to continue the insta loan mandatory journey");
+			extent.extentLoggerPass("TC_Insta_loan_77","TC_Insta_loan_77, user should able to continue the insta loan mandatory journey");
 			System.out.println("-----------------------------------------------------------");
 		}
 
@@ -9118,35 +8425,29 @@ public class RingPayBusinessLogic extends Utilities {
 		if (verifyElementPresent(InstaLoanHomePage.objSorryMsg1, getTextVal(InstaLoanHomePage.objSorryMsg1, "Text"))) {
 			verifyElementPresent(InstaLoanHomePage.objSorryMsg2, getTextVal(InstaLoanHomePage.objSorryMsg2, "Text"));
 			logger.info("TC_Insta_loan_78, Error Message is displayed after clicking on Scan and Pay");
-			extent.extentLoggerPass("TC_Insta_loan_78",
-					"TC_Insta_loan_78, Error Message is displayed after clicking on Scan and Pay");
+			extent.extentLoggerPass("TC_Insta_loan_78","TC_Insta_loan_78, Error Message is displayed after clicking on Scan and Pay");
 			System.out.println("-----------------------------------------------------------");
 		}
 		Back(1);
 
 		verifyElementPresentAndClick(HomePage.objMore, getTextVal(HomePage.objMore, "Text"));
-		verifyElementPresentAndClick(InstaLoanHomePage.objBankTransfer,
-				getTextVal(InstaLoanHomePage.objBankTransfer, "Text"));
+		verifyElementPresentAndClick(InstaLoanHomePage.objBankTransfer,getTextVal(InstaLoanHomePage.objBankTransfer, "Text"));
 		if (verifyElementPresent(InstaLoanHomePage.objSorryMsg1, getTextVal(InstaLoanHomePage.objSorryMsg1, "Text"))) {
 			verifyElementPresent(InstaLoanHomePage.objSorryMsg2, getTextVal(InstaLoanHomePage.objSorryMsg2, "Text"));
 			logger.info("TC_Insta_loan_79, Error Message is displayed after clicking on Bank Transfer");
-			extent.extentLoggerPass("TC_Insta_loan_79",
-					"TC_Insta_loan_79, Error Message is displayed after clicking on Bank Transfer");
+			extent.extentLoggerPass("TC_Insta_loan_79","TC_Insta_loan_79, Error Message is displayed after clicking on Bank Transfer");
 			System.out.println("-----------------------------------------------------------");
 		}
 		Back(1);
 
-		verifyElementPresentAndClick(InstaLoanHomePage.objElectricity,
-				getTextVal(InstaLoanHomePage.objElectricity, "Text"));
+		verifyElementPresentAndClick(InstaLoanHomePage.objElectricity,getTextVal(InstaLoanHomePage.objElectricity, "Text"));
 		if (verifyElementPresent(InstaLoanHomePage.objSorryMsg1, getTextVal(InstaLoanHomePage.objSorryMsg1, "Text"))) {
 			verifyElementPresent(InstaLoanHomePage.objSorryMsg2, getTextVal(InstaLoanHomePage.objSorryMsg2, "Text"));
 			logger.info("TC_Insta_loan_80, Error Message is displayed after clicking on BBPS");
-			extent.extentLoggerPass("TC_Insta_loan_80",
-					"TC_Insta_loan_80, Error Message is displayed after clicking on BBPS");
+			extent.extentLoggerPass("TC_Insta_loan_80","TC_Insta_loan_80, Error Message is displayed after clicking on BBPS");
 			System.out.println("-----------------------------------------------------------");
 			logger.info("TC_Insta_loan_81, If Ring bill is paid then line should get inactive");
-			extent.extentLoggerPass("TC_Insta_loan_81",
-					"TC_Insta_loan_81, If Ring bill is paid then line should get inactive");
+			extent.extentLoggerPass("TC_Insta_loan_81","TC_Insta_loan_81, If Ring bill is paid then line should get inactive");
 			System.out.println("-----------------------------------------------------------");
 		}
 		Back(1);
@@ -9161,22 +8462,16 @@ public class RingPayBusinessLogic extends Utilities {
 		click(InstaLoanHomePage.objProceedBtn, getTextVal(InstaLoanHomePage.objProceedBtn, "Text"));
 
 		explicitWaitVisibility(InstaLoanHomePage.objOffer, 10);
-		if (verifyElementPresent(InstaLoanHomePage.objAddBankDetails,
-				getTextVal(InstaLoanHomePage.objAddBankDetails, "Text"))) {
+		if (verifyElementPresent(InstaLoanHomePage.objAddBankDetails,getTextVal(InstaLoanHomePage.objAddBankDetails, "Text"))) {
 			click(InstaLoanHomePage.objAddBankDetails, getTextVal(InstaLoanHomePage.objAddBankDetails, "Text"));
-			if (verifyElementPresent(InstaLoanHomePage.objExistingBankAcc,
-					getTextVal(InstaLoanHomePage.objExistingBankAcc, "Text"))) {
-				logger.info(
-						"TC_Insta_loan_100 - Existing Bank Accounts are displayed After clicking on Add Bank Details");
-				extent.extentLoggerPass("TC_Insta_loan_100",
-						"TC_Insta_loan_100, Existing Bank Accounts are displayed After clicking on Add Bank Details");
+			if (verifyElementPresent(InstaLoanHomePage.objExistingBankAcc,getTextVal(InstaLoanHomePage.objExistingBankAcc, "Text"))) {
+				logger.info("TC_Insta_loan_100 - Existing Bank Accounts are displayed After clicking on Add Bank Details");
+				extent.extentLoggerPass("TC_Insta_loan_100","TC_Insta_loan_100, Existing Bank Accounts are displayed After clicking on Add Bank Details");
 				System.out.println("-----------------------------------------------------------");
 
-				if (verifyElementPresent(InstaLoanHomePage.objApproved,
-						getTextVal(InstaLoanHomePage.objApproved, "Text"))) {
+				if (verifyElementPresent(InstaLoanHomePage.objApproved,getTextVal(InstaLoanHomePage.objApproved, "Text"))) {
 					logger.info("TC_Insta_loan_101 - Bank should be added on bank name match percent");
-					extent.extentLoggerPass("TC_Insta_loan_101",
-							"TC_Insta_loan_101, Bank should be added on bank name match percent");
+					extent.extentLoggerPass("TC_Insta_loan_101","TC_Insta_loan_101, Bank should be added on bank name match percent");
 					System.out.println("-----------------------------------------------------------");
 				}
 			}
@@ -9215,23 +8510,18 @@ public class RingPayBusinessLogic extends Utilities {
 		verifyElementExist(BankTransferModule.objBottomSheetPopup, "Verify Bank Details Pop Up");
 		click(BankTransferModule.objConfirmBtn, "Confirm Button");
 		explicitWaitVisibility(BankTransferModule.objUnableToAddAcc, 10);
-		if (verifyElementPresent(BankTransferModule.objUnableToAddAcc,
-				getTextVal(BankTransferModule.objUnableToAddAcc, "Text"))) {
+		if (verifyElementPresent(BankTransferModule.objUnableToAddAcc,getTextVal(BankTransferModule.objUnableToAddAcc, "Text"))) {
 			click(InstaLoanHomePage.objOkGotIt2, getTextVal(InstaLoanHomePage.objOkGotIt2, "Text"));
 		}
 		Swipe("up", 2);
 
 		verifyElementPresentAndClick(InstaLoanHomePage.objContinue1, "Continue Button");
-		verifyElementPresentAndClick(InstaLoanHomePage.objAddBankDetails,
-				getTextVal(InstaLoanHomePage.objAddBankDetails, "Text"));
+		verifyElementPresentAndClick(InstaLoanHomePage.objAddBankDetails,getTextVal(InstaLoanHomePage.objAddBankDetails, "Text"));
 
-		if (verifyElementPresent(InstaLoanHomePage.objExistingBankAcc,
-				getTextVal(InstaLoanHomePage.objExistingBankAcc, "Text"))) {
-			verifyElementPresent(InstaLoanHomePage.objRejected,
-					getTextVal(InstaLoanHomePage.objRejected, "Status of Accunt"));
+		if (verifyElementPresent(InstaLoanHomePage.objExistingBankAcc,getTextVal(InstaLoanHomePage.objExistingBankAcc, "Text"))) {
+			verifyElementPresent(InstaLoanHomePage.objRejected,getTextVal(InstaLoanHomePage.objRejected, "Status of Accunt"));
 			logger.info("TC_Insta_loan_102 - Bank should be reject on bank name match percent");
-			extent.extentLoggerPass("TC_Insta_loan_102",
-					"TC_Insta_loan_102, Bank should be reject on bank name match percent");
+			extent.extentLoggerPass("TC_Insta_loan_102","TC_Insta_loan_102, Bank should be reject on bank name match percent");
 			System.out.println("-----------------------------------------------------------");
 		}
 
@@ -9241,8 +8531,7 @@ public class RingPayBusinessLogic extends Utilities {
 
 		Swipe("up", 2);
 		click(InstaLoanPage.objApplyBtn, getText(InstaLoanPage.objApplyBtn) + " Button is displayed");
-		boolean basicDetailsPageSecondTime = verifyElementPresent2(InstaLoanMandatoryJourney.objBasicDetailsPage,
-				"Basic Details Page");
+		boolean basicDetailsPageSecondTime = verifyElementPresent2(InstaLoanMandatoryJourney.objBasicDetailsPage,"Basic Details Page");
 		List<WebElement> toatalField = getDriver().findElements(InstaLoanMandatoryJourney.objOnlyFathersNameField);
 		for (WebElement web : toatalField) {
 			String name1 = web.getText();
@@ -9259,48 +8548,35 @@ public class RingPayBusinessLogic extends Utilities {
 		type(InstaLoanPage.objFatherName, "Arun", "Father Name Field");
 		verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
 		waitTime(10000);
-		boolean checkBureauHyperlink = verifyElementPresent(InstaLoanMandatoryJourney.objIallowCreditBureauChecksText,
-				getText(InstaLoanMandatoryJourney.objIallowCreditBureauChecksText));
-		boolean ihearByConfirm = verifyElementPresent(InstaLoanMandatoryJourney.objIhearbyConfirmText,
-				getText(InstaLoanMandatoryJourney.objIhearbyConfirmText));
+		boolean checkBureauHyperlink = verifyElementPresent(InstaLoanMandatoryJourney.objIallowCreditBureauChecksText,getText(InstaLoanMandatoryJourney.objIallowCreditBureauChecksText));
+		boolean ihearByConfirm = verifyElementPresent(InstaLoanMandatoryJourney.objIhearbyConfirmText,getText(InstaLoanMandatoryJourney.objIhearbyConfirmText));
 		if (checkBureauHyperlink && ihearByConfirm == true) {
 			logger.info("TC_Insta_loan_86 - To verify personal detail page should be skipped ");
-			extent.extentLoggerPass("TC_Insta_loan_86",
-					"TC_Insta_loan_86, To verify personal detail page should be skipped");
+			extent.extentLoggerPass("TC_Insta_loan_86","TC_Insta_loan_86, To verify personal detail page should be skipped");
 			System.out.println("-----------------------------------------------------------");
 		}
 
 		click(InstaLoanMandatoryJourney.objIallowCheckBox, "I allow Ring to run checkBox");
-		click(InstaLoanMandatoryJourney.objReadmoreCheckBox,
-				"I, do hearby confirm that my annual household income checkBox");
+		click(InstaLoanMandatoryJourney.objReadmoreCheckBox,"I, do hearby confirm that my annual household income checkBox");
 		verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
 		String text = getText(InstaLoanMandatoryJourney.objScanAndPayToastMsg);
 		if (text.equals("Please select the checkbox for relevant authorizations")) {
-			logger.info(
-					"TC_Insta_loan_89 - To Verify If the customer unchecks any one or both check boxes for consent and clicks on proceed");
-			extent.extentLoggerPass("TC_Insta_loan_89",
-					"TC_Insta_loan_89, To Verify If the customer unchecks any one or both check boxes for consent and clicks on proceed");
+			logger.info("TC_Insta_loan_89 - To Verify If the customer unchecks any one or both check boxes for consent and clicks on proceed");
+			extent.extentLoggerPass("TC_Insta_loan_89","TC_Insta_loan_89, To Verify If the customer unchecks any one or both check boxes for consent and clicks on proceed");
 			System.out.println("-----------------------------------------------------------");
 		}
 		click(InstaLoanMandatoryJourney.objIallowCheckBox, "I allow Ring to run checkBox");
-		click(InstaLoanMandatoryJourney.objReadmoreCheckBox,
-				"I, do hearby confirm that my annual household income checkBox");
+		click(InstaLoanMandatoryJourney.objReadmoreCheckBox,"I, do hearby confirm that my annual household income checkBox");
 		verifyElementPresentAndClick(InstaLoanPage.objProceedBtn, "Proceed Button");
-		verifyElementPresent(InstaLoanMandatoryJourney.objSelectAddressDropDown,
-				getText(InstaLoanMandatoryJourney.objSelectAddressDropDown));
-		verifyElementPresent(InstaLoanMandatoryJourney.objIdeclaretheAboveAddressCheckBox,
-				"I declare the above address is same as my communication address");
-		click(InstaLoanMandatoryJourney.objIdeclaretheAboveAddressCheckBox,
-				"I declare the above address is same as my communication address checkBox");
+		verifyElementPresent(InstaLoanMandatoryJourney.objSelectAddressDropDown,getText(InstaLoanMandatoryJourney.objSelectAddressDropDown));
+		verifyElementPresent(InstaLoanMandatoryJourney.objIdeclaretheAboveAddressCheckBox,"I declare the above address is same as my communication address");
+		click(InstaLoanMandatoryJourney.objIdeclaretheAboveAddressCheckBox,"I declare the above address is same as my communication address checkBox");
 		waitTime(5000);
 		isClickable(InstaLoanMandatoryJourney.objAddCommunicationAddress);
-		logger.info(
-				"TC_Insta_loan_91 - To Verify user if check box is not ticked user should able to click on add communication address link");
-		extent.extentLoggerPass("TC_Insta_loan_91",
-				"TC_Insta_loan_91, To Verify user if check box is not ticked user should able to click on add communication address link");
+		logger.info("TC_Insta_loan_91 - To Verify user if check box is not ticked user should able to click on add communication address link");
+		extent.extentLoggerPass("TC_Insta_loan_91","TC_Insta_loan_91, To Verify user if check box is not ticked user should able to click on add communication address link");
 		System.out.println("-----------------------------------------------------------");
-		click(InstaLoanMandatoryJourney.objAddCommunicationAddress,
-				getText(InstaLoanMandatoryJourney.objAddCommunicationAddress));
+		click(InstaLoanMandatoryJourney.objAddCommunicationAddress,getText(InstaLoanMandatoryJourney.objAddCommunicationAddress));
 		instaNewCommunicationAddress();
 		verifyElementPresent2(InstaLoanPage.objOfferHeader, "Offer Page");
 		logger.info("TC_Insta_loan_92 - User should able to add communication address");
@@ -9328,43 +8604,6 @@ public class RingPayBusinessLogic extends Utilities {
 		System.out.println("-----------------------------------------------------------");
 
 	}
-
-	public void transactionValidation1() throws Exception {
-		extent.HeaderChildNode("Transaction Validation");
-		if (verifyElementPresent(HomePage.objScanAndPay, "Scan and Pay Button")) {
-			click(HomePage.objScanAndPay, "Scan and Pay Button");
-			verifyElementPresent(HomePage.objScanAnyQRToPay, "Scan Any QR To Pay");
-
-			// Scan here
-//        /*------------------------------WEB----------------------------*/
-			Utilities.setPlatform = "Web";
-			new CommandBase("Chrome");
-			waitTime(4000);
-			String projectPath = System.getProperty("user.dir");
-			getWebDriver().get(projectPath + "\\Mock_Files\\qrcode.png");
-			waitTime(15000);
-			BrowsertearDown();
-//
-//        /*------------------------------Android----------------------------*/
-			setPlatform("Android");
-			initDriver();
-			verifyElementPresent(HomePage.objScanAndPayPage, getTextVal(HomePage.objScanAndPayPage, "Text"));
-			logger.info("TC_Insta_loan_98 - User should be in initiate state after kyc is completed");
-			extent.extentLoggerPass("TC_Insta_loan_98",
-					"TC_Insta_loan_98, User should be in initiate state after kyc is completed");
-			System.out.println("-----------------------------------------------------------");
-
-			Back(1);
-			waitTime(3000);
-			Back(1);
-			verifyElementPresentAndClick(HomePage.objYesButton, getTextVal(HomePage.objYesButton, "Text"));
-			explicitWaitVisibility(HomePage.objHome, 10);
-			String sHome = getText(HomePage.objHome);
-			softAssertion.assertEquals(sHome, "Home");
-			logger.info("Navigated to Home Page");
-		}
-	}
-
 	public void instaLoanMandatoryAndOptional() throws Exception {
 		extent.HeaderChildNode("Both Mandatory and Optional");
 		getDriver().resetApp();
@@ -9389,8 +8628,7 @@ public class RingPayBusinessLogic extends Utilities {
 
 		if (verifyElementPresent(InstaLoanHomePage.objOffer, getTextVal(InstaLoanHomePage.objOffer, "Text"))) {
 			verifyElementPresentAndClick(InstaLoanHomePage.objCheckBox, "Check Box");
-			verifyElementPresentAndClick(InstaLoanHomePage.objAcceptOffer,
-					getTextVal(InstaLoanHomePage.objAcceptOffer, "Text"));
+			verifyElementPresentAndClick(InstaLoanHomePage.objAcceptOffer,getTextVal(InstaLoanHomePage.objAcceptOffer, "Text"));
 //			verifyElementPresentAndClick(InstaLoanHomePage.objConfirmOffer, getTextVal(InstaLoanHomePage.objConfirmOffer, "Text"));
 			waitTime(90000);
 		}
@@ -9405,11 +8643,7 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(5000);
 		Swipe("DOWN", 2);
 		payNowInstaLoan();
-		executeUpdateOptional(
-				"Update db_tradofina.instaloan_whitelisted_users set eligible_type='OPTIONAL' where user_reference_number='"
-						+ userReferenceNo + "';",
-				"Select * from db_tradofina.instaloan_whitelisted_users where user_reference_number='" + userReferenceNo
-						+ "';");
+		executeUpdateOptional("Update db_tradofina.instaloan_whitelisted_users set eligible_type='OPTIONAL' where user_reference_number='"+ userReferenceNo + "';","Select * from db_tradofina.instaloan_whitelisted_users where user_reference_number='" + userReferenceNo+ "';");
 //		executeQuery("SELECT * FROM db_tradofina.instaloan_whitelisted_users Where user_reference_number = '" + userReferenceNo + "';");
 
 		click(HomePage.objScanAndPay, "Scan And Pay");
@@ -9426,20 +8660,16 @@ public class RingPayBusinessLogic extends Utilities {
 		click(InstaLoanHomePage.objProceedBtn, getTextVal(InstaLoanHomePage.objProceedBtn, "Text"));
 
 		explicitWaitVisibility(InstaLoanHomePage.objOffer, 10);
-		if (verifyElementPresent(InstaLoanHomePage.objAddBankDetails,
-				getTextVal(InstaLoanHomePage.objAddBankDetails, "Text"))) {
+		if (verifyElementPresent(InstaLoanHomePage.objAddBankDetails,getTextVal(InstaLoanHomePage.objAddBankDetails, "Text"))) {
 			click(InstaLoanHomePage.objAddBankDetails, getTextVal(InstaLoanHomePage.objAddBankDetails, "Text"));
-			if (verifyElementPresent(InstaLoanHomePage.objExistingBankAcc,
-					getTextVal(InstaLoanHomePage.objExistingBankAcc, "Text"))) {
+			if (verifyElementPresent(InstaLoanHomePage.objExistingBankAcc,getTextVal(InstaLoanHomePage.objExistingBankAcc, "Text"))) {
 				click(InstaLoanHomePage.objExistingBank, "Existing Bank Account");
 			}
 		}
 		if (verifyElementPresent(InstaLoanHomePage.objOffer, getTextVal(InstaLoanHomePage.objOffer, "Text"))) {
 			verifyElementPresentAndClick(InstaLoanHomePage.objCheckBox, "Check Box");
-			verifyElementPresentAndClick(InstaLoanHomePage.objAcceptOffer,
-					getTextVal(InstaLoanHomePage.objAcceptOffer, "Text"));
-			verifyElementPresentAndClick(InstaLoanHomePage.objConfirmOffer,
-					getTextVal(InstaLoanHomePage.objConfirmOffer, "Text"));
+			verifyElementPresentAndClick(InstaLoanHomePage.objAcceptOffer,getTextVal(InstaLoanHomePage.objAcceptOffer, "Text"));
+			verifyElementPresentAndClick(InstaLoanHomePage.objConfirmOffer,getTextVal(InstaLoanHomePage.objConfirmOffer, "Text"));
 			waitTime(90000);
 		}
 		verifyElementPresentAndClick(InstaLoanPage.objHomeBtn, getText(InstaLoanPage.objHomeBtn) + " Button");
@@ -9447,15 +8677,14 @@ public class RingPayBusinessLogic extends Utilities {
 		if (verifyElementPresent(InstaLoanHomePage.objSorryMsg1, getTextVal(InstaLoanHomePage.objSorryMsg1, "Text"))) {
 			verifyElementPresent(InstaLoanHomePage.objSorryMsg2, getTextVal(InstaLoanHomePage.objSorryMsg2, "Text"));
 			logger.info("TC_Insta_loan_105,  Ring should be active for optional journey till loan get CA");
-			extent.extentLoggerPass("TC_Insta_loan_105",
-					"TC_Insta_loan_105,  Ring should be active for optional journey till loan get CA");
+			extent.extentLoggerPass("TC_Insta_loan_105","TC_Insta_loan_105,  Ring should be active for optional journey till loan get CA");
 			System.out.println("-----------------------------------------------------------");
 		}
 	}
 
 	public String instaLoanWhitelistOnBoardingMandatory() throws Exception {
-		extent.HeaderChildNode("WhiteList Logic");
-		mockUserAPI();
+		extent.HeaderChildNode("WhiteList Logic for Mandatory Journey");
+		instalonAPIKycVerification();
 		loginOnboarding("1");
 		click(RingUserDetailPage.objNone, "None of the Above Button");
 		mobileNoValidation1(mobileNumber);
@@ -9465,9 +8694,7 @@ public class RingPayBusinessLogic extends Utilities {
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		instaNewCommunicationAddress();
 		waitTime(10000);
-		instaKycDocument();
-		String ref = instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),
-				prop.getproperty("RingAdminOTP"), "MANDATORY", "13000", "2311", "2319");
+		String ref = instaPanCardDetails(prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), "MANDATORY", "13000", "2311", "2319");
 		panCardDetails();
 		waitTime(5000);
 		instaLoancongratsScreen("Congrats");
@@ -9478,11 +8705,12 @@ public class RingPayBusinessLogic extends Utilities {
 		instaLoanCoachPopup();
 		return ref;
 	}
-	// ==========================Mandatory Journey End================================//
-	//------------------------------------TShashi Code End----------------------------------//
+// ===========================================================Mandatory Journey End===============================================================//
+	
+	//---------------------------------------------------------TShashi Code End---------------------------------------------------------//
 	
 	
-	// ===================================Kiran Code Start=================================//
+	// ========================================================Kiran Code Start=========================================================//
 
 	public void suspendedDependantMethods(String MobileNO) throws Exception {
 		getDriver().resetApp();
@@ -12065,10 +11293,9 @@ public class RingPayBusinessLogic extends Utilities {
 		executeUpdateOnly("update db_tradofina.bnpl_line_offers set limit_amount = '2000.00' where merchant_type='type2' and segment = 'LTBC1' and surrogate_type='EQUIFAX' and limit_amount='10000.00';","db_tradofina.bnpl_line_offers");	
 		getDriver().resetApp();
 	}
-	//=====================================Shakir Hussain Ring Policy End===============================================//	
-	
+//======================================================Shakir Hussain Ring Policy End============================================================//	
+//========================================================KYC Bypass through API===================================================================//
 	public void onloadapi() throws IOException, URISyntaxException, InterruptedException, AWTException, ClassNotFoundException, SQLException {
-		extent.HeaderChildNode("TC_Ring_Customer_Seg_56");
 		mockUserAPI();
 		setPlatform("Web");
 		System.out.println("platform changed to web");
@@ -12103,24 +11330,18 @@ public class RingPayBusinessLogic extends Utilities {
 	}
 
 	public void Save_Image() throws IOException, InterruptedException, AWTException {
-			
 		deleteFile();
 		Thread.sleep(3000);
 		Robot robot = new Robot();
-		// To press D key.
 		robot.keyPress(KeyEvent.VK_CONTROL);
-		// To press : key.
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
-		// To press : key.
 		robot.keyRelease(KeyEvent.VK_S);
 		waitTime(5000);
 		StringSelection str = new StringSelection(System.getProperty("user.dir") + "\\Mock_Files\\KYC_Validation\\"+mobileNumber+"-frontandback.png");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_V);
-		// release Contol+V for pasting
-
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 		robot.keyRelease(KeyEvent.VK_V);
 		waitTime(5000);
@@ -12128,10 +11349,8 @@ public class RingPayBusinessLogic extends Utilities {
 		waitTime(6000);
 		  
 	}
-
 		public void deleteFile() {
 			 File path = new File(System.getProperty("user.dir") + "\\Mock_Files\\KYC_Validation\\"); 
-			
 			 File[] files = path.listFiles();
 			    for (File file : files) {
 			        System.out.println("Deleted filename :"+ file.getName());
@@ -12148,7 +11367,6 @@ public class RingPayBusinessLogic extends Utilities {
 			
 			headers.put("Token",token);
 		
-			
 			File uri=new File(System.getProperty("user.dir")+"\\Mock_Files\\KYC_Validation\\"+mobileNumber+"-frontandback.png"); 
 			ValidatableResponse response = RestAssured.given().auth().oauth2(token).baseUri(url)
 					.param("source", "IDEOPAY_APP")
@@ -12162,7 +11380,6 @@ public class RingPayBusinessLogic extends Utilities {
 			System.out.println("Request Url -->" + url);
 			String Resp = response.extract().body().asString();
 			System.out.println("Response Body= " + Resp);
-
 			return response;
 		}
 		
@@ -12174,8 +11391,7 @@ public class RingPayBusinessLogic extends Utilities {
 			HashMap<String, Object> headers = new HashMap<>();
 			
 			headers.put("Token",token);
-		
-			
+	
 			File uri=new File(System.getProperty("user.dir") + "\\Mock_Files\\KYC_Validation\\"+mobileNumber+"-frontandback.png"); 
 			ValidatableResponse response = RestAssured.given().auth().oauth2(token).baseUri(url)
 					.param("source", "IDEOPAY_APP")
@@ -12189,7 +11405,6 @@ public class RingPayBusinessLogic extends Utilities {
 			System.out.println("Request Url -->" + url);
 			String Resp = response.extract().body().asString();
 			System.out.println("Response Body= " + Resp);
-
 			return response;
 		}
 		
@@ -12213,12 +11428,10 @@ public class RingPayBusinessLogic extends Utilities {
 			System.out.println("Request Url -->" + url);
 			String Resp = response.extract().body().asString();
 			System.out.println("Response Body= " + Resp);
-
 			return response;
 		}
 	
 		public void instalonAPIKycVerification() throws Exception {
-			
 				onloadapi();	
 		}
 		
@@ -12247,17 +11460,12 @@ public class RingPayBusinessLogic extends Utilities {
 			headers.put("X-Client-OS-Type", "android");
 			headers.put("X-Client-OS-Version", "10");
 			
-			
 			ValidatableResponse response = RestAssured.given().baseUri(url).contentType(ContentType.JSON).headers(headers)
 					.body(Myrequestbody.toJSONString()).when().post().then();
-
 			System.out.println("Request Url -->" + url);
-
 			System.out.println("Request :" + Myrequestbody);
-
 			String Resp = response.extract().body().asString();
 			System.out.println("Response Body= " + Resp);
-
 			return response;
 		}
 		
@@ -12290,42 +11498,24 @@ public class RingPayBusinessLogic extends Utilities {
 			headers.put("X-Client-OS-Type", "android");
 			headers.put("X-Client-OS-Version", "10");
 			
-			
 			ValidatableResponse response = RestAssured.given().baseUri(url).contentType(ContentType.JSON).headers(headers)
 					.body(Myrequestbody.toJSONString()).when().post().then();
-
 			System.out.println("Request Url -->" + url);
-
 			System.out.println("Request :" + Myrequestbody);
-
 			String Resp = response.extract().body().asString();
 			System.out.println("Response Body= " + Resp);
-
 			return response;
 		}
 		public static ValidatableResponse onload() {
 			Random rand = new Random();
-
 			HashMap<String, String> req_body = new HashMap<>();
 			String url="https://user-gateway.test.ideopay.in/api/v1/onload/data";
-			
-			
-
 			ValidatableResponse response = RestAssured.given().baseUri(url).contentType(ContentType.ANY)
 				.when().get().then();
-
 			System.out.println("Request Url -->" + url);
-
-		
-
 			String Resp = response.extract().body().asString();
 			System.out.println("Response Body= " + Resp);
-
 			return response;
 		}
-
-		public void instaloncheckapi() throws Exception {
-			instaLoanWhitelistLogic();
-		}
-		
+		//========================================================KYC Bypass through API End===================================================================//
 }
