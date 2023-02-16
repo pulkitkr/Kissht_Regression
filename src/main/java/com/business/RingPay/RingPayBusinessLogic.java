@@ -5707,6 +5707,8 @@ public class RingPayBusinessLogic extends Utilities {
 		instaUserDetails(firstName, lastName, mothersName, email, gender);
 		waitTime(5000);
 		instaNewCommunicationAddress();
+		
+		//s
 //		try {
 //			instaKycDocument();
 //		} catch (Exception e) {
