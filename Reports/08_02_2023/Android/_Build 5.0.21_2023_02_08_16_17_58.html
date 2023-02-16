@@ -1,0 +1,1986 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href='https://cdn.rawgit.com/extent-framework/extent-github-cdn/b65cd69/v3html/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>Automation Reports</title>
+
+	<style type='text/css'>
+		/* json-tree */
+		.jstBracket,.jstComma,.jstValue{white-space:pre-wrap}.jstValue{font-size:10px;font-weight:400;font-family:"Lucida Console",Monaco,monospace}.jstProperty{color:#666;word-wrap:break-word}.jstBool{color:#2525CC}.jstNum{color:#D036D0}.jstNull{color:gray}.jstStr{color:#2DB669}.jstFold:after{content:' -';cursor:pointer}.jstExpand{white-space:normal}.jstExpand:after{content:' +';cursor:pointer}.jstFolded{white-space:normal!important}.jstHiddenBlock{display:none}
+			
+            
+                 .report-name { padding-left: 10px; } .report-name > img { float: left;height: 90%;margin-left: 90px;margin-top: 2px;width: 50px; }
+            
+		
+	</style>
+	
+	<script type="text/javascript">
+		/*! json-tree - v0.2.2 - 2017-09-25, MIT LICENSE */
+		var JSONTree=function(){var n={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","/":"&#x2F;"},t=0,r=0;this.create=function(n,t){return r+=1,N(u(n,0,!1),{class:"jstValue"})};var e=function(t){return t.replace(/[&<>'"]/g,function(t){return n[t]})},s=function(){return r+"_"+t++},u=function(n,t,r){if(null===n)return f(r?t:0);switch(typeof n){case"boolean":return l(n,r?t:0);case"number":return i(n,r?t:0);case"string":return o(n,r?t:0);default:return n instanceof Array?a(n,t,r):c(n,t,r)}},c=function(n,t,r){var e=s(),u=Object.keys(n).map(function(r){return j(r,n[r],t+1,!0)}).join(m()),c=[g("{",r?t:0,e),N(u,{id:e}),p("}",t)].join("\n");return N(c,{})},a=function(n,t,r){var e=s(),c=n.map(function(n){return u(n,t+1,!0)}).join(m());return[g("[",r?t:0,e),N(c,{id:e}),p("]",t)].join("\n")},o=function(n,t){var r=e(JSON.stringify(n));return N(v(r,t),{class:"jstStr"})},i=function(n,t){return N(v(n,t),{class:"jstNum"})},l=function(n,t){return N(v(n,t),{class:"jstBool"})},f=function(n){return N(v("null",n),{class:"jstNull"})},j=function(n,t,r){var s=v(e(JSON.stringify(n))+": ",r),c=N(u(t,r,!1),{});return N(s+c,{class:"jstProperty"})},m=function(){return N(",\n",{class:"jstComma"})},N=function(n,t){return d("span",t,n)},d=function(n,t,r){return"<"+n+Object.keys(t).map(function(n){return" "+n+'="'+t[n]+'"'}).join("")+">"+r+"</"+n+">"},g=function(n,t,r){return N(v(n,t),{class:"jstBracket"})+N("",{class:"jstFold",onclick:"JSONTree.toggle('"+r+"')"})};this.toggle=function(n){var t=document.getElementById(n),r=t.parentNode,e=t.previousElementSibling;""===t.className?(t.className="jstHiddenBlock",r.className="jstFolded",e.className="jstExpand"):(t.className="",r.className="",e.className="jstFold")};var p=function(n,t){return N(v(n,t),{})},v=function(n,t){return Array(2*t+1).join(" ")+n};return this}();
+	</script>
+</head>
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo black"><img src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png"></a>
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
+		</ul>
+		<!-- report name -->
+		<span class='report-name'>RingPay Automation PoC</span>
+		<!-- report headline -->
+		<span class='report-headline'></span>
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<a href='#!'>
+			<span class='label blue darken-3 suite-start-time'>Feb 8, 2023 04:17:58 PM</span>
+			</a>
+		</ul>
+	</div>
+</nav>		<!-- container -->
+		<div class='container'>
+<div id='test-view' class='view'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+				<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+			<!-- category toggle -->
+			<!-- category toggle -->
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+				<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+				<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+<div id='test-view-charts' class='subview-full'>
+    <div id='charts-row' class='row nm-v nm-h'>
+        <div class='col s12 m6 l6 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Tests</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='parent-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> test(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                </div>
+            </div>
+        </div>
+        <div class='col s12 m6 l6 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Steps</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='child-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='83.333%'><span class='strong'>5</span> step(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='16.667%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="timeline-chart" class="row nm-v nm-h">
+        <div class="col s12 m12 l12 np-h">
+            <div class="card-panel">
+                <div class='left panel-name'>Timeline (seconds)</div>
+                <div class="chart-box" style="width:98%;max-height:145px;">
+                    <canvas id="timeline" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='test-collection' class='test-collection'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>feedBackMechanism</span>
+						<span class='test-time'>Feb 8, 2023 04:18:17 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 8, 2023 04:18:17 PM</span>
+	<span class='label end-time'>Feb 8, 2023 04:29:27 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 11m 10s+98ms</span>
+</div>
+<div class='test-desc'><h5> ENV : <a href="" onclick='return true;'"></a></h5> </div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='2'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Validation of Feedback</div>
+			<span class='node-time'>Feb 8, 2023 04:18:17 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+	<li class='node level-1 leaf pass' status='pass' test-id='3'>
+		<div class='collapsible-header'>
+			<div class='node-name'>User Play store Flow Module</div>
+			<span class='node-time'>Feb 8, 2023 04:18:19 PM</span>
+			&middot; <span class='node-duration'>0h 0m 37s+149ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+		<div class='collapsible-body'>
+			<div class='node-steps'>
+				<table class='bordered table-results'>
+					<thead>
+						<tr>
+							<th>Status</th>
+							<th>Timestamp</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:29 PM</td>
+							<td class='step-details'>
+									Clicked on Enable permissions button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:18:29 PM</td>
+							<td class='step-details'>
+									Foreground allow camera permissions options
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:30 PM</td>
+							<td class='step-details'>
+									Clicked on While using the app foreground camera permission option
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:33 PM</td>
+							<td class='step-details'>
+									Clicked on Signup/Login link
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:35 PM</td>
+							<td class='step-details'>
+									Clicked on Continue with Mobile option
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:38 PM</td>
+							<td class='step-details'>
+									Clicked on Mobile Number Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:40 PM</td>
+							<td class='step-details'>
+									Typed the value 9045934830 into Mobile Number Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:48 PM</td>
+							<td class='step-details'>
+									Clicked on Otp text field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:50 PM</td>
+							<td class='step-details'>
+									Typed the value 888888 into Enter OTP
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:54 PM</td>
+							<td class='step-details'>
+									Clicked on Read & Accept button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:18:54 PM</td>
+							<td class='step-details'>
+									Ringpay Permission Popup is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:55 PM</td>
+							<td class='step-details'>
+									Clicked on Phone access option
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:56 PM</td>
+							<td class='step-details'>
+									Clicked on Location Access option
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:18:56 PM</td>
+							<td class='step-details'>
+									Clicked on SMS access option
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</li>
+	<li class='node level-1 leaf pass' status='pass' test-id='4'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Age Criteria</div>
+			<span class='node-time'>Feb 8, 2023 04:19:36 PM</span>
+			&middot; <span class='node-duration'>0h 5m 2s+280ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+		<div class='collapsible-body'>
+			<div class='node-steps'>
+				<table class='bordered table-results'>
+					<thead>
+						<tr>
+							<th>Status</th>
+							<th>Timestamp</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:19:43 PM</td>
+							<td class='step-details'>
+									Clicked on First Name Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:19:45 PM</td>
+							<td class='step-details'>
+									Typed the value Sunil into First Name field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:19:47 PM</td>
+							<td class='step-details'>
+									Clicked on Last Name Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:19:49 PM</td>
+							<td class='step-details'>
+									Typed the value Chatla into Last Name field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:19:53 PM</td>
+							<td class='step-details'>
+									Clicked on Mother's Name Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:19:54 PM</td>
+							<td class='step-details'>
+									Typed the value Mom into Mother's Name field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:19:56 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:19:57 PM</td>
+							<td class='step-details'>
+									Clicked on Email Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:19:59 PM</td>
+							<td class='step-details'>
+									Clicked on None of the Above Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:02 PM</td>
+							<td class='step-details'>
+									Typed the value Vvzieuaef@gmail.com into Email Filed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:02 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:05 PM</td>
+							<td class='step-details'>
+									Clicked on Gender male is selected
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:05 PM</td>
+							<td class='step-details'>
+									Clicked on Gender male is selected
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:20:07 PM</td>
+							<td class='step-details'>
+									Date Of Birth Element Present is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:07 PM</td>
+							<td class='step-details'>
+									Clicked on DOB field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:09 PM</td>
+							<td class='step-details'>
+									Clicked on Year field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:10 PM</td>
+							<td class='step-details'>
+									Cleared the text in : Year field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:11 PM</td>
+							<td class='step-details'>
+									Typed the value 1990 into Year field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:12 PM</td>
+							<td class='step-details'>
+									Clicked on Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:13 PM</td>
+							<td class='step-details'>
+									Clicked on Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:14 PM</td>
+							<td class='step-details'>
+									Cleared the text in : Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:15 PM</td>
+							<td class='step-details'>
+									Typed the value Oct into Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:16 PM</td>
+							<td class='step-details'>
+									Clicked on Date field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:17 PM</td>
+							<td class='step-details'>
+									Cleared the text in : Date field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:18 PM</td>
+							<td class='step-details'>
+									Typed the value 26 into Date field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:19 PM</td>
+							<td class='step-details'>
+									Clicked on OK button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:20 PM</td>
+							<td class='step-details'>
+									Clicked on Proceed Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:20:32 PM</td>
+							<td class='step-details'>
+									New Communication Address Page Header is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:33 PM</td>
+							<td class='step-details'>
+									Clicked on Room No Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:34 PM</td>
+							<td class='step-details'>
+									Typed the value 86 into Room No. Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:37 PM</td>
+							<td class='step-details'>
+									Clicked on Address Line 1 Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:39 PM</td>
+							<td class='step-details'>
+									Typed the value 44, Borivali into Address Line 1
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:40 PM</td>
+							<td class='step-details'>
+									Clicked on Address Line 2 Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:43 PM</td>
+							<td class='step-details'>
+									Typed the value Vasa Street into  Text Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:44 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:45 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:48 PM</td>
+							<td class='step-details'>
+									Swiping screen in  up direction 1 times
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:51 PM</td>
+							<td class='step-details'>
+									Swiping screen in  up direction 2 times
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:52 PM</td>
+							<td class='step-details'>
+									Clicked on Pincode Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:54 PM</td>
+							<td class='step-details'>
+									Typed the value 400080 into  Text Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:55 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:56 PM</td>
+							<td class='step-details'>
+									City City Name autoPopulated after entering pincode
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:58 PM</td>
+							<td class='step-details'>
+									State State Name autoPopulated after entering pincode
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:20:58 PM</td>
+							<td class='step-details'>
+									Clicked on Submit Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:21:06 PM</td>
+							<td class='step-details'>
+									Congrats Sunil is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:21:06 PM</td>
+							<td class='step-details'>
+									Your approved RING limit is?3,500 is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:06 PM</td>
+							<td class='step-details'>
+									I accept the Ring’s Terms & Conditions & IT Act 2000 checkbox is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:21:07 PM</td>
+							<td class='step-details'>
+									Clicked on I accept the Ring’s Terms & Conditions & IT Act 2000 checkbox
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:08 PM</td>
+							<td class='step-details'>
+									Accept Offer is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:21:08 PM</td>
+							<td class='step-details'>
+									Clicked on Accept Offer
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:21:12 PM</td>
+							<td class='step-details'>
+									Set Pin is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:15 PM</td>
+							<td class='step-details'>
+									Clicked on Mpin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:16 PM</td>
+							<td class='step-details'>
+									Typed the value 1111 into MPIN Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:17 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:19 PM</td>
+							<td class='step-details'>
+									Clicked on Re-Enter Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:20 PM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Re-Enter pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:21 PM</td>
+							<td class='step-details'>
+									Submit is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:21:22 PM</td>
+							<td class='step-details'>
+									Clicked on Submit
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:47 PM</td>
+							<td class='step-details'>
+									Cross Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:21:48 PM</td>
+							<td class='step-details'>
+									Clicked on Cross Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:21:49 PM</td>
+							<td class='step-details'>
+									Scan And Pay Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:21:51 PM</td>
+							<td class='step-details'>
+									Clicked on Scan And Pay
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:21:55 PM</td>
+							<td class='step-details'>
+									Scan any QR code to pay Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:22:18 PM</td>
+							<td class='step-details'>
+									Amount Text Field is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:22:19 PM</td>
+							<td class='step-details'>
+									Clicked on Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:22:20 PM</td>
+							<td class='step-details'>
+									Cleared the text in : Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:22:21 PM</td>
+							<td class='step-details'>
+									Typed the value 100 into Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:22:22 PM</td>
+							<td class='step-details'>
+									Clicked on Pay Now Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:22:47 PM</td>
+							<td class='step-details'>
+									Confirm Payment Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:23:19 PM</td>
+							<td class='step-details'>
+									Clicked on Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:23:20 PM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:23:22 PM</td>
+							<td class='step-details'>
+									Clicked on Continue Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:23:52 PM</td>
+							<td class='step-details'>
+									Payment Done! Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:23:53 PM</td>
+							<td class='step-details'>
+									Go to Homepage Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:23:53 PM</td>
+							<td class='step-details'>
+									Clicked on Go To HomePage
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:23:56 PM</td>
+							<td class='step-details'>
+									Swiping screen in  DOWN direction 1 times
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:23:58 PM</td>
+							<td class='step-details'>
+									Swiping screen in  DOWN direction 2 times
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:24:28 PM</td>
+							<td class='step-details'>
+									Are you enjoying the app? Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:24:29 PM</td>
+							<td class='step-details'>
+									Yes Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:24:29 PM</td>
+							<td class='step-details'>
+									No Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:24:29 PM</td>
+							<td class='step-details'>
+									TC_Ring_Core_291, FeedBack popup displayed with yes & No option
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:24:36 PM</td>
+							<td class='step-details'>
+									Are you enjoying the app? Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:24:36 PM</td>
+							<td class='step-details'>
+									TC_Ring_Core_299, Reappeared FeedBack popup after dismissing and re-initiating
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:24:36 PM</td>
+							<td class='step-details'>
+									Clicked on Yes Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:24:38 PM</td>
+							<td class='step-details'>
+									Rate your experience Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:24:38 PM</td>
+							<td class='step-details'>
+									TC_Ring_Core_292, Rate ur exp bottom sheet got displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:24:38 PM</td>
+							<td class='step-details'>
+									Clicked on Close Button
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</li>
+	<li class='node level-1 leaf pass' status='pass' test-id='5'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Single Transaction</div>
+			<span class='node-time'>Feb 8, 2023 04:24:38 PM</span>
+			&middot; <span class='node-duration'>0h 1m 19s+288ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+		<div class='collapsible-body'>
+			<div class='node-steps'>
+				<table class='bordered table-results'>
+					<thead>
+						<tr>
+							<th>Status</th>
+							<th>Timestamp</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:24:44 PM</td>
+							<td class='step-details'>
+									Scan And Pay Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:24:45 PM</td>
+							<td class='step-details'>
+									Clicked on Scan And Pay
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:25:07 PM</td>
+							<td class='step-details'>
+									Amount Text Field is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:09 PM</td>
+							<td class='step-details'>
+									Clicked on Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:09 PM</td>
+							<td class='step-details'>
+									Cleared the text in : Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:10 PM</td>
+							<td class='step-details'>
+									Typed the value 200 into Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:11 PM</td>
+							<td class='step-details'>
+									Pay Now Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:25:11 PM</td>
+							<td class='step-details'>
+									Clicked on Pay Now Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:25:42 PM</td>
+							<td class='step-details'>
+									Confirm Payment Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:43 PM</td>
+							<td class='step-details'>
+									Clicked on Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:44 PM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:46 PM</td>
+							<td class='step-details'>
+									Clicked on Continue Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:25:50 PM</td>
+							<td class='step-details'>
+									Payment Done! Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:25:51 PM</td>
+							<td class='step-details'>
+									Go to Homepage Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:52 PM</td>
+							<td class='step-details'>
+									Clicked on Go To HomePage
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:55 PM</td>
+							<td class='step-details'>
+									Swiping screen in  DOWN direction 1 times
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:57 PM</td>
+							<td class='step-details'>
+									Swiping screen in  DOWN direction 2 times
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:25:58 PM</td>
+							<td class='step-details'>
+									TC_Ring_Core_293, FeedBack popup is not displayed on Second Transaction
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</li>
+	<li class='node level-1 leaf pass' status='pass' test-id='6'>
+		<div class='collapsible-header'>
+			<div class='node-name'>RingPay Logout</div>
+			<span class='node-time'>Feb 8, 2023 04:25:58 PM</span>
+			&middot; <span class='node-duration'>0h 1m 33s+559ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+		<div class='collapsible-body'>
+			<div class='node-steps'>
+				<table class='bordered table-results'>
+					<thead>
+						<tr>
+							<th>Status</th>
+							<th>Timestamp</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:25:59 PM</td>
+							<td class='step-details'>
+									Clicked on Top left menu button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:02 PM</td>
+							<td class='step-details'>
+									Clicked on Profile Select Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:04 PM</td>
+							<td class='step-details'>
+									Clicked on Logout Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:26:04 PM</td>
+							<td class='step-details'>
+									Logout popup comes up
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:06 PM</td>
+							<td class='step-details'>
+									Clicked on Yes confirmation button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:26:06 PM</td>
+							<td class='step-details'>
+									User is successfully logged out
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:08 PM</td>
+							<td class='step-details'>
+									Clicked on Signup/Login link
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:13 PM</td>
+							<td class='step-details'>
+									Clicked on Continue with Mobile option
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:14 PM</td>
+							<td class='step-details'>
+									Clicked on Mobile Number Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:16 PM</td>
+							<td class='step-details'>
+									Typed the value 9860850690 into Mobile Number Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:25 PM</td>
+							<td class='step-details'>
+									Clicked on Otp text field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:26 PM</td>
+							<td class='step-details'>
+									Typed the value 888888 into Enter OTP
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:26:58 PM</td>
+							<td class='step-details'>
+									Clicked on First Name text field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:00 PM</td>
+							<td class='step-details'>
+									Typed the value sunil into First Name text field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:01 PM</td>
+							<td class='step-details'>
+									Clicked on Last Name text field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:03 PM</td>
+							<td class='step-details'>
+									Typed the value chatla into Last Name text field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:04 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:06 PM</td>
+							<td class='step-details'>
+									Clicked on Mother's Name Text Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:08 PM</td>
+							<td class='step-details'>
+									Typed the value yashoda into Mother's Name Text Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:09 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:12 PM</td>
+							<td class='step-details'>
+									Clicked on Email Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:12 PM</td>
+							<td class='step-details'>
+									Clicked on None of the above
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:15 PM</td>
+							<td class='step-details'>
+									Typed the value byarbu@gmail.com into Email Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:15 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:27:16 PM</td>
+							<td class='step-details'>
+									Date Of Birth Element Present is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:16 PM</td>
+							<td class='step-details'>
+									Clicked on DOB field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:17 PM</td>
+							<td class='step-details'>
+									Clicked on DOB field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:19 PM</td>
+							<td class='step-details'>
+									Clicked on Year field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:19 PM</td>
+							<td class='step-details'>
+									Cleared the text in : Year field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:21 PM</td>
+							<td class='step-details'>
+									Typed the value 1990 into Year field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:21 PM</td>
+							<td class='step-details'>
+									Clicked on Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:23 PM</td>
+							<td class='step-details'>
+									Clicked on Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:23 PM</td>
+							<td class='step-details'>
+									Cleared the text in : Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:25 PM</td>
+							<td class='step-details'>
+									Typed the value Oct into Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:26 PM</td>
+							<td class='step-details'>
+									Clicked on Date field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:26 PM</td>
+							<td class='step-details'>
+									Cleared the text in : Date field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:27 PM</td>
+							<td class='step-details'>
+									Typed the value 26 into Date field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:28 PM</td>
+							<td class='step-details'>
+									Clicked on OK button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:29 PM</td>
+							<td class='step-details'>
+									Clicked on Gender Radio Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:30 PM</td>
+							<td class='step-details'>
+									Clicked on Gender Radio Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:31 PM</td>
+							<td class='step-details'>
+									Clicked on Proceed Button
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</li>
+	<li class='node level-1 leaf fail' status='fail' test-id='7'>
+		<div class='collapsible-header'>
+			<div class='node-name'>RingPay App Merchant Flow</div>
+			<span class='node-time'>Feb 8, 2023 04:27:41 PM</span>
+			&middot; <span class='node-duration'>0h 1m 45s+485ms</span>
+			<span class='test-status right fail'>fail</span>
+		</div>
+		<div class='collapsible-body'>
+			<div class='node-steps'>
+				<table class='bordered table-results'>
+					<thead>
+						<tr>
+							<th>Status</th>
+							<th>Timestamp</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:44 PM</td>
+							<td class='step-details'>
+									Clicked on Room
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:46 PM</td>
+							<td class='step-details'>
+									Typed the value 86 into Room
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:48 PM</td>
+							<td class='step-details'>
+									Clicked on AddressLine1
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:50 PM</td>
+							<td class='step-details'>
+									Typed the value 44, Borivali into AddressLine1
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:52 PM</td>
+							<td class='step-details'>
+									Clicked on AddressLine2
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:54 PM</td>
+							<td class='step-details'>
+									Typed the value Vasa Street into AddressLine2
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:55 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:57 PM</td>
+							<td class='step-details'>
+									Clicked on PinCode
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:58 PM</td>
+							<td class='step-details'>
+									Typed the value 400080 into PinCode
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:27:59 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:05 PM</td>
+							<td class='step-details'>
+									Clicked on Submit Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:28:15 PM</td>
+							<td class='step-details'>
+									Congrats sunil is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:28:16 PM</td>
+							<td class='step-details'>
+									Your approved RING limit is?3,500 is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:17 PM</td>
+							<td class='step-details'>
+									I accept the Ring’s Terms & Conditions & IT Act 2000 checkbox is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:28:17 PM</td>
+							<td class='step-details'>
+									Clicked on I accept the Ring’s Terms & Conditions & IT Act 2000 checkbox
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:18 PM</td>
+							<td class='step-details'>
+									Accept Offer is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:28:18 PM</td>
+							<td class='step-details'>
+									Clicked on Accept Offer
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:28:22 PM</td>
+							<td class='step-details'>
+									Set Pin is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:22 PM</td>
+							<td class='step-details'>
+									Clicked on Mpin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:24 PM</td>
+							<td class='step-details'>
+									Typed the value 1111 into MPIN Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:24 PM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:27 PM</td>
+							<td class='step-details'>
+									Clicked on Re-Enter Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:28 PM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Re-Enter pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:30 PM</td>
+							<td class='step-details'>
+									Submit is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:28:30 PM</td>
+							<td class='step-details'>
+									Clicked on Submit
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:39 PM</td>
+							<td class='step-details'>
+									Cross Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:28:39 PM</td>
+							<td class='step-details'>
+									Clicked on Cross Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:28:40 PM</td>
+							<td class='step-details'>
+									Scan And Pay Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:28:41 PM</td>
+							<td class='step-details'>
+									Clicked on Scan And Pay
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:28:44 PM</td>
+							<td class='step-details'>
+									Scan any QR code to pay Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>4:29:07 PM</td>
+							<td class='step-details'>
+									Amount Text Field is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:29:08 PM</td>
+							<td class='step-details'>
+									Clicked on Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:29:08 PM</td>
+							<td class='step-details'>
+									Cleared the text in : Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:29:10 PM</td>
+							<td class='step-details'>
+									Typed the value 100 into Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>4:29:11 PM</td>
+							<td class='step-details'>
+									Clicked on Pay Now Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='fail'>
+							<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+							<td class='timestamp'>4:29:27 PM</td>
+							<td class='step-details'>
+									feedBackMechanism is FAILED
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<ul class='screenshots'>
+					<li><a href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N17cJX1nfjxzwlJIEFACJoKAQEr3gt4QcS76EotXkrV3tbLTKdu6ezM7ugfu93p7HRmOzvjdLTdzuyK26mKW3sBay+gU6tYtApqawXxAoGikAASOEIIBAIh5/cHv5xySAIBchK++nr9lXPynJMnISR53ud7yeRyuVwAAAAAJKykr08AAAAA4FgJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACSvtK9PAPjkyuVy0draGvv27Yu2trbIZDJRUlISpaWl0a9fv74+PQAAICECB9AnmpqaYu3atfH+++/H5s2bY/fu3VFaWhqDBw+OUaNGxdixY+NTn/pUlJQYaAYAcLBsNhtVVVV9fRp5jY2Nnd7fv3//GDBgQC+fzcfHpk2bYvfu3V2+f8CAAVFdXd2LZ3R8EziAXpXL5WL9+vXx/PPPx/Lly2PXrl3R1tYWuVwuIiJKSkqirKwsRo4cGVdeeWVccMEFUVZW1sdnDQDQM5qbm+OFF16IGTNmHNXj6+rqYvbs2ZHNZuPee++N8ePH9/AZHt7u3btj+/btsW3btmhsbIyWlpbDPmbgwIExZMiQGDJkyHEVZo5n27Zti9ra2sMe179//zjxxBN74YyOfwIH9LG2trYOoxT27dsXJSUlkclkCo7LZDIF97VHgYPvy+VyBc+Zy+Wira2tw7SPzj52MeVyuairq4unnnoqamtrY9++fR2OaWtri5aWlnj//fejoaEhmpqa4rLLLouKiopeO08AgGJobm6OBx98MOrq6iKbzcZdd911RI+vq6uLBx98MJqbmyMiYuXKlb0aOBoaGiKbzUY2m42Iv/0t2h07duyIHTt2xIYNG6K0tDSGDRsW1dXVMWTIkGKdbq+pra2N2trauOaaa6KysrKvT+cTrd93vvOd7/T1SdB7crlc7N69O3+xe+CF8bFoa2uLXbt25ddQoPv+9Kc/RTabzQ8ta2hoiB//+McREXHKKadESUlJ7Nq1K5544omor6+P0047LX/fggUL4p133okxY8ZEWVlZ7Nu3L5599tl4+eWX48wzz8zf96c//SnmzZsX48aNixNOOCEiIt55551YvXp1jB49utc+12w2Gz/5yU9i9erV0dbWFhER/fr1i4EDB8bJJ58c5eXlsXfv3nyk2bNnT6xfvz6qqqqipqam184TAKAY7r///qirq4uI/bHio48+iokTJ3brsQfHjYiI8ePHxxlnnFGUcz1QQ0NDvPvuu9HQ0FDw8Q9WWloagwYNigEDBsSAAQO6HNnR1tYWO3fujIaGhmhsbMwfn6K6urq4//77o7a2Nt54442YNm1ajz337t27o6Gh4bDHVVdXJ/v162lGcHTD5s2bY9myZVFfXx933313jzznvn37YsOGDbFhw4ZoaGiIXbt2RXNzc9x+++09Xv3q6urizTffjPfeey/Wrl2bf9W8oqIizjzzzDjnnHPi/PPPj4EDBx7R865fvz7+8pe/xLJly/I/qCMiTj311Dj33HNjypQpcfLJJ/fo5/Jx1NjYGD//+c/ja1/7Wpx00knx+OOPx6pVq2L16tXR0tISkyZNip/85Cfx1ltvRVlZWZSUlMTVV18dv/3tb+MPf/hDRETs2bMnbrnllnjxxRfjmWeeiT179kRTU1Pcdddd8c4778QvfvGLaGlpicceeyzuvPPO2LZtWzz66KNx1VVX9drn2draGosWLYrVq1fn7xs4cGBceeWVcdVVV8XAgQNj3759sWbNmvjlL38Z69evj7a2tmhsbIxnn302Jk2aFOXl5b12vgAAPe2aa66JOXPm5G8vXrw4IuKwIzk6ixu9YefOnbFmzZpobGzsMFpjwIAB+SknAwcOzL+I1pnGxsbYuXNnNDY2xrZt26K1tTUi9r/42j7NZcSIETF69OgoLU3rEnXp0qX5t7ds2dKHZ0JERCZ3JOOKPkF27doV7777brz66qvx1ltvRUTEuHHj4l/+5V+O+XlfeeWVeOmll2LTpk0d3v+9730vBg8efEwf48CP9eSTT8bLL7982GMHDRoUX/3qV2PSpEmHPbatrS0WLFgQTz/99CGPKysriy984Qtx1VVX9dhIkc7s27cv3n777dixY0ePPF9paWl86lOfipEjR/bKD9jnnnsunnzyyaioqIhBgwbF5s2b879AKioqYujQobFx48b8ff369YsRI0bkA0DE/nUrRo0aFevXr8//wshkMnHKKafkf6G03zd8+PBobm6OnTt3xo033njU8z+P1MaNG2P27Nnx4YcfRkTE0KFD46abboopU6Z0GPWzadOmePLJJ2P58uX5z/vv//7v4/LLL++VcwUAKJbFixcXRI6IiKlTp3YZOZYsWRKPPfZYp++bMWNG3HjjjT19ihERsWHDhlizZk2HsFFdXR1VVVVHvY5Ga2trZLPZ2LBhQ4e/38vKyuKss85KatrK/PnzY8GCBfnbDz/88FE9z6ZNm+Kvf/1rp1O4j1S/fv3itNNO+0QuPppWHiuytra2eP/99+Mvf/lLvPLKK7Fr164eff5Vq1bFE088ERs3buzR5+3Mrl274r//+79j1apVBfePGDEihg8fHnv27IkPPvggvyJvU1NTzJ49O+66666YOnVql8+by+Vi7ty5+ZED7aqrq2Po0KHR0NAQH330UURE7N27N37+85/Hnj174vrrr+/hz/Bv5/PTn/40XnvttfzF/rFqn2YzbNiwmDhxYkyfPr1X1n/YtWtXh++5zu7bt29fwYiZiP3fu2vXri24L5fLxYYNGzrct3nz5vztYoang61fvz4/X7O0tDQuvvjiuOiiizqd0nTSSSfF1VdfHR988EFs3749IiIWLVoUU6dOtX0sAJC09r+1uzuS4/nnn++dE/v/WltbY82aNdHQ0FAQN4YPHx5jx4495qkQpaWlUV1dHdXV1dHY2Bi1tbX5a5K9e/fG8uXL4/TTT//EXZzX1dX16Gjlurq6T9zXMELgiIj96wIsXbo0XnnllVi/fn1RPsZbb70V//u//xt79+7N3zd8+PC48MILo6amJoYNGxbl5eVHPE2kK08++WRB3Lj66qvj2muvjeHDh+fva2lpiddffz1+8Ytf5M/rJz/5SYwbNy4+9alPdfq8b7zxRkHcOPfcc+Pzn/98jBw5MjKZTLS1tcXKlSvjZz/7WX6EylNPPRWnnnpqnHnmmT3yuR0ol8vFBx98EK2trUe0yFF3bNq0KZ599tlYtmxZ3H333TFmzJgeff5Pms2bN+e/zwYPHhxnnHFGl7ujlJSU5Icpvv322xGxf8jf9u3bY+jQob12zgAAxXAkkeO+++6LBx54IOrr64t+Xq2trbF8+fKCkRWlpaVx9tlnH3JURXNzc/786uvro7m5uWCUR1cLoQ4ZMiQuuuiiWLduXaxbty6/DtuqVauisbGxT3aIIW0CR0T89re/jVdffbXD/eecc060trbGypUrj+n5165dWxA3Bg4cGLfddltceOGFRdn+cs2aNQXTUmbMmBEzZszo8Gp9//794/LLL48TTjghZs+eHRH7RwcsWrQovvSlL3V43j179sQvf/nL/O1zzjkn7rnnnujfv3/+vpKSkjjrrLPin//5n+OHP/xhfrTKU089Ff/6r//a4wuQlpSUxD/90z/F73//+x4bcdPa2hrr16+P9evXRy6Xi40bN8bDDz8c3/zmN2PUqFE98jE+rj788MP8KI2DHfxL+cMPPzxklGppaSl4f/tUpGHDhnU4tqKiIkaNGmU7WQAgGd2NHJWVlb0WOVpaWvKjKSL2B4izzz6702nb2Ww2li1bFosXL476+vpD/l1XWVkZ48ePj4kTJ8aECRM6rDk4evToGDZsWLz33nuxe/fuyOVysXPnzmhtbU1uTY5iWb9+fWzdurXgvqFDh8bIkSP76IyOT75bDjJy5MiYOnVqfOYzn4mTTz45fv3rXx9T4GhpaYlHH300Hzeqq6vjm9/8ZpcjJHrCkiVL8m9XV1fH9OnTDzkVYdKkSTFhwoRYtmxZROwfpXHbbbd1mArw9ttv56efRETceuutBXHjQMOGDYsvfelL8f3vfz8i9kee2traooziGDx4cMycObPHpqjkcrloaWmJ2tramDt3bmzbti0++uij+M1vfhOzZs0yReIQ3nzzzXj++ec7/bc4cPTStm3b4je/+c1hg9eePXvyb7e2tsaTTz7Z4TGZTCbGjBkTd911V1LzNQEAuoocNTU1Bbtx9FbkGDhwYJx33nmxfPnyqKqq6nQERTabjQULFsSSJUu6PYK6ubk5li5dGkuXLo3KysqYNm1ahy1VTzjhhJg0aVIsX748IiLOO++84yZutMecCRMmHPXaI8fqjTfeyK+r127s2LECx0GOj++YPlZeXh7XX399TJw4McaMGdOjowwWL16cH8UwYMCAuOeee4oaN9ra2gpW8r300ku79ar2pEmT8oFj+/btsXPnzg6Lnb733nv5tz/zmc/EiBEjDvmcZ555ZowfPz5qa2sjImLFihVFCRwR+0dy9OS/W1lZWUyaNCmGDx8eDzzwQOzevTtq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iPjd734Xo0aNik9/+tNH/Fytra3xm9/8JnK5XGQymbjggguKOhVi3LhxMWvWrG4f39zcHP/+7/8eF154Ydx8883deswTTzzRrakVR2vIkCFFjUAHKy8v7zIGFtvYsWNj1apVhz0GAKCn9GXkaFdXVxdz5szpsKtKu4qKig5r4bVvs5rNZuO2227r9gtUO3fujP79+xf1OqKuri6WLVsWEyZM6JVpP92xdevW2Lp1a7eOHTp0qLjx/wkcRdLZPsVdzVkbOnRo3HnnnbFr16546623IiLimWeeiUsuuaRHpqB0prW1NR5//PH8HLkTTzzxsIsFnXHGGTF27Nj8kPu5c+dGTU1Np1vfbtq0KWbPnt1hpEBvrM9QWloaN910U7z//vtRX18f27Zti5/97GfxrW9964h/ML7wwguxbt26iNh/4T5hwoRevXjvrkWLFsXrr7/erWN37NhR1HMZPHhwr36NysrK+ixwXHHFFYcNHFdccUUvnQ0A8EnR15Gjvr6+IG6076oyfvz4gpHm9fX1sXjx4liyZEk+eLz55ptxzTXXdCtw7Ny5M5YvXx79+/eP8847ryiRo7m5Ob9LzPz58+M///M/e2y0/LHo7jTnsrKyuPzyy4t8NukQOIqktbW14Pb06dMPuSBP+0V5e+DYs2dPrFixoke2lj1YLpeLefPmxdKlSyNi/3+Kr3/964fd+rW0tDRuvvnm+MEPfhAR+3/gfO9734vp06fH+PHjo7KyMpqamuK9996L559/Pvbs2dOh3vbWVILBgwfH3XffHT/4wQ9ix44dsX79+njsscfijjvu6LAoa1tbWzQ1NeUvynO5XDQ0NMQLL7wQy5Yty28LW8zg9HHS2yM4+vfv32dTVCZPnhzr1q3rcieV6667zgKjAEBR9GXkOHDh0RkzZsSMGTM6/ftv1KhR8cUvfjFuvPHGmDNnTqxcuTLuvffebo2SaI8be/fujb1798by5cuLEjkO3iUmm80eF4Hj/PPP7zDNfvny5fH22293OM7aG38jcBTJgTukRERcddVVh33MqFGjYvz48fm5Vu+++25RAsfTTz8dixYtyt++4447uj1946yzzoqvfvWr8cQTT0RExO7du+PXv/51p8eOGDEiPve5z8WPfvSj/H0HTs0ptlGjRsVXvvKVmDNnTrS0tMSf//znGD16dFx33XUFP4BbW1tj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AAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAP+PvTuLtfW87/v+e9e45+mMPAPHw1GiJsuDZFuS5Tiy6yp2PLQp0uHCCNCmQO9y7wJFgd70pldB24sWuWgCtE1i10MSx1Ui1RI1UDNFUqTIwzOPex7W8L69oGRbsRTz8Oyz13n2+XyADRAg+b7/tW/WWt/9vM8DFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAA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PNjJcGc7e5ur2V2/lcHa9ezduJBrL38lN1/7RprdjSzM7+/KEAAAfpgVHADw7xjXyepeleVHn87Ko89m6ey5zB45lemlo+nNzKfV6SapMhruZrC5lp3b17J541JWz7+SG699M6PblzLbHk/6ZQAAPFAEDgD4EcZN0u500+r00up002q3U7Xab29C+oPdQZsmTV2nrsdp6nHq0TDj4SBNPYodNgAADpZHVADgR2hXScbD1ONh6r13/v9V3/8BAOBg+QMTAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAimeTUQCAB9TesMmg6aXVX0nVnUmrO5+0+2//yyZpxltphlupB1tpBquZ7o7TaTmAD4D7k8ABAPCAGNfJON20enOpekvZHfay08ynPfdw2lMraU0fT9Wd//P/vtm7mfHujYx3bma8eTGd/m6qaifNYCP13q10WnVajg0C4D4hcAAAPCA296psZilTKx9N/+yn0l98LFPduSRVquoHpeIvF4smaZo03//nZridnbXXs3f5s9l+7f/Ksdm9THXqg34ZAPAjVefOnbPOEADgkBqOm9zeqjN19lNpHflwMvdYWlNLaU2tpNWZSar2O75W04zTjHZS762m3r6a1s7F1DdfSFa/krnm1j18FQDw17OCAwDgENrc3EzdO5bW8nPpnHxPquM/kfbik2lPr7zra1ZVO1V3Lq3uXDJ3JuPdx5Lpk8ncY9lZ/1YGV7+QfrWTqX5vH18JALwzAgcAwCHSNE32BqNsNivJzPsz/dCvZPbMJ1O1Okm1vxtmtKdW0p76qdSLT2dw/cnsbOym3n0l7fFmuu98YQgA7AuPqAAAHCKD4ThXbqxn5vn/JtOP/Wq6C48e2L1HW1ey9Z3/Pbnwz3N0bhT7jwJwkNorKyu/O+khAAC4e9u7g6yNFjLzgX+QqTOfSGf21NsrNw5I1e6nPX826R3JxuWvpt9pnLICwIHxiAoAwCGwubWdvf5j6Tz8y+mf+nja00dStboHOkPV7qYzdzY59bHU471sXPznmalvpu8TJwAHoDXpAQAAuHt7neOpj3w0M4//ejozxw88bvxA1eqks/BIps/9dkYrH81OlrM3GExkFgAeLAIHAEDhmrQz9fCvZPqxT6c9+1BSTfYjXlW10+4vZfa538nuzHuytilwAHDvWTAIAFCwuupltf1keis/me7S45Me5y9UrbSnj2Tm0V9N1U+y8dlJTwTAIWcFBwBAofYGw9zeatI69am0F59K1Z6a9Eg/pGp10z36fLL8oazutFM7uw+Ae0jgAAAo1LiayV7/4fRO/FRa00cnPc6P1J4+miw+k8Hc82mq/qTHAeAQEzgAAApU13WqmVOZfviXvn9iyv375HFn4dFMP/GbqTvzaaziAOAeETgAAAq0urae9dFC+mc/lXRmJj3Ov1e7v5jO8rO5uTuTnaGPnwDcG95hAAAKVM2cTmvxqbSnj6aa8Kkpf62qnao7l/bSc6n6y5OeBoBD6j5/NwQA4EfpLD6R7tJTqVrdJNWkx/lrVe1+eid/Ju3Zk5MeBYBDSuAAAChQe+6RdBYem/QY71jV7qd3/CeT/vGMHacCwD0gcAAAFKgzdzrt+bOTHuOdq1ppTy1nfdDJ+s540tMAcAgJHAAABanrJjdXN7LX9NLqzU96nDtTtdKaOppWf2XSkwBwCAkcAAAFaZLsjrsZp39fHw3741T9ZRuNAnBPCBwAAAWpqlbaUyupOlOTHuVdqTrzSaewlScAFEHgAAAoSdVKb3Yp7W6hgaPdTatd3soTAO5/AgcAQGGadNIUcDQsABwkgQMAoDhNqoL7hkNiAbgXBA4AgKI0aca7aerRpAd5V5p6lNSOiQVg/wkcAAAlaeoMN29kPNiZ9CTvSjPcST3cnvQYABxCAgcAQEGaps5o+1rq4dakR3lXxluXM96+MukxADiEBA4AgIK0qiqLc1PpNtup99YmPc6daZqMd2+k3r056UkAOIQEDgCAglRVlYX5+XRGNzPevDjpcd65ps54sJFOvZVuNZz0NAAcQgIHAECBxuvfzWjtlUmP8Y419SijtdeyMFVncWF+0uMAcAgJHAAABRr+/+zdT49d913H8e+9dzz+M27iNFH4U0EBRSxYINpNl6x4KjwetuxZskSICpAQoWpQQSoqJSVtXbUmtpukztT2eDwz997DAlC7iKqKxp687ddre6W5n7uao7d+55zjH8zF8fcve8Yvbdmdzdn9dzx/A4BnRuAAAAi6vnky1/Yfzvbk/szyGX/t6rKf5fzxnN//usABwDMjcAAABF072M/h9sdz8cG/zrI7u+w5v9D+/KezPX53rpz9cDZ7r4gF4NkQOAAAovYn/zUXd/9u9ucPZ5b9Zc/5ZMsyu0d35vzO38znb67n2tUrl70IgBeUwAEAEHV1TubV3e3ZPvj32Z0dX/acT7Tfns7F8ffm9Ed/O8uF0xsAPDsCBwBA1Gr2s744ntPv/eVsj787y/6z9yyOiw//Zeajr81rRzNrV54APEP+zQAAhK2Wszl89G+z++Cd2f709mXP+ZllP7vHd2d+8o05PPmPObp+ddar1WWvAuAFdnDZAwAA+P9br2Zu3Vjm4Udvz8XBzdkcvTnrw1dm5hJjwrKb/fnjOX3/H+fGo2/Ntfn48rYA8NJwggMA4AVwc7k3Vz9+e05/8Fez7M4vdcvu7Hie3vv6PPrWn8/5h9+81C0AvDyc4AAAeAGsZzeH53dm9eDv5+ntzRz+5h/P5ug3nvuO7eO7c3b37Tn5z7+YW4cP5/rh5rlvAODlJHAAALwgNvuTWZ3ent0HX53tXMz+ja/Mwau/N6v1c7jkW2Yujr8zT9//p9ne+4e5/vS9OXr1lTnYCBwAPB8CBwDAC2S9PJ2jpxW/TEoAACAASURBVO/OwzsP5+L0eGb5k9nc/MKsr9yYWX36sWHZb2e5OJndkx/P9s5fz/ZHX531ye15/Y3XP/XvAoBfZPXWW28tlz0CAIBP1zKrefR0PY8PvjhHf/Cnc/XNP5r11Vuf+vfsnj6Ys/v/PI+++Wfz5tHpHK4vZpb9rLwxBYDnTOAAAHhBbXfLbFfX5+Dmb8/p1S/O/rUvz8HrX5orr/zOr/R3l9357E4/mrN7X5uze+/MPHx3bh0cz+HBfta6BgCXxC0qAAAvqIPNag7m6cyT9+bKk7uznN+f5fF7c3Lwa7O5+VuzvvHrs7n2xqyvvTar9ZWZTzp1sSyz7M9nf/Zwdk/uze7k/ZnT+3NteTCHD749q0ffnfX2wVy7/rnn/wMB4Oc4wQEA8BI53y7z8cnMldf/cA5u/f4cvPK7s7n5hdkuB7OsDmZW65n539Cx7Ga92s9mOZvdyf3ZHn9nLh58e1YnP5zXbmzHYQ0APksEDgCAl9x+v8z9nzyc7Vyf2Vz/2cNId0/m5tX9fP5zh5c7EAB+CW5RAQB4ya3Xq3nj1tEss5lZ7Wdm/z8fLJvZrL3mFYAGgQMAgDm88n+XhT9/uNdNKAB0rC97AAAAAMCvSuAAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAADyBA4AAAAgT+AAAAAA8gQOAAAAIE/gAAAAAPIEDgAAACBP4AAAAPjv9u4nNK5yDeDwK97itBEnoNNphSalYJu4KGkUherCKtTGhdiNAXddKNRNQFy5CJcuVQQ3ERFqC1Z0aaGKkYJCLS6MLVg6sYGGpEqN2STC2AgV70L805szbWKTmb6T51m135ec83ZzMvPrmRMgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0BA4AAAAgPYEDAAAASE/gAAAAANITOAAAAID0bouI31s9BAAAAMDNcAcHAAAAkJ7AAQAAAKQncAAAAADpCRwAAABAegIHAAAAkJ7AAQAAAKQncAAAAADpCRwAAABAegIHAAAAkJ7AAQAAAKQncAAAAADpCRwAAABAegIHAAAAkJ7AAQAAAKQncAAAAADpCRwAAABAegIHAAAAkJ7AAQAAAKQncAAAAADpCRwAAABAegIHAAAA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' data-featherlight='image'><span class='label grey badge white-text text-white'>base64-img</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</li>
+</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<div id='step-filters' class="right sr-filters">
+				<a class="btn-floating waves-effect waves-light green" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></a>
+				<a class="btn-floating waves-effect waves-light red" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light red darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light pink text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></a>
+				<a class="btn-floating waves-effect waves-light orange" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></a>
+				<a class="btn-floating waves-effect waves-light teal" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></a>
+				<a class="btn-floating waves-effect waves-light grey" status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></a>
+			</div>
+			<h5 class='test-name'></h5>
+		</div>
+	</div>
+	<!-- subview right -->
+</div>
+<!-- test view --><!-- category view --><!-- exception view --><div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>1</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>6</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Feb 8, 2023 04:17:58 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Feb 8, 2023 04:29:27 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 11m 29s+81ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>Device Info </td>
+								<td>Device Name - samsung Version - 10</td>
+							</tr>
+							<tr>
+								<td>App version : </td>
+								<td> 5.0.21</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->		</div>
+		<!-- container -->
+		<script>
+			var statusGroup = {
+                parentCount: 1,
+				passParent: 0,
+				failParent: 1,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 1,
+				childCount: 6,
+				passChild: 5,
+				failChild: 1,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				debugChild: 0,
+				exceptionsChild: 1,
+				grandChildCount: 0,
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				debugGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		<script>
+			var timeline = {
+			        "feedBackMechanism":670.098
+			};
+		</script>
+		<script src='https://cdn.rawgit.com/extent-framework/extent-github-cdn/b65cd69/v3html/js/extent.js' type='text/javascript'></script>
+		<script type='text/javascript'>
+			
+            
+            
+                $(document).ready(function() {
+                });
+            
+		
+		</script>
+	</body>
+</html>

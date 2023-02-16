@@ -1,0 +1,29 @@
+# Created on 2023-02-09T11:14:08.257
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.base/java.io.DataInputStream.readInt(DataInputStream.java:398)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:386)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+
+# Created on 2023-02-09T11:14:14.628
+Unexpected IOException: 8,1,com.RingPay.TestScripts.RingPayTestScripts,merchantFlow(com.RingPay.TestScripts.RingPayTestScripts),null,Expected condition failed: waiting for presence of element located by: By.xpath: //*[contains(@text\002C'Scan any QR to get started')] (tried for 30 second(s) with 500 milliseconds interval),null,Expected condition failed: waiting for presence of element located by: By.xpath: //*[contains(@text\002C'Scan any QR to get started')] (tried for 30 second(s) with 500 milliseconds interval),RingPayTestScripts.merchantFlow:109 \00BB Timeout Expected condition failed: waiti...,org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //*[contains(@text\002C'Scan any QR to get started')] (tried for 30 second(s) with 500 milliseconds interval)\000A\0009at com.RingPay.TestScripts.RingPayTestScripts.merchantFlow(RingPayTestScripts.java:109)\000ACaused by: org.openqa.selenium.NoSuchElementException: \000Ano such element: Unable to locate element: {"method":"xpath"\002C"selector":"//*[contains(@text\002C'Scan any QR to get started')]"}\000A  (Session info: chrome=109.0.5414.120)\000AFor documentation on this error\002C please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\000ABuild info: version: '3.141.59'\002C revision: 'e82be7d358'\002C time: '2018-11-14T08:17:03'\000ASystem info: host: 'LAPTOP-3QQ5MNB4'\002C ip: '172.31.99.51'\002C os.name: 'Windows 11'\002C os.arch: 'amd64'\002C os.version: '10.0'\002C java.version: '18.0.1.1'\000ADriver info: org.openqa.selenium.chrome.ChromeDriver\000ACapabilities {acceptInsecureCerts: false\002C browserName: chrome\002C browserVersion: 109.0.5414.120\002C chrome: {chromedriverVersion: 109.0.5414.74 (e7c5703604da...\002C userDataDir: C:\005CProgram Files (x86)\005Cscop...}\002C goog:chromeOptions: {debuggerAddress: localhost:54352}\002C javascriptEnabled: true\002C networkConnectionEnabled: false\002C pageLoadStrategy: eager\002C platform: WINDOWS\002C platformName: WINDOWS\002C proxy: Proxy()\002C setWindowRect: true\002C strictFileInteractability: false\002C timeouts: {implicit: 0\002C pageLoad: 300000\002C script: 30000}\002C unhandledPromptBehavior: dismiss and notify\002C webauthn:extension:credBlob: true\002C webauthn:extension:largeBlob: true\002C webauthn:virtualAuthenticators: true}\000ASession ID: b5e5c8e0387a329932852a6dd29d0d5f\000A*** Element info: {Using=xpath\002C value=//*[contains(@text\002C'Scan any QR to get started')]}\000A\0009at com.RingPay.TestScripts.RingPayTestScripts.merchantFlow(RingPayTestScripts.java:109)\000A
+
+
+# Created on 2023-02-09T11:14:14.865
+Unexpected IOException with stream: 2023-02-09 11:14:14,864 [main] INFO  binary_data_logger - RP_MESSAGE#FILE#C:\Windows\TEMP\screenshot1922748848503940107.png#Attachment
+
+
+# Created on 2023-02-09T11:14:14.869
+Unexpected IOException with stream: 2023-02-09 11:14:14,866 [main] INFO  binary_data_logger - ::::::::::Test merchantFlow FAILED::::::::::
+
+
+# Created on 2023-02-09T11:14:14.872
+Unexpected IOException: 5,1,com.RingPay.TestScripts.RingPayTestScripts,userSuspendTerminateCase(com.RingPay.TestScripts.RingPayTestScripts),com.RingPay.TestScripts.RingPayTestScripts,null,null
+
+
+# Created on 2023-02-09T11:14:14.873
+Unexpected IOException with stream: 2023-02-09 11:14:14,872 [main] INFO  binary_data_logger - :::::::::Test userSuspendTerminateCase Started::::::::
+
+

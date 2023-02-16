@@ -1,0 +1,1869 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href='https://cdn.rawgit.com/extent-framework/extent-github-cdn/b65cd69/v3html/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>Automation Reports</title>
+
+	<style type='text/css'>
+		/* json-tree */
+		.jstBracket,.jstComma,.jstValue{white-space:pre-wrap}.jstValue{font-size:10px;font-weight:400;font-family:"Lucida Console",Monaco,monospace}.jstProperty{color:#666;word-wrap:break-word}.jstBool{color:#2525CC}.jstNum{color:#D036D0}.jstNull{color:gray}.jstStr{color:#2DB669}.jstFold:after{content:' -';cursor:pointer}.jstExpand{white-space:normal}.jstExpand:after{content:' +';cursor:pointer}.jstFolded{white-space:normal!important}.jstHiddenBlock{display:none}
+			
+            
+                 .report-name { padding-left: 10px; } .report-name > img { float: left;height: 90%;margin-left: 90px;margin-top: 2px;width: 50px; }
+            
+		
+	</style>
+	
+	<script type="text/javascript">
+		/*! json-tree - v0.2.2 - 2017-09-25, MIT LICENSE */
+		var JSONTree=function(){var n={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","/":"&#x2F;"},t=0,r=0;this.create=function(n,t){return r+=1,N(u(n,0,!1),{class:"jstValue"})};var e=function(t){return t.replace(/[&<>'"]/g,function(t){return n[t]})},s=function(){return r+"_"+t++},u=function(n,t,r){if(null===n)return f(r?t:0);switch(typeof n){case"boolean":return l(n,r?t:0);case"number":return i(n,r?t:0);case"string":return o(n,r?t:0);default:return n instanceof Array?a(n,t,r):c(n,t,r)}},c=function(n,t,r){var e=s(),u=Object.keys(n).map(function(r){return j(r,n[r],t+1,!0)}).join(m()),c=[g("{",r?t:0,e),N(u,{id:e}),p("}",t)].join("\n");return N(c,{})},a=function(n,t,r){var e=s(),c=n.map(function(n){return u(n,t+1,!0)}).join(m());return[g("[",r?t:0,e),N(c,{id:e}),p("]",t)].join("\n")},o=function(n,t){var r=e(JSON.stringify(n));return N(v(r,t),{class:"jstStr"})},i=function(n,t){return N(v(n,t),{class:"jstNum"})},l=function(n,t){return N(v(n,t),{class:"jstBool"})},f=function(n){return N(v("null",n),{class:"jstNull"})},j=function(n,t,r){var s=v(e(JSON.stringify(n))+": ",r),c=N(u(t,r,!1),{});return N(s+c,{class:"jstProperty"})},m=function(){return N(",\n",{class:"jstComma"})},N=function(n,t){return d("span",t,n)},d=function(n,t,r){return"<"+n+Object.keys(t).map(function(n){return" "+n+'="'+t[n]+'"'}).join("")+">"+r+"</"+n+">"},g=function(n,t,r){return N(v(n,t),{class:"jstBracket"})+N("",{class:"jstFold",onclick:"JSONTree.toggle('"+r+"')"})};this.toggle=function(n){var t=document.getElementById(n),r=t.parentNode,e=t.previousElementSibling;""===t.className?(t.className="jstHiddenBlock",r.className="jstFolded",e.className="jstExpand"):(t.className="",r.className="",e.className="jstFold")};var p=function(n,t){return N(v(n,t),{})},v=function(n,t){return Array(2*t+1).join(" ")+n};return this}();
+	</script>
+</head>
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo black"><img src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png"></a>
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
+		</ul>
+		<!-- report name -->
+		<span class='report-name'>RingPay Automation PoC</span>
+		<!-- report headline -->
+		<span class='report-headline'></span>
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<a href='#!'>
+			<span class='label blue darken-3 suite-start-time'>Feb 7, 2023 10:50:09 AM</span>
+			</a>
+		</ul>
+	</div>
+</nav>		<!-- container -->
+		<div class='container'>
+<div id='test-view' class='view'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+				<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+			<!-- category toggle -->
+			<!-- category toggle -->
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+				<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+				<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+<div id='test-view-charts' class='subview-full'>
+    <div id='charts-row' class='row nm-v nm-h'>
+        <div class='col s12 m6 l6 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Tests</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='parent-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> test(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                </div>
+            </div>
+        </div>
+        <div class='col s12 m6 l6 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Steps</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='child-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='75%'><span class='strong'>3</span> step(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="timeline-chart" class="row nm-v nm-h">
+        <div class="col s12 m12 l12 np-h">
+            <div class="card-panel">
+                <div class='left panel-name'>Timeline (seconds)</div>
+                <div class="chart-box" style="width:98%;max-height:145px;">
+                    <canvas id="timeline" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='test-collection' class='test-collection'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>userScanAndPayFlow</span>
+						<span class='test-time'>Feb 7, 2023 10:50:29 AM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 7, 2023 10:50:29 AM</span>
+	<span class='label end-time'>Feb 7, 2023 10:58:21 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 7m 51s+796ms</span>
+</div>
+<div class='test-desc'><h5> ENV : <a href="" onclick='return true;'"></a></h5> </div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='2'>
+		<div class='collapsible-header'>
+			<div class='node-name'>SetPin Merchant Flow Without Location</div>
+			<span class='node-time'>Feb 7, 2023 10:50:29 AM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+	<li class='node level-1 leaf pass' status='pass' test-id='3'>
+		<div class='collapsible-header'>
+			<div class='node-name'>User Play store Flow Module</div>
+			<span class='node-time'>Feb 7, 2023 10:50:31 AM</span>
+			&middot; <span class='node-duration'>0h 0m 40s+844ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+		<div class='collapsible-body'>
+			<div class='node-steps'>
+				<table class='bordered table-results'>
+					<thead>
+						<tr>
+							<th>Status</th>
+							<th>Timestamp</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:50:42 AM</td>
+							<td class='step-details'>
+									Clicked on Enable permissions button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:50:42 AM</td>
+							<td class='step-details'>
+									Foreground allow camera permissions options
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:50:44 AM</td>
+							<td class='step-details'>
+									Clicked on While using the app foreground camera permission option
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:50:47 AM</td>
+							<td class='step-details'>
+									Clicked on Signup/Login link
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:50:49 AM</td>
+							<td class='step-details'>
+									Clicked on Continue with Mobile option
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:50:52 AM</td>
+							<td class='step-details'>
+									Clicked on Mobile Number Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:50:54 AM</td>
+							<td class='step-details'>
+									Typed the value 9194583975 into Mobile Number Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:03 AM</td>
+							<td class='step-details'>
+									Clicked on Otp text field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:05 AM</td>
+							<td class='step-details'>
+									Typed the value 888888 into Enter OTP
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:09 AM</td>
+							<td class='step-details'>
+									Clicked on Read & Accept button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:51:09 AM</td>
+							<td class='step-details'>
+									Ringpay Permission Popup is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:10 AM</td>
+							<td class='step-details'>
+									Clicked on Phone access option
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:11 AM</td>
+							<td class='step-details'>
+									Clicked on Location Access option
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:12 AM</td>
+							<td class='step-details'>
+									Clicked on SMS access option
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</li>
+	<li class='node level-1 leaf pass' status='pass' test-id='4'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Age Criteria</div>
+			<span class='node-time'>Feb 7, 2023 10:51:52 AM</span>
+			&middot; <span class='node-duration'>0h 4m 55s+789ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+		<div class='collapsible-body'>
+			<div class='node-steps'>
+				<table class='bordered table-results'>
+					<thead>
+						<tr>
+							<th>Status</th>
+							<th>Timestamp</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:54 AM</td>
+							<td class='step-details'>
+									Clicked on First Name Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:56 AM</td>
+							<td class='step-details'>
+									Typed the value Sunil into First Name field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:57 AM</td>
+							<td class='step-details'>
+									Clicked on Last Name Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:51:59 AM</td>
+							<td class='step-details'>
+									Typed the value Chatla into Last Name field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:00 AM</td>
+							<td class='step-details'>
+									Clicked on Mother's Name Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:02 AM</td>
+							<td class='step-details'>
+									Typed the value Mom into Mother's Name field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:04 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:05 AM</td>
+							<td class='step-details'>
+									Clicked on Email Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:07 AM</td>
+							<td class='step-details'>
+									Clicked on None of the Above Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:10 AM</td>
+							<td class='step-details'>
+									Typed the value Wwvcdbmix@gmail.com into Email Filed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:10 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:12 AM</td>
+							<td class='step-details'>
+									Clicked on Gender male is selected
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:13 AM</td>
+							<td class='step-details'>
+									Clicked on Gender male is selected
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:52:14 AM</td>
+							<td class='step-details'>
+									Date Of Birth Element Present is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:15 AM</td>
+							<td class='step-details'>
+									Clicked on DOB field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:17 AM</td>
+							<td class='step-details'>
+									Clicked on Year field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:18 AM</td>
+							<td class='step-details'>
+									Cleared the text in : Year field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:19 AM</td>
+							<td class='step-details'>
+									Typed the value 1990 into Year field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:21 AM</td>
+							<td class='step-details'>
+									Clicked on Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:21 AM</td>
+							<td class='step-details'>
+									Clicked on Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:22 AM</td>
+							<td class='step-details'>
+									Cleared the text in : Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:23 AM</td>
+							<td class='step-details'>
+									Typed the value Oct into Month field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:24 AM</td>
+							<td class='step-details'>
+									Clicked on Date field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:25 AM</td>
+							<td class='step-details'>
+									Cleared the text in : Date field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:26 AM</td>
+							<td class='step-details'>
+									Typed the value 26 into Date field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:26 AM</td>
+							<td class='step-details'>
+									Clicked on OK button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:28 AM</td>
+							<td class='step-details'>
+									Clicked on Proceed Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:52:43 AM</td>
+							<td class='step-details'>
+									New Communication Address Page Header is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:43 AM</td>
+							<td class='step-details'>
+									Clicked on Room No Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:44 AM</td>
+							<td class='step-details'>
+									Typed the value 86 into Room No. Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:47 AM</td>
+							<td class='step-details'>
+									Clicked on Address Line 1 Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:49 AM</td>
+							<td class='step-details'>
+									Typed the value 44, Borivali into Address Line 1
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:50 AM</td>
+							<td class='step-details'>
+									Clicked on Address Line 2 Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:53 AM</td>
+							<td class='step-details'>
+									Typed the value Vasa Street into  Text Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:55 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:55 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:52:58 AM</td>
+							<td class='step-details'>
+									Swiping screen in  up direction 1 times
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:02 AM</td>
+							<td class='step-details'>
+									Swiping screen in  up direction 2 times
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:03 AM</td>
+							<td class='step-details'>
+									Clicked on Pincode Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:05 AM</td>
+							<td class='step-details'>
+									Typed the value 400080 into  Text Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:06 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:07 AM</td>
+							<td class='step-details'>
+									City City Name autoPopulated after entering pincode
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:08 AM</td>
+							<td class='step-details'>
+									State State Name autoPopulated after entering pincode
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:08 AM</td>
+							<td class='step-details'>
+									Clicked on Submit Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:16 AM</td>
+							<td class='step-details'>
+									Congrats Sunil is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:17 AM</td>
+							<td class='step-details'>
+									Your approved RING limit is?1,000 is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:17 AM</td>
+							<td class='step-details'>
+									I accept the Ring’s Terms & Conditions & IT Act 2000 checkbox is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:18 AM</td>
+							<td class='step-details'>
+									Clicked on I accept the Ring’s Terms & Conditions & IT Act 2000 checkbox
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:19 AM</td>
+							<td class='step-details'>
+									Accept Offer is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:19 AM</td>
+							<td class='step-details'>
+									Clicked on Accept Offer
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:23 AM</td>
+							<td class='step-details'>
+									Set Pin is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:25 AM</td>
+							<td class='step-details'>
+									Clicked on Mpin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:26 AM</td>
+							<td class='step-details'>
+									Typed the value 1111 into MPIN Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:27 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:30 AM</td>
+							<td class='step-details'>
+									Clicked on Re-Enter Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:31 AM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Re-Enter pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:34 AM</td>
+							<td class='step-details'>
+									Submit is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:36 AM</td>
+							<td class='step-details'>
+									Clicked on Submit
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:43 AM</td>
+							<td class='step-details'>
+									Cross Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:43 AM</td>
+							<td class='step-details'>
+									Clicked on Cross Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:44 AM</td>
+							<td class='step-details'>
+									Scan And Pay Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:53:45 AM</td>
+							<td class='step-details'>
+									Clicked on Scan And Pay
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:45 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_203, To Verify Scan and Pay button available on bottom of the  HomeScreen is enable and clickable
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:49 AM</td>
+							<td class='step-details'>
+									Scan any QR code to pay Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:53:49 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_204,Camera Scanner should get opened to Scan and Pay
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:24 AM</td>
+							<td class='step-details'>
+									Credit at zero Charges popup is not displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:24 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_191,Credit at zero Charges popup is not Displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:25 AM</td>
+							<td class='step-details'>
+									Use your credit limit to complete this payment. Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:26 AM</td>
+							<td class='step-details'>
+									Ring Type One is Merchant Name is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:27 AM</td>
+							<td class='step-details'>
+									rpy.ipmerchant1234191953@icici is UPI Id is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:27 AM</td>
+							<td class='step-details'>
+									Back button is tapped
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:34 AM</td>
+							<td class='step-details'>
+									? Rupees Logo is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:34 AM</td>
+							<td class='step-details'>
+									Yay! No fee on your first transaction. Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:35 AM</td>
+							<td class='step-details'>
+									Disabled pay Now Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:35 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:35 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_207,Payment Screen Validated
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:35 AM</td>
+							<td class='step-details'>
+									Amount Text Field is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:36 AM</td>
+							<td class='step-details'>
+									Clicked on Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:37 AM</td>
+							<td class='step-details'>
+									Typed the value 100000 into Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:38 AM</td>
+							<td class='step-details'>
+									You can pay up to Rs 5000 for this transaction . Re-enter the amount Error Message is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:40 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:40 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_208,You have entered a higher amount than your available limit. Re-enter amount. Error message should be displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:41 AM</td>
+							<td class='step-details'>
+									Amount Text Field is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:41 AM</td>
+							<td class='step-details'>
+									Clicked on Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:42 AM</td>
+							<td class='step-details'>
+									Cleared the text in : Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:43 AM</td>
+							<td class='step-details'>
+									Typed the value 0  into Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:44 AM</td>
+							<td class='step-details'>
+									Please enter amount greater than 0 Error Message is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:45 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:45 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_209, Please enter amount greater than 0 Error Message is Displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:46 AM</td>
+							<td class='step-details'>
+									Amount Text Field is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:47 AM</td>
+							<td class='step-details'>
+									Clicked on Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:47 AM</td>
+							<td class='step-details'>
+									Cleared the text in : Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:48 AM</td>
+							<td class='step-details'>
+									Typed the value 100 into Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:49 AM</td>
+							<td class='step-details'>
+									You can pay upto ?5000 in your first transaction without any additional charges Message is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:54:50 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_210, Pay Now button should be enabled after entering the valid amount
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:54:51 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:02 AM</td>
+							<td class='step-details'>
+									Tapped on the element 2 times on Pay Now Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:17 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_211, Navigated to Confirm Payment Screen to enter the Security PIN for transaction
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:27 AM</td>
+							<td class='step-details'>
+									Confirm Payment Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:28 AM</td>
+							<td class='step-details'>
+									Clicked on Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:30 AM</td>
+							<td class='step-details'>
+									Typed the value 1234 into Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:32 AM</td>
+							<td class='step-details'>
+									Clicked on Continue Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:32 AM</td>
+							<td class='step-details'>
+									Incorrect PIN Error Message is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:32 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_212, Incorrect PIN Error message should be Displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:33 AM</td>
+							<td class='step-details'>
+									Forgot PIN? Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:33 AM</td>
+							<td class='step-details'>
+									Clicked on Forget PIN?
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:35 AM</td>
+							<td class='step-details'>
+									Change Pin text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:36 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_213, Navigated to Change Pin Screen
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:37 AM</td>
+							<td class='step-details'>
+									Change Pin Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:43 AM</td>
+							<td class='step-details'>
+									Clicked on Enter New Pin
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:44 AM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Enter New Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:47 AM</td>
+							<td class='step-details'>
+									Clicked on Re-Enter New Pin
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:48 AM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Re-Enter New Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:51 AM</td>
+							<td class='step-details'>
+									Clicked on Continue Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:52 AM</td>
+							<td class='step-details'>
+									Please enter OTP Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:55:53 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_199, Please enter OTP error message is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:54 AM</td>
+							<td class='step-details'>
+									Swiping screen in  DOWN direction 1 times
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:56 AM</td>
+							<td class='step-details'>
+									Clicked on Enter OTP Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:57 AM</td>
+							<td class='step-details'>
+									Typed the value 123456 into Enter OTP Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:58 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:55:59 AM</td>
+							<td class='step-details'>
+									Clicked on Enter New Pin
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:01 AM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Enter New Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:02 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:03 AM</td>
+							<td class='step-details'>
+									Clicked on Continue Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:05 AM</td>
+							<td class='step-details'>
+									Invalid Otp, Please enter correct otp. Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:06 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_215, Invalid Otp, Please enter correct otp. Error Message is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:06 AM</td>
+							<td class='step-details'>
+									Clicked on Enter OTP Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:07 AM</td>
+							<td class='step-details'>
+									Cleared the text in : Enter OTP Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:09 AM</td>
+							<td class='step-details'>
+									Typed the value 888888 into Enter OTP Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:10 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:11 AM</td>
+							<td class='step-details'>
+									Clicked on Enter New Pin
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:13 AM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Enter New Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:14 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:15 AM</td>
+							<td class='step-details'>
+									Clicked on Re-Enter New Pin
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:17 AM</td>
+							<td class='step-details'>
+									Cleared the text in : Re-Enter New Pin
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:18 AM</td>
+							<td class='step-details'>
+									Typed the value 1234 into Re-Enter New Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:19 AM</td>
+							<td class='step-details'>
+									Hiding keyboard was Successfull
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:21 AM</td>
+							<td class='step-details'>
+									Clicked on Continue Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:21 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_216, Please enter same PIN in both fields Error Message is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:22 AM</td>
+							<td class='step-details'>
+									Clicked on Re-Enter New Pin
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:23 AM</td>
+							<td class='step-details'>
+									Cleared the text in : Re-Enter New Pin
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:24 AM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Re-Enter New Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:28 AM</td>
+							<td class='step-details'>
+									Clicked on Continue Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:28 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_218, Navigated back to Confirm Payment Screen from Change Pin Screen
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:28 AM</td>
+							<td class='step-details'>
+									Confirm Payment Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:29 AM</td>
+							<td class='step-details'>
+									Clicked on Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:30 AM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:32 AM</td>
+							<td class='step-details'>
+									Clicked on Continue Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:37 AM</td>
+							<td class='step-details'>
+									Payment Done! Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:37 AM</td>
+							<td class='step-details'>
+									Payment Done green tick mark is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:38 AM</td>
+							<td class='step-details'>
+									? is Rupees Logo is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:39 AM</td>
+							<td class='step-details'>
+									Ring Type One Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:39 AM</td>
+							<td class='step-details'>
+									07 FEB 2023 10:56 AM is Tax date and time is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:39 AM</td>
+							<td class='step-details'>
+									Seek Bar is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:40 AM</td>
+							<td class='step-details'>
+									Available Limit Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:40 AM</td>
+							<td class='step-details'>
+									?900 is Available Limit Amount is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:41 AM</td>
+							<td class='step-details'>
+									Go to Homepage Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:41 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_219, Validation of Payment Done Screen
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:41 AM</td>
+							<td class='step-details'>
+									Go to Homepage Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:42 AM</td>
+							<td class='step-details'>
+									Clicked on Go To HomePage
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:47 AM</td>
+							<td class='step-details'>
+									No is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:48 AM</td>
+							<td class='step-details'>
+									Clicked on No
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:48 AM</td>
+							<td class='step-details'>
+									TC_Ring_Core_221, Navigation to HomeScreen
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</li>
+	<li class='node level-1 leaf fail' status='fail' test-id='5'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Payment declined Flow</div>
+			<span class='node-time'>Feb 7, 2023 10:56:48 AM</span>
+			&middot; <span class='node-duration'>0h 1m 32s+833ms</span>
+			<span class='test-status right fail'>fail</span>
+		</div>
+		<div class='collapsible-body'>
+			<div class='node-steps'>
+				<table class='bordered table-results'>
+					<thead>
+						<tr>
+							<th>Status</th>
+							<th>Timestamp</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:56:49 AM</td>
+							<td class='step-details'>
+									Scan And Pay Button is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:56:50 AM</td>
+							<td class='step-details'>
+									Clicked on Scan And pay Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='pass'>
+							<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+							<td class='timestamp'>10:57:16 AM</td>
+							<td class='step-details'>
+									Use your credit limit to complete this payment. Text is displayed
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:57:17 AM</td>
+							<td class='step-details'>
+									Clicked on Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:57:18 AM</td>
+							<td class='step-details'>
+									Cleared the text in : Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:57:19 AM</td>
+							<td class='step-details'>
+									Typed the value 1 into Amount Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:57:19 AM</td>
+							<td class='step-details'>
+									Clicked on Pay Now Button
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:57:46 AM</td>
+							<td class='step-details'>
+									Clicked on Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='info'>
+							<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+							<td class='timestamp'>10:57:59 AM</td>
+							<td class='step-details'>
+									Typed the value 1111 into Edit Pin Field
+								
+							</td>
+						</tr>
+						<tr class='log' status='fail'>
+							<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+							<td class='timestamp'>10:58:21 AM</td>
+							<td class='step-details'>
+									userScanAndPayFlow is FAILED
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<ul class='screenshots'>
+					<li><a href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N17fJb1ffj/93WHAEkQ5BAOKkGsYkCpFlTqIazVCp6qxba2inN+W3Rd+6117davunXn6n7r2tU+1rVT51o7bedWsV2rYq1dgVlFg9YTB0UlnmAYBARCIMn1+yPkNiEJBAiEjz6ffVDuO7nu675uxJj7lc8hO/LII/MAAAAASFihry8AAAAAYG8JHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASF6/vr4AoHdlETFoYEu8d9y2OL16S5x4RGOMGdQUWUSsWl+Ix14aEA8uGRhPvDwg3tpSiLyvLxgAAKAXZEceeaT3N/AOUJLl8ZcXvxXnvm9LDIiWyFryyPKIaMl3+BWRt+TR0pLHtuYs7l9WFn/yXyNiW3PW1y8BAABgjwkckLiB/fO4/Q/XRfWobVGSRceY0U3giDyPvDmPyPOI5jxamvNYsmZgfOy2Q/r41QAAvLtVVlbGmjVr+voyiqqrq7v8eH19/QF1nakZPXp0lJWVdfv5hoaGWLVq1X68oncGU1QgYZd9aEtcc8HGKORt4WLPzlNSiJg0oiHKSvNo2LZ/R3IcccQRcdJJJ8Whhx4aAwcO7JVzbtmyJV599dVYtGhRvPDCC71yTgCAnSkvL4+ZM2fG3Llz9+jxVVVVcfXVV8fw4cPjhhtuiKVLl/byFe5aZWVlHH300VFdXR2TJk2K4cOH7/IxdXV1sXTp0li6dGnU1tbuh6tM38EHH9xtOGpvy5YtsW7duv1wRe8cAgckqJBF/Pyv18X4Yc0RedYaNvJ8jwNHROuKwzOP3hh3P31QDIhCbI2Wfb4+x7hx42LGjBlx3HHHRVlZWRQKvbPucUtLSxx55JExZMiQuO+++2LlypW9cl4AgK6Ul5fHtddeG+PGjYvhw4fHLbfcsluPr6qqiuuuuy7Ky8sjImLSpEn7NXCcdtppMXXq1JgyZUpk2e79sGvcuHHF7+kaGhqitrY2Fi5cGEuWLNlHV7v/VFdXx8SJE2PevHmxefPmvr4cekDgOICVlJREZWVlNDc3v2OGf5WWlsaIESOipaUl3njjjWhubu7rS0pOv0IeC772Zgwt254fsojIsohCydsH5XlEY3PE1pbdOvcXTl0bdz99UDRGS/xy6Jlx1pu/jG2xe+fYHWPGjInx48dHRUVFr563UChERUVFHHHEETFmzBiBAwDYp6677rqoqqqKiIjp06dHRPQ4cuwYN/an0047LS688MIYMWLETo9raGjo8P1UV6MPsiyL8vLyqKmpidNOOy2WLl0ad999d7Kho6qqKq699trIsixqamrii1/8Yl9fEj0gcPSi448/Pk499dQYPXp0fOUrX9mjc4wcOTLOOeecmDhxYowePbpYUJubm+O1116Lp59+Ou65555Yv359b156XHnllTF27NjdftxTTz0Vd955506PqaqqihkzZsTRRx8dI0eOLL6mlpaWWLVqVTz77LNx//33m2PWA1lEPPi3696OG90emEUM7BcxMFpDx6ZtPTr/mIOaohCtA0EG5CXx84NPj5nrHthnIzlKS0ujf//+++jsEf3794/S0tJ9dn4AgIiIefPmxRVXXFG839PI0Vdxo6qqKmbPnh0TJ07s9Ln6+vpYsmRJLF26NFauXBl1dXXdnqe6ujqqqqpi4sSJMXHixOKaElmWxcSJE6O6ujruv//+mDt3bnIjIE444YTi+5ZdBSAOHALHXjrkkENi+vTpMXXq1Bg1alRERGzYsGGPznXWWWfFhRde2OU6BCUlJTF27NgYO3Zs1NTUxB133BELFy7cq2tv78gjj4zRo0fv9uN2FSU+/vGPx9lnnx39+nX+q1YoFOKQQw6JQw45JGpqauInP/lJ/OxnP9vta+ipkpKSOO644+Kggw7aq/Pkeevb/aampnj99dfj5Zdfjqampt64xF36/pc2xMhBuzmiYkBJ66/1ja2xYyeat3ac5TK4UBo/GHxaXLqh9/6uAQC80yxYsCCyLIs5c+YUP7aryFFTUxNz5szZ7Skhe2vGjBkxe/bsTs+7cOHCWLx4cdTW1ha/392VJUuWxJIlS+L++++PsrKymDp1asycObM4miXLspg5c2bU1NTEjTfemOxojr0xevToOOqoo6KkpGTXB+/g+OOP73C/ubk5nnvuOT8Y3gmBYw+UlZXF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AABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAP8/e3f2Y+d95/n985ytTu0Ld1EUSZHW1rJkeWvZljuWkxm3u9szPZ0JgkEDSdBXSRAgQK4ToP+FXOUmV0mAJAjSk2Bm0D3dnl4cL3Jbblu2ZW3WRlHizmLtdeosTy5o9dgtaiFZrKof9XoB0g2Lz/keFoFTz5u/5/crnsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkc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AADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACI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eHg4tmzZEj/72c9i69at0dLSUhFuTPZIjqTO008/vXzf4OBgbNq0qeI4xWJxUs+jevvX9PEHBgbiN7/5Tfk6Llu2LJqbm2N0dDRGRkYq6mpvb48zzjgjWltbo7W1NQYGBuK3v/3tpF2fLGttba13CQBMgdyyZctMSASYxhYtWhRz5sypdxl1NzIyEqOjo3HeeefFxz/+8fL9N9xwQ2zcuDE++clPxtKlS8v3j46OxkUXXRStra3lTvuRdqarw43R0dHyDhjveMc7YtmyZRO+dsOGDfHtb3877r///vJ0o2SkRDLNJD1toVQqxbvf/e74/d///Qnf96Ghobjnnnviq1/9avT29kZLS8u4ACUJS0ZHR2PRokXxvve9L171qldNOCKor68v/vu//zu++tWvxvDwcLnNZNRJsVisef2vvvrquP/+++MDH/hAXHzxxdHV1TWu7ZGRkbjnnnvi5ptvjuHh4fJ1SK81cTSSgKhQKMTIyEj8+Mc/LgeDv/71r+Oqq64qh0AREYVCYVLPI+KFERq1jv+Rj3ykfI7f/va3Y+HChYd0XqtXr45rr73WIpsRsXPnTmEPQAMwggNgmvPN5X7pKRZpL3rRi+Iv/uIvYubMmeNek57CcrSLNaYXhywUCnH55ZfHJZdcctDO+fLly+O6666Lb37zm/HNb36z4hv/JOBIwoiZM2fGZz/72TjttNMO2GY+n4+LLroozjzzzLj++uvj8ccfr1hLI93ma17zmvjLv/zLmh32tK6urnjb294WZ511Vlx99dWxffv2caMeal3/zs7O+Id/+Ic444wzJmy7ra0tLrjggli6dGlceeWVUSgUJn36RXqUSfX9Y2NjFSNRJvs8qke51Dp+8tmzUOaR8XMQoDEIOACmOQuM7le9yGjiHe94x7jOTzLtoHotjCOVtJeEBn/yJ38Sb3/72ysef/TRR+Opp56KoaGhmD17drzsZS+LE088MSL2L5L4nve8J3bt2hU//vGPx62VkXSU//Zv/7Yi3BgZGYl169bFpk2bolAoxIIFC+LMM88sTy858cQT49prr42PfOQj5UAivcbEqlWr4hOf+ETFNsNbt26NX//61/H8889Hc3NznHzyybFq1aryiIMlS5bEpz71qfjgBz9YsRbERMHAhz70oZg7d25E7B8F8uSTT8b27dujo6MjVqxYET09PeXnrlixIt7znvfEl7/85fIaFpMRPCV/1qovXXd1yDEZ51E9Emei4yefwV/96lexefPm8mfqFa94Rfn8d+zYEU8++WR5ZMsTTzxhDY7/4+cgQGPw0x5gmvOL/QtqLbrZ2toapVIp/vd//zduv/32ePTRR2Pv3r2xZMmS8lSQoz1mxAsd1RkzZsSf/umflh8fGRmJa665Ju69997yNJjkNVdeeWVccsklEbF/tMaf/dmfxZ133lnu8Ea8MJXkfe97X6xYsaLc7tNPPx2f+tSn4qmnnqroRJ9wwgnxV3/1V/HKV74yIiIWLFgQl112WVx77bXjRip8+MMfLocbxWIxvvWtb8XXv/71KBQK5eMUCoU4/fTT47Of/Wy5E798+fK44IIL4u677x63IGr19Z87d26USqX4wQ9+EF//+tdjz5495ePlcrm46qqr4o/+6I/Kz3/DG94QX/rSl8aFDpOxAGyt+pJaqheknazzSNY+SZ470fGTz8bnP//5KBQKMTQ0FMPDw7F69epywPHUU0/Fhz70oWhvb4/29vZoa2vz////cR0AGsPk7XsHwHHJN7j71drSM/GlL30pPvaxj8XPfvaz6O/vj9bW1ti2bdu4RSCP9tjFYjFe+9rXVkyH+c///M/4yU9+Ul6zorW1Ndra2qK5uTn+/u//Pn7+85+Xnztv3rx47WtfW9FeoVAoTw9J7Ny5Mz75yU/Gxo0bKzq7yUKjV199daxfv778/Fe/+tWxdOnSip0/Xve618XixYvLz7nzzjvjK1/5ShSLxXKNSb2PPPJI3HjjjRXnfM4551R02Kt3FUm75ZZb4u/+7u9i37590dbWVr7lcrm44YYbYsOGDRXX4NRTTx0XOhyNQ21joq1hJ+M8agUbieQzmF4QNlkbJi3ZoSW9pspkbnGcZbbLBWgM/tUDmOYEHAf24IMPxje+8Y1ob28v7z5RvZjnZO3WUSqVKqYqROxfRDKicqvVpAPb2toad911V8Xzly5dWrFw59jYWLz1rW+tWEjy+9//fmzevLmik93W1lYOJnK5XNx6663l5zc1NcX/+3//r2JKTmdnZzz22GOxYcOG2LBhQ9x9993lznN6u9Pkv++6667o7e0tt5neYeRAAcLq1avjm9/8Zrm+pMb031evXl3xmmXLlk1qwJGYqK1DOcaxPo/05yO9+0216nBDwAFAIzFeD2Ca08E5sAcffLAcaKR350ivuzFZIVEul4uBgYGK+1asWBH/8R//UTE6IL3uxwMPPBDvfve7y9/g79u3LyJemCZRKpXinHPOKbc3ODgYP/jBD8od3fROJqVSqXxuP//5z2Pv3r3l9TgWL15cEeTceeedcccdd8TY2Fi5853+LKWPn9x2794ds2fPjoj9i24eSud97dq1FaNXkk57et2S559/vuI1M2fOnPRw42gd6/OoXg8mCTvSn83kM5I8LuB4gesA0BgEHADTnBEcB1Y99D/pOCaPTdYxktsvfvGLuOyyy8odrre97W2xffv2+Nd//dfyNq/poGF4eDi2bNlS0bFN1p2I2N9xO/nkk8vHevrpp2NgYCDy+fy4zm567Y5cLhcf+9jHorW1tRy8pNuu3t2j1hSTZARJss1q+vFaHcpaHflanfJ0G01NTTEyMlLxmmRB0+PJVJ1H+rNU6/N5sMcblWsB0BgEHADTXLIQI7WlvxU/lh3DpAP87LPPxn/913/FRRddFBH7pxR86EMfine9613x8MMPx69+9atYvXp1bN68uSLUqK4t+eZ/0aJFFdNTNm/ePO4b/OoRKcmojk2bNo0bMZIOQNI7qnR0dMQb3/jGWL58eSxatChmzpwZ+Xy+YlHUBQsWVJzzoU69qL7+6fsnei8mcwvfyXC055G+jodzzMl4TiM40BonAEwfAg6Aae54GsZ/vDqWncD0SIhkdMiNN94YhUIh3vKWt5Q75t3d3XHeeefFeeedFx/+8Idj8+bN8dBDD8Wdd94ZjzzySDmUSO8YUiqVYs6cORXH27t377jzSXe209Nu0iNBqoOTZHTGrFmz4j3veU+8+c1vrghSJvsapf/MqulyHtORgAOgMQg4AKa54+Hb7ayYiqCjpaUlRkdH48Ybb4y77747Lr300jj77LMrpivkcrlYvHhxLF68ON761rfGww8/HF/+8pfjiSeeKG93mQQTyTauiWQaxIFGDSTTVZLnJdLboBYKhTj55JPjuuuuixe/+MXjjrFt27bo7++vmL7yO7/zO9HR0XE0lwmOCUEvQGMQcABMc2NjY9Ha2lrvMojK7T4jItatWxe//OUvo7u7O84///xYuXJlnHrqqbFo0aKK0QAvf/nL46abborPf/7zce+995ZfXyqVor+/v+IY7e3t5ccm6tSl18tIPye99Wxra2tcc801FeHG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ACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGSegAMAAADIPAEHAAAAkHkCDgAAACDzBBwAAABA5gk4AAAAgMwTcAAAAACZJ+AAAAAAMk/AAQAAAGReLiJK9S4C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' data-featherlight='image'><span class='label grey badge white-text text-white'>base64-img</span></a></li>
+					<li><a href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABDgAAAkkCAYAAAD508+vAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAACAASURBVHic7N19fJX1ffj/93VCAkmQ+wgoBLHeBNRKQaUqsNYbqDfVYltbpbX9tur6a7+1tt36tW7d9v1t1f3Wrat9rGtnnWvttJ1b1bpWxVq7ArNqjVrvuFFU4h0MgoBACCTn+v0RckxIAgEC4aPPZx8p55xc5zrXCeGY88rn+nyyI444Ig8AAACAhBX6+wAAAAAA9pbAAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5A3o7wMA+lYWEYMHFeOdE7bFaXVb4sTDm2Ps4JbIImLl+kI88uLAuH/xoHj8pYHxxpZC5P19wAAAAH0gO+KII7y/gbeAsiyP/3vRG3HOu7bEwChGVswjyyOimO/wEZEX8ygW89jWmsW9SyvjT/5zVGxrzfr7KQAAAOwxgQMSN6gij5u/uC7qRm+Lsiw6x4weAkfkeeSteUSeR7TmUWzNY/HqQfGhmw7p52cDAPD2VlNTE6tXr+7vwyipq6vr9vbGxsYD6jhTM2bMmKisrOzx801NTbFy5cr9eERvDU5RgYRdcsaWuOr8jVHI28PFnu2nrBAxeVRTVJbn0bRt/47kOPzww+Okk06KQw89NAYNGtQn+9yyZUu88sor8fDDD8fzzz/fJ/sEANiZqqqqmDNnTtx+++17dP/a2tq48sorY+TIkXHttdfGkiVL+vgId62mpiaOPvroqKuri8mTJ8fIkSN3eZ+GhoZYsmRJLFmyJOrr6/fDUaZv2LBhPYajjrZs2RLr1q3bD0f01iFwQIIKWcQv/nJdTBzRGpFnbWEjz/c4cES0zTg85+iNccdTB8XAKMTWKO7z+TkmTJgQs2fPjuOPPz4qKyujUOibeY+LxWIcccQRMXTo0LjnnntixYoVfbJfAIDuVFVVxVe/+tWYMGFCjBw5Mm644Ybdun9tbW1cffXVUVVVFRERkydP3q+BY8aMGTFt2rSYOnVqZNnu/bJrwoQJpZ/pmpqaor6+PhYtWhSLFy/eR0e7/9TV1cWkSZNi/vz5sXnz5v4+HHpB4DiAlZWVRU1NTbS2tr5lhn+Vl5fHqFGjolgsxpo1a6K1tbW/Dyk5Awp5LPzG6zG8cnt+yCIiyyIKZW9ulOcRza0RW4u7te8vnLo27njqoGiOYvxq+Jnxvtd/Fdti9/axO8aOHRsTJ06M6urqPt1voVCI6urqOPzww2Ps2LECBwCwT1199dVRW1sbERGzZs2KiOh15NgxbuxPM2bMiAsuuCBGjRq10+2ampo6/TzV3eiDLMuiqqoqZs6cGTNmzIglS5bEHXfckWzoqK2tja9+9auRZVnMnDkzvvSlL/X3IdELAkcfmjJlSpx66qkxZsyY+NrXvrZH+zj44IPj7LPPjkmTJsWYMWNKBbW1tTVeffXVeOqpp+Kuu+6K9evX9+Whx+WXXx7jx4/f7fs9+eSTceutt+50m9ra2pg9e3YcffTRcfDBB5eeU7FYjJUrV8YzzzwT9957r3PMeiGLiPv/et2bcaPHDbOIQQMiBkVb6Ni0rVf7H3tQSxSibSDIwLwsfjHstJiz7r59NpKjvLw8Kioq9tHeIyoqKqK8vHyf7R8AICJi/vz5cdlll5Wu9zZy9FfcqK2tjXnz5sWkSZO6fK6xsTEWL14cS5YsiRUrVkRDQ0OP+6mrq4va2tqYNGlSTJo0qTSnRJZlMWnSpKirq4t77703br/99uRGQJxwwgml9y27CkAcOASOvXTIIYfErFmzYtq0aTF69OiIiNiwYcMe7et973tfXHDBBd3OQ1BWVhbjx4+P8ePHx8yZM+OWW26JRYsW7dWxd3TEEUfEmDFjdvt+u4oSH/7wh+Oss86KAQO6fqsVCoU45JBD4pBDDomZM2fGz372s/j5z3++28fQW2VlZXH88cfHQQcdtFf7yfO2t/stLS3x2muvxUsvvRQtLS19cYi79MMvb4iDB+/miIqBZW0f65vbYsdOtG7tfJbLkEJ5/GjIjPjYhr77XgMAeKtZuHBhZFkWl156aem2XUWOmTNnxqWXXrrbp4TsrdmzZ8e8efO6PO6iRYvi0Ucfjfr6+tLPu7uyePHiWLx4cdx7771RWVkZ06ZNizlz5pRGs2RZFnPmzImZM2fGddddl+xojr0xZsyYOPLII6OsrGzXG+9gypQpna63trbGs88+6xfDOyFw7IHKysqYMWNGnHTSSXHkkUf2ybwBF1xwQZx//vmdXmi2bt0ar7/+epSVlcXw4cNL/ygGDx4cl156aVRUVMT999+/148dEXv9pr87n/zkJ+O0007rdFtLS0tpopwRI0aUvnYDBw6MCy+8MCorK+Pf//3f+/xYCoVCfPKTn4xTTjmlz+Z5yPM8WltbY+3atVFfXx//+Z//GU1NTX2y7+7MOGZrnHh470ZidGvowIitrRFrt/S8zfbpPNrOemm79I4Bg+N9FYfEPVtf3fPHBgB4i1uwYEFERK8jx5w5c/Zr3KiqqoqLL764dEztHn300bj55pv36pT4PM9j8+bNsXDhwli0aFHU1dXF5ZdfXpqktKqqKq666qq44YYbYuHChXv1PFJTW1sbzc3Nfbo/gaNnAsduOO6442LmzJlx3HHH9emcAccdd1ycd955pRe4bdu2xfz58+Oee+4pjQYZOXJknHPOOXHaaadFoVCIQqEQH/7wh2PJkiXx6qt798azoqKi07C4JUuWRGNjY6/uu3z58m5vP+mkk+K9731v6XpLS0vcc889cdddd8XGjRsjou05nX/++fEHf/AHped+7rnnxlNPPdXndTfLspg4cWIMGDCgT/9DMmDAgBgzZkycc845MXXq1Pinf/qnePHFF3tdvXurrBDxvc9tjL0+8oqyiIOrIlZu6vbTWUSUD8hjW0sWeZ5FZBFZZPEXg4+PX659NcyYAgDQs92JHNdcc02nuTv2pY6ToLZramqKb33rW7FkyZIef3atqqoqHV9tbW1UV1fH6tWrY82aNRER3U6Emud5LF68OL70pS/F3Llz4wMf+EBEtP08ftlll0VdXV18//vf7+unCBEhcOyWj3zkI92+AK1ZsyYKhUKMGDFij/Z79tlnl0YV5HkeP/rRj+K//uu/Om3T2NgYN910U2zYsCEuuOCCiIiorq6Os88+e7dnad7R2LFjO73pv+++++Lhhx/eq312LNJ5nsdNN93U7XO68cYbY8OGDXHeeedFRNsL39lnn93ngaO1tTW+8Y1vxNlnn91n5zgOGDAgxo0bF+PHj48sy+KQQw6JK664Ir71rW/1+aSW//vcphjQVzNhFLLtkaP78yDziBhXqIqyQueccmX1MfF3m57um2MAAHiL6m3k2Lx5836LHKNGjYqDDz64dH3JkiVx3XXXxaZNXX/pVVNTE+9617ti5syZnY6r4/uF9iDS1NQUixcvjvr6+nj00Uc7zbOR53ncdtttUV9fX1r+NqJt1ZWqqqrk5uTYVw4//PAuy/E2NjbG888/309HlDaBYw9t2rQpnnrqqXjwwQejvr4+vvKVr+xR4BgxYkSnWYiXLl3aJQR0dMcdd8T06dPj0EMPjYi287LKysr2ajWSHSfN2dsVWwYPHhwTJ04sXV++fPlOn9N//Md/xPTp00tzmBxxxBF79fg9Wb9+fdx6662RZVmfjLAoFAoxcODAqKuri4997GMxfPjwGDFiRHzwgx+M6667rs9WiMmyiD+c0/U/AHne9rm8EPE/6wvx0toBsWVrRFmhGGNHtMSEERFZ/uZ2nQwoRIwcFLGm8yk1eUS0tGTxnkFjuowW+VBFbXxz09P7fOlYAIDU9RQ5XnrppZg/f37ptv0VORoaGkqPU19fH9///ve7/DxcU1MT559/fsycOXOXI57bP19VVRXTpk2LadOmxebNm2P+/PldllRdsWJF/Mmf/ElcffXVERFx7bXXHjBxoz3mPPbYY/22auWMGTO6TBewdOlSgWMPCRy7Ydu2bfH000/HI488Eg888ECfzLfQHija9WbkxKOPPloKHEOGDIm6urp4+uk9/816xzCT53m88sore7yviIhDDz2006Siy5Yt2+V9li5dWgoc1dXVUVNTs09eZPpyWdrW1tbYtm1b1NfXR2NjY3z1q1+NQYMGxaRJk2LChAl99qL07qO3dYoNrXnEsysHxP+5sTqee21A5FkhBkw4OqrP+kiUHXxotLYW49BCWTz9ucsi8jwOHdEa/9+nN8WUw1qirEOeyCoHRF5eiOjwNcm2f5xVcUi3xzLnAJ2LY9myZbFq1ao46qijSt9HAAD7S11dXcyZM6fLSOHNmzd3um3evHmluSo6brM/IseKFSviT//0T7v8jF1VVRVz586N2bNn9xg2GhoaOkWJmpqaLqMO2vczZ86cuPnmm7t9ju2XDwQ1NTXxl3/5l1FVVRUXXHBBfOYzn9nvxzBp0qRu50Lc29H0b2cCx274m7/5mz6fRLLjeXAREY899tgu7/P000/H+9///tL1iRMndhs4LrnkkpgxY0a0trbG3XffHXfeeWe3+xs2bFjp8saNG2Pr1q29PfxuDR48uNP19jk3dmbHlWeGDBnSbxV1d+V5Hi+88EI8/PDDMWvWrBg4cGCcfPLJsWLFir0OKlkW8f/O2xhZFtEaEX97R1XcdN+gaC0WYsCo0TH8s5+JwujxkefFiMgijzwOHTU8Xv7uX0VebIsZLzeWxby/GRKFLOKCU7fEX1385lDEbHR15Cve/NoXyiMqsraJRbs7liuqJx1wgWPZsmVx1113RUNDQ0ydOjXOPPNMkQMA2G9qamriyiuv7PVp0O3LyXYXAP7+7/++tNTqvrDjz9c1NTVxxRVXdHlP0tjYGPX19bFw4cKdLhM7bdq0mDp1akybNq103FVVVd3OtXGghI12I0eOLP2dVVVVRV1dXbdziuxLHUfyt3vxxRf3eFVOBI7dsi9WyOhYPjdt2tSryT1feOGFyPO8VFi7W971qKOOitNPP720zdy5c+P+++/vNjYMHTq0dLkv/jG98cYbna73ZkLWjtvkeV5aaWV/qK6ujurq6r2afHTdunXxs5/9LE499dQoKyuLY489NgqFwt6PGMkjDh1ZjIeXD4hPfnNoFPOIKJTFoX/xnWgtGxCRZdtPQckij4hB5RUxbHB1PL30qS67KuYR/7FoUNz234Pi65/YGB84sbnt1JVhAyNeb1tZ5cXXy+OdZSMiz7Oup7VExPCsYu+eTx9rjxvPPPNMbNmyJR544IEYNmxYnHnmmTFw4MD+PjwA4G2g4xvl3tpZ5Gg/lWNfq62tjauvvrrTsTc2Nsbtt98eCxcu7NUp3Y888kg88sgjUVVVFe973/tizpw5pdDRPofHgXRKyoFkyJAhccghXUdNP/744/1wNG8dAkc/6zgkqTcjHSLaQsvmzZtLUaC7F9SqqqpOb9jLysqisrKy28foOOJi/fr1pcsVFRWlyYhWrVoV27b1bonS5cuXx6ZNm0rH15s5NQ4//PDS5cbGxl6v4rI3CoVCzJo1K84444y9XhXnueeeixtvvDG2bt0alZWVMXTo0D5ZrWVwZTE+9s2h8ehzbf9Uq991Sgy/8PLI84iyPI88IvIsj8jb5hWZcPCoiDwvjd7oTjGP+OoPBscN91TG7X+6PiqGDSwtHft3C0bGPw6ZHq09zrSx72fgWLVqVSxbtixGjx4dRx11VI/b7Rg3ItpOjzrssMOivLx8nx8nAMDe6C5yrFixIq655ppuf7Pf19on+2x37733xs0337xHc9Vt3rw5brvttrjnnns6nWqzP5fBTc073/nOLrc1Njbu9XQBb3cCRz/r+Fvm3Tk1pGNsGDRoUJfPP/nkk/Hcc8+V4sLvfve7Hk/5GDJkSOnypk2b4kMf+lBMmTIlDjnkkNJcGnmex8qVK+Ppp5+On//857F27doej621tTXq6+tLs0UfddRRMX369HjooYe63f60007rNCzut7/9bY/77ktjx46NefPmxcCBAzuNiNkTW7du7XT/vnoxf6OpEI8+V4jIshh9yRUxcNLUiIjIs7b/yyOPPLKIPGLM8CGRRURL0+boTYhYvrIsTvri8Hj0urVRGFQWxc0tMeDlidFa2fN9s71fqHanVq1aFb/85S/j0UcfLf2HsbvI0V3cOProo+Oss86KI488srQqEQDAgaynyNHXK/J1Z+HChZFlWVx66aVxww03lCZG7U7H5WIjul8eNqItdHzta1+LSy+9NCZPnmz0Rg/a5+3b0e9///t+OJq3FoGjn3WcYLRYLPb6fi0tLaXL3Q3Fb21tja9//esxefLk2Lp1ayxdurTHfXUcRXLCCSd0++Y8y7IYO3ZsjB07Nk4++eS46aabdhoifvrTn8bRRx8do0ePLr1wjhw5MubPn186baO8vDzOPffcOPfcc0v3e/755+NnP/vZzp98H8iyLCZPntzpa/f666/v0b7yPI8XX3yxUyTZnb/L3hh76R/HoCOPKz1eHhGRReRtpSPyiKja/lya1/5Pr/e7ZVsWx39+RPzu7/JY+khLfK1yWp8e9+5Yv359LFy4MB544IHYuHFjp9FGHSPHzuLGMccc49QUACAp3UWO/WXBggVRX1/f43Kxs2fPjmnTpnWZUDSibeLRhQsXxqJFi7osD/v9738/ampqut0vbXMoVlR0PfW7ubm5tJhEuzfeeMOcHLtB4OhnffGb/p720draGk8++eQu79/xFJXeHE91dXVcdtllked5PPjgg91u8/rrr8c//MM/xBe+8IUYNWpUDBw4MD760Y/G+9///lizZk1ERIwePbrT6JMVK1bEt7/97b2e5LQ38jyPhoaG2Lp1a1RUVESWZfGLX/xij2cs3rhxY0yaNKn05vqll17qs8gx+sLLouro7UPY2s5GifaRg+0jOEYOefMUm5Yd5kDZlW2tWZz8lZFx0+CZ0Z/jHqqqquLggw+O6urq2LhxY2zZsiWeeeaZ0uePOuoocQMAeEvqz8ixY4SoqqqKiy++eJfLxU6YMCEmTJgQF1xwQcyfPz9uv/32Tp9PZcGAfe1zn/tcl9u+9KUvxXe+851e3f+Tn/xkfPzjH+90m1VWeiZwvM1VVFR0Ovcuz/N47LHH4uGHH46XX345mpqaYvTo0TFlypSYOXNmadKgAQMGxMc+9rFYtmxZj6errFixIv7sz/4sPvvZz8axxx4bEW9O6LmjRYsWxT//8z/36TKuu7J8+fJ44IEH4j3veU9ERJxzzjmxYsWKnY526cmAAQPiQx/6UNtkn3keDz/8cJ8EjhHvPTeGTn9PaTLRPIvIotgWOPKIPGsbwTG4QyjK9mD+if814OgYH12XqNqfysvLY+rUqbFly5b45S9/GatWreoUOZYtWxbPPfecuAEAvCX1Z+RoV1tbG5dddlmXVVXaNTU1dVnlpX152FGjRsXNN9/c61NSBg8eHE1NTfv05//a2tqYNm1a1NfX73Q1mP3phRde6PUpSBMmTOi0eia7JnC8zbW2tsY//uM/Rl1dXUyYMCHuu+++eOCBBzpts3r16njqqadiwYIF8cUvfrE0RG3IkCHxvve9L2655ZZu9z1s2LC46KKLYvLkybs8jpNOOim2bNkSP/nJT/bLCI6IttN8fvrTn8Y73vGOGD9+fAwfPjwuueSS+PM///NOpwD1xuzZs+Owww6LiLYVVR577LE+CRwHHXVsFAplbeM02lpG5FGIyCKKeR5Z5JHtMO5i4LARu/UYHx10WHx84OE736htqZbdPPrdN3jw4DjllFMiIrpEjuXLl0dzc3MpbowePTpOOeUUcQMAeMvo78jRPiqjXfuqKosXLy6Nwo5oCwczZ87s9AvQE044Ie69995evXkfPHhwHH/88dHc3ByPP/74bv/s3RtVVVWlVWI+8IEPxB/90R8dEKNKfv3rX/dqu8rKyrjqqqv28dG89Qgcb3Otra3x0EMP9TgBaEcNDQ3xL//yL/HlL3+5NFztxBNP7DZwDB48OL785S+XXiDzPI9nn302Hn/88Vi5cmWUlZXFoYceGtOmTYvx48dHRUVFnHHGGTF69Oj45je/ud9Gcqxfvz6uv/76+MpXvhIHHXRQjBs3Li6//PK48cYbS2+k2xUKhU7zlWRZFmPGjIkzzzwzpk6dGlmWRbFYjEWLFu3xfB47avz1f0btpCkRUWgbtZG1nZKSR0RZlkfkEQPLO/8zLu9l4Mgi4gvVk+IjAw/b+dShxZaIaJvodN+vodJz5Oj49zF69Og488wz48QTTxQ3AIC3lP6MHB0nHr3jjjvi9ttv73ZVlfaJUG+77ba4/PLLY9KkSXHttdfuVtwoLy+P8vLymDJlyj6JHLW1taWR6lmWxciRIw+IwPGpT30qPvWpT3W67d/+7d/i1ltv7bJd+4qW9J7A0c/2ZBmmfbGP3nriiSdi6dKlpaWrRo4cGePGjYuXX36503af/exnS3GjWCzGLbfcEvfee2+X/d12221x0UUXxVlnnRUREccdd1x8+tOfjuuvv34fP5M3rVixIn74wx/GZZddFgMHDozp06fHihUr4q677ur0tS0vL48PfvCDMXny5CgrK4tCoRDDhg0rxZ48z+O3v/1t3H333X12bJueX7Z9/1lk2+NGlrdPNJpFZG9OLtquMKCibbTFTr4vyiOLW4e/J8bEwJ3GjWLL1oisEIXtG+2v77XuIke79rhxyimndJo/BgDgraK/Jx5dvHhxr2LA5s2b47rrrotRo0b1avuOcaPjbfsqcqTif/6n8yIBJ554Ypx22mn9dDRps5ZiP+t4OkbHFVV2pX351ojYr/NWREQ8/fTTna63n5rR7sQTTyzNuRER8atf/arbuNHuxz/+cfzud78rXT/11FO7XRp0X3r44Yfj7rvvLq2EcuGFF8bUqVM7bdPc3Bw//vGPY/Xq1TFy5MgYPnx4ac6NpqamuPPOO+Omm27qtPrH3sqLrVFWKEShkEWhkEXZ9j8LhULpcvmAzt83eV6M8oOGdru/LCI+MKg2FgyfE2OzQT1OHFVsbYni1s0ReXH7irP5ToPJvtAeOc4888wYPXp0RIgbAMCBp7GxMZqamvp8v5dddlnMnDmzz/fbG7sz0iHP807bT5kyJY4//vgYM2ZMp+26ixsdP3fEEUfs+QEnruNo+lGjRsUVV1zRj0eTNiM4+llzc3Ppcnf/2HvScdsdT6XY11auXNnpesfTNiIi3v3ud5cub926tVfLvt5+++2lJWqzLItTTz01li1b1jcH3Eu/+MUv4uCDD45TTjklsiyLefPmxUsvvdSpqDY1NcWNN94YX/nKV0pvutetWxff+c53Yvny5X0fm4rFeOOx38aQaadE5Nn2NVMi8iyPPM+6HX2RZVlMOO+ieO5fv1u6rSyy+Hjl4fGHlUftdMRGXizGti1vRFYoi7Jse//MipFHIbI8j4eL3U8ou690HMnxxBNPxDvf+U5xAwA4oKxevTq+9a1vxZw5czpN3t/RhAkTukzO2Rv9PSdHu9ra2rjyyitj5MiRsWTJkrjuuut6nEx02LBhEdF2KnhHY8aMKb2HaWlpKf3Ctv3ymDFjYuXKlbFu3bp9+EwOPA899FCnQHbVVVf1+H3Ergkc/azjC0Nv37RVVFR0eoHsyxEDvbFt27ZO13cceTJ27NjS5ZUrV/Zq3eaXX3451q5dW5rAdNy4cX1wpLunubk5fvrTn8bEiRNj7NixMWrUqPjsZz8bf/u3f9vpa7x69er47ne/G1dddVUMGjQohg8fHnPnzo1vf/vb+6TeN/z4e/HOaadG+yyjeYfTRXoaUzH2vWfHkB//JN47cEycO2h8VEYhooe0ked5tGxtim3NmyPLsigUyiLLi9EaWds8H9E+eCOPP9/weB8/u11rjxzHHXdcHHTQQeIGAHDAWbx4cSxZsmSn28yePTvmzZu32/s+ECLH5ZdfHqNGjYqIiEmTJsXMmTNj/vz5u7WP5557rhQ1tmzZUhoFvmTJkjjssMPi5ZdfftvFjYjOS75eeOGFMXHixH48mvQ5RaWfdRwdUF1dHSNG7HqCyMMOOywKhTf/6jrOaLw7ysvL44wzzih99DYq7DhiY8e1swd1WLK04wiVXek4EqXjPvan1atXxw033FAqzhMnTozzzz+/y0SWzz//fFx33XXxxhtvRETEMcccE/PmzdujMr8rrU2bIyu2tp2akrV9ZPHm5W5lWRx+cG0c+WpjrHjpmXj5f16MtetXxYaNa2P9G2ti7euvRmNjQzSubogNr78aTU3rI8+L24NJXvqz9JHnEVnEhtjW/ePtY4MHD46xY8eKGwDAASvP851+zJ8/P2644YZe7WvHX5r15+kq3ampqdmj+y1ZsqRLCGppaYlHHnmkyyjxt4v201OOOeaY+MhHPtLPR5M+gaOfvfTSS52uT5kyZZf3aZ/gs11v11He0bZt2+LCCy+MSy65JC655JKYNWtWr+5XW1vb6forr7zS6XrHF+TdGV7Vcdv9fdpNR88++2z85Cc/iYi20z1mz54dJ598cpftnnnmmbjllltKEWfmzJlx7rnn7pNjeuavrmwLGu2Ro0Ps6H7izyxe+ZOrY92APLa2bosNWzbE2g2ro3H9ytiwsTG2NG+K1tbWyNv/l+fbs0bb5SgWI/I8isU8oth220Vv/Pd+WUUFAOCtasGCBb2KHPPnz49FixZ1uq0/I8ejjz7a6Xp9fX2XbXqaT3B35hncXbW1tTF37tyYNm3aPnuMfan99BRLwvYdgaOfPfXUU53mbdhxYsvuHH/88aXLzc3N8eSTT+7x47/22muly8ccc0yv7nPccceVmwyIEwAAIABJREFULm/cuLHLXBlr1745T8OYMWN6tbzRO97xjhg+fHjpemNjY6+OZV958MEH4xe/+EVEtEWO7iY9yvM8HnzwwbjzzjtLk5Puq8lRt6x6NZpXNmw/haTtI9v+Z7GHyT/LKqvjb06ujZZCWwQp5sXtf7ZHjWLksT1ibP/NQvuf7Xts/7OhuClebN3U7eMAANB7vY0c119//QETOW677ba44YYb4o477ohrr702Fi9e3OnzY8aMiXe/+91dRtvW1dXFu971rk4LJPSlq6++OubOnRtf+MIXuvwSNgXtp6d8/vOfN+9GHxE4+tnq1as7DdM67rjjdho5pk+f3unN9tNPP91pJZbd9fvf/750efz48XH66afvdPvzzjuv04zIjz/edU6GjquslJWVxYc//OFdHscHP/jBTtefeOKJXd5nX2ptbY077rgjFixYEM8991wsWLCgx+3uvvvuuPvuu2P58uV9ukTsjp78v1e+uYpKh1EcxWKx2+2zLIvJV/5F/O+ha2JzIY9ivBk3itsjRtvojw6jOPLSOI7SiI7WYmvM2/RQt48BAMDua48cu5q/rafI0R8jFhYsWBC33XZbl7gxdOjQqKuri/Ly8k6/iB03blyMGTMmBg8e3GUEel/pGAVOOOGEffIY+9JDDz0U55xzTkyfPr2/D+UtwySjB4D77rsvJk+eXFpB5NOf/nQMGDCg04QzEW2rk3ziE58oLe2Z5/lOl1+95JJLYsaMGaU34XfeeWeXbe6///447bTTYsiQIRERcdFFF0V5eXncc889XbY977zzYu7cuaXrW7du7XZyod/85jcxe/bs0kRE06dPj2KxGD/5yU/i9ddf77RtTU1NzJs3r9Oysi+//HKXF/L+0Nzc3Ku63tLSUjqlZV/K82I8/rXPxZS//G5k2fbRFVnewykqbbKsECf93Q/jii9+PL7aNDImtRZKp6MU8zyyaAsfWZ5vX5ml7bZoH80ReXx8yyNRdHIKAECfWrBgQaxYsSKuvvrqnc7jdv3110dExIwZMyIioqGhoUtk6E/r16+PlStXdlolJSI6rZLy4osvdrrPli1bShOKtrS07LdjPZBs3rw5jj322PjoRz/a34fyliJwHADq6+vjN7/5TbznPe+JiLZJPD/3uc/FeeedF6+99lpkWRZjx46NcePGleJGRFsYeeaZZ7rd51FHHRWnn356afu5c+fG/fff32XFlXXr1sWPf/zjuPTSS6OsrCwqKiri4osvjjlz5kRDQ0Ns3rw5KisrY8KECaUVTtr9/Oc/73b+j6amprj55pvjM5/5TGlyzpNPPjmmTp0aL7zwQqxbty6yLIsRI0bEhAkToqKionTfTZs2xY9+9KPd/yK+TTStfDmeu/4bceQf/nEU2lJE28KxefS0SEqUDxkWJ/z19+Oa/3NpHF+sjD/eMiqyLG9PG2/Ov7E9ckQxj7zQdkrLN7Y9Fyvyvl8ZBgCAtrn0rrnmml5Hjtra2rjmmmt6XKK1v7SPSO840juiLV78/ve/7/IeZOXKlW/bSUXbVVVVmXdjHxA4DhA33nhjZFkWs2bNKo3kqK2t7fZcsjzP45e//GX867/+a4/7q6qq6hRDysrKorKystslZf/7v/87siyLiy++uHTe3MiRI7sEjY6Pf/fdd8cdd9zR4+PX19fH9773vfjYxz5W2s/AgQN3Ojxt1apV8YMf/OCAKtIHotW/WxDFlm0x6fN/GlkepVNNsp5WVImIQTVj4oSvfy/qv/b/xCVVL8UnWkbGOa1Doxh5lL051WjbHB1ZHoU8j7/Y9mwsKK7tcZ99Yf369bFu3boev9f21rp167qswQ4AcCDZnchRVVV1wMWNdjtGjva40b7q4L6248qOB9r+2D/KRowY8Rf9fRBvBaeeemppMs3m5ua46667dnsfjz32WLzyyitRU1MTQ4cO7fKGtVgsxvLly+OHP/zhTk9NiWib2+PYY48tLTv7u9/9Ln7961/3uH1DQ0M8/PDDMXDgwBg5cmSXZVEj2l6knn322fjBD34Qv/rVr3b5fF577bX47W9/GxERI0aM6HHinFWrVsX9998f119/fbz66qu73C9tIzlWLbovDj3jvCgUCjuNG+3KDxoS4876ULw0/7Z4LN6Ifx/weiwpa4535YNjUBS2LznbFtf+V/HpeCJ/Iz5ReXg0R2t8qGJCrIttsbbY+2V/e2PDhg3R0tISQ4cOjaqqqj6bgKq5uTkaGhriN7/5TTzxxBNv26GPAEAa1q9fH08++WQcf/zxUVVVFbfffnusWbOmy3bbtm3rh6PrvTVr1sSgQYNi0KBB+yVuTJs2LYYOHVoaQd4x/qxZsyZmzZoVVVVV0dTUFLfeemunr9/mzZvj9NNPj/Ly8mhsbIybb7650743bNgQs2bNivLy8mhoaIj7779/j45x8uTJpVP3+8LSpUtj4cKFfba/t5rsiCOOcHL9AaimpiaOOuqoGDp0aOR5HuvXr48lS5Z0WqFkV8rKymLy5MmxdevWWLp06W49fl1dXYwbNy4qKyujubk51q1bF88880y3I0B6q7a2Ng4//PCorq6OiLYVWJ599llRY29kWRz3R1+PoXXv7FXkaPf8T66PV355Z0Sel85sGZgVYkI+KJbF5tKMG2MLldGaF2Nj3hKDCmWxtrjnE9r2pLq6OoYPHx6VlZV9toxYa2trNDU1xeuvv66+AwDJyLIsRo0aFatXr+7vQ9krlZWVu5xAtS9UVVXFhAkTYs2aNd1+zdo/39DQ0O3PhNXV1VFbWxsrVqzodmRMTU1NjBo1qsfP99a0adP6ZJWXhoaGbpfo5U0CB7wFDKisjnde9ddRPW5i23QcvYgdWRbxzD9eG42PPBB53v1KLAAAAKkwBwe8BbQ0bYpH//zzEYVCjDjmXXHkJ6+IQaMPidYtWyKP2H76SURx+4orAwYNii2rVkZx61ZxAwAAeEswggMAAABIXqG/DwAAAABgbwkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAAAAAMkTOAAAAIDkCRwAAABA8gQOAAAAIHkCBwAAAJA8gQMAAABInsABAAAAJE/gAAAAAJIncAAAAADJEzgAAACA5AkcAAAAQPIEDgAAACB5AgcAAACQPIEDAAAASJ7AAQAAACRP4AAAAACSJ3AAAAAAyRM4AAAAgOQJHAAAAEDyBA4AAAAgeQIHAAAAkDyBAwAAAEiewAEAAAAkT+AAAAAAkidwAADA/8/evTVZdh7mfX/W2oc+93T3nGcwMwA4OJAAeCYBSlQoMbYpxVLZpq2k4nIqVSmnVOXkIh9BF8knSOUmF6nKTSrlJKYrjktKaFk0IZKgxQNAghRAgsAQGMx5eqbPu3sfVi6GlCiZINBk9+x+e36/Klyh0OvpmYve+Pda7wKgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAUT+AAAAAAiidwAAAAAMUTOAAAAIDiCRwAAABA8QQOAAAAoHgCBwAAAFA8gQMAAAAonsABAAAAFE/gAAAAAIoncAAAAADFEzgAAACA4gkcAAAAQPEEDgAAAKB4AgcAAABQPIEDAAAAKJ7AAQAAABRP4AAAAACKJ3AAAAAAxRM4AAAAgOIJHAAAAEDxBA4AAACgeAIHAAAAUDyBAwAAACiewAEAAAAU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AAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncADwv+3dT4hV9f/H8Xf0la5ONAM1jgb+QUidFjJaFFiLLDBtEblJaOeiwDZCtGohP1xWBG2MCEwho5YJFk0IBSYtMoXEMQVltLBpNjPB5ARG30XUt/nNvemU3tvrzuOx0s9n5py3mzP3Pj33DAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAAXv363QAADSNJREFU8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIEDAAAAiCdwAAAAAPEEDgAAACCewAEAAADEEzgAAACAeAIHAAAAEE/gAAAAAOIJHAAAAEA8gQMAAACIJ3AAAAAA8QQOAAAAIJ7AAQAAAMQTOAAAAIB4AgcAAAAQT+AAAAAA4gkcAAAAQDyBAwAAAIgncAAAAADxBA4AAAAgnsABAAAAxBM4AAAAgHgCBwAAABBP4AAAAADiCRwAAABAPIED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' data-featherlight='image'><span class='label grey badge white-text text-white'>base64-img</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</li>
+</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<div id='step-filters' class="right sr-filters">
+				<a class="btn-floating waves-effect waves-light green" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></a>
+				<a class="btn-floating waves-effect waves-light red" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light red darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light pink text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></a>
+				<a class="btn-floating waves-effect waves-light orange" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></a>
+				<a class="btn-floating waves-effect waves-light teal" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></a>
+				<a class="btn-floating waves-effect waves-light grey" status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></a>
+			</div>
+			<h5 class='test-name'></h5>
+		</div>
+	</div>
+	<!-- subview right -->
+</div>
+<!-- test view --><!-- category view --><!-- exception view --><div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>1</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>4</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Feb 7, 2023 10:50:09 AM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Feb 7, 2023 10:58:21 AM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 8m 12s+145ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>Device Info </td>
+								<td>Device Name - samsung Version - 10</td>
+							</tr>
+							<tr>
+								<td>App version : </td>
+								<td> 5.0.21</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->		</div>
+		<!-- container -->
+		<script>
+			var statusGroup = {
+                parentCount: 1,
+				passParent: 0,
+				failParent: 1,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 1,
+				childCount: 4,
+				passChild: 3,
+				failChild: 1,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				debugChild: 0,
+				exceptionsChild: 1,
+				grandChildCount: 0,
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				debugGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		<script>
+			var timeline = {
+			        "userScanAndPayFlow":471.796
+			};
+		</script>
+		<script src='https://cdn.rawgit.com/extent-framework/extent-github-cdn/b65cd69/v3html/js/extent.js' type='text/javascript'></script>
+		<script type='text/javascript'>
+			
+            
+            
+                $(document).ready(function() {
+                });
+            
+		
+		</script>
+	</body>
+</html>
