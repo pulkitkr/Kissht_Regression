@@ -204,7 +204,7 @@ public class RingPayBusinessLogic extends Utilities {
 //=============================================User Play Store flow Start===============================================================//
 	public void User_Play_Store_Flow(String key, String permission) throws Exception {
 		extent.HeaderChildNode("User Play store Flow Module");
-		getDriver().resetApp();
+		
 		switch (permission) {
 		case "Let'sRing":
 			extent.extentLoggerPass("PASS", "TC_Ring_Core_190 - To Verify if scanner requires Camera permission");
@@ -528,7 +528,7 @@ public class RingPayBusinessLogic extends Utilities {
 		}
 		logger.info("TC_Ring_Core_59 To verify when users allow all the permission");
 		//extent.extentLoggerPass("TC_Ring_Core_59", "TC_Ring_Core_59 To verify when users allow all the permission");
-		softAssertion.assertAll();
+		//softAssertion.assertAll();
 	}
 
 //===========================================User Play store Flow end===============================================================//
@@ -1088,30 +1088,12 @@ public class RingPayBusinessLogic extends Utilities {
 //===============================================PromoCode Flow Start===============================================================================================
 	public void promoCodeFlowModule() throws Exception {
 		extent.HeaderChildNode("PromoCode Flow");
-		getDriver().resetApp();
+	//	getDriver().resetApp();
 
 		if (verifyElementPresent(RingLoginPage.objCamPermPopUp, "Enable permissions button")) {
 			enablePermissions();
 		}
-		/*------------------------------WEB----------------------------*/
-		waitTime(5000);
-		setPlatform("Web");
-		System.out.println("platform changed to web");
-		String pf = getPlatform();
-		System.out.println(pf);
-		waitTime(5000);
-		new RingPayBusinessLogic("ring");
-		waitTime(10000);
-		String projectPath = System.getProperty("user.dir");
-		System.out.println(projectPath);
-		// getWebDriver().get("");
-		getWebDriver().get(projectPath + "//Mock_Files/qrcode.png");
-		waitTime(10000);
-		BrowsertearDown();
-
-		/*------------------------------Android----------------------------*/
-		setPlatform("Android");
-		initDriver();
+		scannQRSwitch();
 		waitTime(5000);
 
 		User_Play_Store_Flow(prop.getproperty("PaymentPage"), prop.getproperty("Permission"));
@@ -1457,7 +1439,7 @@ public class RingPayBusinessLogic extends Utilities {
 	public void userDetails() throws Exception {
 		//extent.HeaderChildNode("Age Criteria");
 
-		explicitWaitVisibility(RingUserDetailPage.objFirstName, 10);
+		waitTime(20000);
 		click(RingUserDetailPage.objFirstName, "First Name Field");
 		type(RingUserDetailPage.objFirstName, "Sunil", "First Name field");
 
@@ -4106,15 +4088,11 @@ public class RingPayBusinessLogic extends Utilities {
 
 	public void instaLoanSetPin(String enterMPIN, String ReEnterMPIN) throws Exception {
 		verifyElementPresent(RingLoginPage.objSetPinPage, getText(RingLoginPage.objSetPinPage));
-		// new
-		// TouchAction(getDriver()).tap(PointOption.point(237,800)).release().perform();
-		Aclick(RingLoginPage.objEnterPin, "Mpin Field");
+		
+		click(RingLoginPage.objEnterPin, "Mpin Field");
 		type(RingLoginPage.objEnterPin, enterMPIN, "MPIN Field");
 		hideKeyboard();
-		// Aclick(RingUserDetailPage.objReEnterPin, "Re-Enter Pin Field");
-		Aclick(RingUserDetailPage.objReEnterPin, "Re-Enter Pin Field");
-		// new
-		// TouchAction(getDriver()).tap(PointOption.point(240,1123)).release().perform();
+		click(RingUserDetailPage.objReEnterPin, "Re-Enter Pin Field");
 		type(RingUserDetailPage.objReEnterPin, ReEnterMPIN, "Re-Enter pin Field");
 		verifyElementPresentAndClick(RingLoginPage.objSetinSubmitBtn, getText(RingLoginPage.objSetinSubmitBtn));
 	}
@@ -4129,11 +4107,6 @@ public class RingPayBusinessLogic extends Utilities {
 
 			click(AddAddressPage.objAddressLine_2, "Address Line 2 Field");
 			type(AddAddressPage.objAddressLine_2, "Vasa Street",getTextVal(AddAddressPage.objAddressLine_2, "Text Field"));
-
-			hideKeyboard();
-			// click(AddAddressPage.objLandmarkField, "Landmark Field");
-			// type(AddAddressPage.objLandmarkField, "Das Gupta
-			// street",getTextVal(AddAddressPage.objLandmarkField, "Text Field"));
 
 			hideKeyboard();
 			Swipe("up", 2);

@@ -16,7 +16,7 @@
       <class name="com.RingPay.TestScripts.RingPayTestScripts">
         <methods>
           <include name="Before"/>
-          <include name="ringInstaWhitelist"/>
+          <include name="promocodeFlow"/>
           <include name="ringAppQuit"/>
         </methods>
       </class> <!-- com.RingPay.TestScripts.RingPayTestScripts -->

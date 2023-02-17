@@ -29,7 +29,7 @@ public class RingPayTestScripts {
 	
 	
 //==========================================================Ring App Flow Start=====================================================================//
-/*	@Test(priority = 0)
+	@Test(priority = 0)
 	public void simBindingFlow() throws Exception {
 		ringPayBusiness.simBindingFlow();
 	}
@@ -117,11 +117,11 @@ public class RingPayTestScripts {
 	} 
 //===========================================================Ring App Flow End=====================================================================//
 //===========================================================Instaloan Start======================================================================//
-*/	@Test(priority = 17)
+	@Test(priority = 17)
 	 public void ringInstaWhitelist() throws Exception{
 	 ringPayBusiness.instaLoanWhitelistLogic(prop.getproperty("OTP"),prop.getproperty("RingAdminEmail"), prop.getproperty("RingAdminPassword"),prop.getproperty("RingAdminOTP"), prop.getproperty("InstaLoanMPIN"), prop.getproperty("InstaLoanMPIN"),prop.getproperty("firstName"), prop.getproperty("lastName"), prop.getproperty("mothersName"),prop.getproperty("gender"), prop.getproperty("delinquentNo"), prop.getproperty("terminatedNo"));
 	} 
-/*	@Test(priority = 18)
+	@Test(priority = 18)
 	public void instaLoanHomeScreenScenario() throws Exception {
 		ringPayBusiness.instaLoanHomeScreenScenarios();
 		ringPayBusiness.instaLoanOnHold();
@@ -165,7 +165,7 @@ public class RingPayTestScripts {
 //===========================================Ring Policy Start=====================================//
 	
 //===========================================Ring Policy End=====================================//
-*/
+
 	@AfterTest
 	public void ringAppQuit() throws Exception {
 		ringPayBusiness.TearDown();

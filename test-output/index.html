@@ -102,7 +102,7 @@
                     <div class="method-list-content failed suite-Android">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Android" title="com.RingPay.TestScripts.RingPayTestScripts" class="method navigator-link" hash-for-method="ringInstaWhitelist">ringInstaWhitelist</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Android" title="com.RingPay.TestScripts.RingPayTestScripts" class="method navigator-link" hash-for-method="promocodeFlow">promocodeFlow</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Android -->
@@ -125,18 +125,16 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="ringInstaWhitelist">
-                  </a> <!-- ringInstaWhitelist -->
-                  <span class="method-name">ringInstaWhitelist</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //*[@text=&apos;Insta Loan Amount&apos;]/(following-sibling::android.widget.TextView)[1] (tried for 10 second(s) with 500 milliseconds interval)
+                  <a name="promocodeFlow">
+                  </a> <!-- promocodeFlow -->
+                  <span class="method-name">promocodeFlow</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //*[contains(@text,&apos;Woohoo&apos;)] (tried for 10 second(s) with 500 milliseconds interval)
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
 	at com.utility.Utilities.findElement(Utilities.java:203)
-	at com.utility.Utilities.explicitWaitVisibility(Utilities.java:1625)
-	at com.business.RingPay.RingPayBusinessLogic.payNowInstaLoan(RingPayBusinessLogic.java:6347)
-	at com.business.RingPay.RingPayBusinessLogic.instaLoanBanner(RingPayBusinessLogic.java:5741)
-	at com.business.RingPay.RingPayBusinessLogic.instaLoanWhitelistLogic(RingPayBusinessLogic.java:5683)
-	at com.RingPay.TestScripts.RingPayTestScripts.ringInstaWhitelist(RingPayTestScripts.java:155)
+	at com.utility.Utilities.getText(Utilities.java:514)
+	at com.business.RingPay.RingPayBusinessLogic.promoCodeFlowModule(RingPayBusinessLogic.java:1107)
+	at com.RingPay.TestScripts.RingPayTestScripts.promocodeFlow(RingPayTestScripts.java:50)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 Caused by: org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
@@ -144,8 +142,8 @@ Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, tim
 System info: host: &apos;LAPTOP-3QQ5MNB4&apos;, ip: &apos;172.31.99.51&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
 Driver info: io.appium.java_client.android.AndroidDriver
 Capabilities {appActivity: com.ideopay.user.MainActivity, appPackage: com.ideopay.user.debug, autoAcceptAlerts: true, automationName: uiautomator2, databaseEnabled: false, desired: {appActivity: com.ideopay.user.MainActivity, appPackage: com.ideopay.user.debug, autoAcceptAlerts: true, automationName: uiautomator2, deviceName: Android, fullReset: false, newCommandTimeout: 300, platformName: android}, deviceApiLevel: 29, deviceManufacturer: samsung, deviceModel: SM-A505F, deviceName: RZ8M42R0MGK, deviceScreenDensity: 420, deviceScreenSize: 1080x2340, deviceUDID: RZ8M42R0MGK, fullReset: false, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, newCommandTimeout: 300, pixelRatio: 2.625, platform: LINUX, platformName: Android, platformVersion: 10, statBarHeight: 83, takesScreenshot: true, viewportRect: {height: 2048, left: 0, top: 83, width: 1080}, warnings: {}, webStorageEnabled: false}
-Session ID: 282cefa6-574c-4e74-974b-3d7681ccbb48
-*** Element info: {Using=xpath, value=//*[@text=&apos;Insta Loan Amount&apos;]/(following-sibling::android.widget.TextView)[1]}
+Session ID: af982acd-aa7b-439f-94a8-1f355f978011
+*** Element info: {Using=xpath, value=//*[contains(@text,&apos;Woohoo&apos;)]}
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
@@ -171,7 +169,7 @@ Session ID: 282cefa6-574c-4e74-974b-3d7681ccbb48
 	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:182)
 	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:179)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
-	... 34 more
+	... 32 more
 ... Removed 31 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -242,14 +240,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'ringInstaWhitelist')
+data.setCell(0, 1, 'promocodeFlow')
 data.setCell(0, 2, 'com.RingPay.TestScripts.RingPayTestScripts')
-data.setCell(0, 3, 1000559);
+data.setCell(0, 3, 476398);
 window.suiteTableData['Android']= { tableData: data, tableDiv: 'times-div-Android'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 16 minutes</span>
+              <span class="suite-total-time">Total running time: 7 minutes</span>
               <div id="times-div-Android">
               </div> <!-- times-div-Android -->
             </div> <!-- times-div -->
@@ -283,12 +281,12 @@ return data;
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">ringInstaWhitelist</span>
-                <span class="method-start">12348 ms</span>
+                <span class="method-name">promocodeFlow</span>
+                <span class="method-start">12299 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-test after">
                 <span class="method-name">ringAppQuit</span>
-                <span class="method-start">1013901 ms</span>
+                <span class="method-start">489518 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
